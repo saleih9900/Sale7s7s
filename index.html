@@ -1,612 +1,346 @@
-<html class="hydrated" lang="en"><head>
-    <meta charset="UTF-8"><style data-styles="">ion-icon{visibility:hidden}.hydrated{visibility:inherit}</style><style data-styles="">ion-icon{visibility:hidden}.hydrated{visibility:inherit}</style>
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Saleh Badawood</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="shortcut icon" href="https://i.postimg.cc/9fqYVvxh/logo.png" type="image/x-icon">
+    <title>متبرعون بالدم - المكلا</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+            background-image: linear-gradient(to bottom, #f8f9fa, #e9ecef);
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #dc3545;
+        }
+        
+        h1 {
+            color: #dc3545;
+            margin-bottom: 10px;
+            font-size: 2.2rem;
+        }
+        
+        .description {
+            color: #6c757d;
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+        }
+        
+        .blood-drop {
+            color: #dc3545;
+            font-size: 2rem;
+            margin: 0 5px;
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+            color: #495057;
+            font-size: 1.1rem;
+        }
+        
+        select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #ced4da;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            background-color: #fff;
+            color: #495057;
+            transition: border-color 0.3s;
+        }
+        
+        select:focus {
+            border-color: #dc3545;
+            outline: none;
+        }
+        
+        button {
+            background-color: #dc3545;
+            color: white;
+            border: none;
+            padding: 14px 25px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            font-weight: bold;
+            width: 100%;
+            transition: background-color 0.3s;
+        }
+        
+        button:hover {
+            background-color: #c82333;
+        }
+        
+        .result {
+            margin-top: 30px;
+            padding: 20px;
+            border-radius: 8px;
+            background-color: #f8d7da;
+            border: 1px solid #f5c6cb;
+            display: none;
+        }
+        
+        .result h3 {
+            color: #721c24;
+            margin-bottom: 15px;
+        }
+        
+        .donor-list {
+            list-style-type: none;
+        }
+        
+        .donor-item {
+            background: white;
+            margin-bottom: 10px;
+            padding: 15px;
+            border-radius: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .donor-number {
+            font-weight: bold;
+            color: #dc3545;
+            font-size: 1.2rem;
+        }
+        
+        .donor-blood-type {
+            background: #dc3545;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-weight: bold;
+        }
+        
+        .hospitals {
+            margin-top: 40px;
+            padding: 20px;
+            background-color: #e9ecef;
+            border-radius: 8px;
+        }
+        
+        .hospitals h3 {
+            color: #495057;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        
+        .hospital-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 15px;
+            list-style-type: none;
+        }
+        
+        .hospital-item {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        footer {
+            margin-top: 40px;
+            text-align: center;
+            color: #6c757d;
+            font-size: 0.9rem;
+            padding-top: 20px;
+            border-top: 1px solid #dee2e6;
+        }
+        
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px;
+            }
+            
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            .hospital-list {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
-    <main>
+    <div class="container">
+        <header>
+            <h1><span class="blood-drop">💉</span> متبرعون بالدم في المكلا <span class="blood-drop">💉</span></h1>
+            <p class="description">اختر فصيلة الدم المطلوبة للعثور على متبرعين محتملين</p>
+        </header>
         
-
-        <div class="main-content">
-            <nav class="navbar">
-                <ul class="navbar-list">
-                    
-                    
-                    <li class="navbar-item"><button class="navbar-link" data-nav-link=""> </button></li><button class="navbar-link active" data-nav-link="">الأمن السيبراني | Cyber Security</button><li class="navbar-item"><button class="navbar-link" data-nav-link=""> </button></li>
-                    
-                    
-                <li class="navbar-item"></li></ul>
-            </nav>
-
-            <article class="about active" data-page="about">
-                <header>
-                    <h2 class="h2 article-title">SE | الهندسة الاجتماعية </h2>
-                </header>
-
-                <section class="about-text">
-                    <p>ما هي الهندسة الاجتماعية؟
-
-الهندسة الاجتماعية هي فن التلاعب النفسي بالمستخدمين لإقناعهم بتقديم معلومات حساسة أو القيام بإجراءات تخدم المهاجم. بدلاً من اختراق الأنظمة التقنية، يستهدف المهاجمون "العنصر البشري"، الذي غالبًا ما يُعتبر الحلقة الأضعف في الأمن السيبراني</p>
-                </section>
-
-                <section class="service">
-                    <h3 class="h3 service-title">كيف يعمل المهاجمون؟</h3>
-
-                    <ul class="service-list">
-                        <li class="service-item">
-                            <div class="service-icon-box">
-                                <img src="https://i.postimg.cc/4389jZkP/icon-design.png" alt="icon" width="40">
-                            </div>
-
-                            <div class="service-content-box">
-                                <h4 class="h4 service-item-title">التنقيب عن المعلومات (Dumpster Diving)</h4>
-                                <p class="service-item-text">البحث عن المعلومات الحساسة في الأماكن غير المتوقعة، مثل القمامة أو وسائل التواصل الاجتماعي</p>
-                            </div>
-                        </li>
-
-                        <li class="service-item">
-                            <div class="service-icon-box">
-                                <img src="https://i.postimg.cc/ZqgqrqzG/icon-dev.png" alt="icon" width="40">
-                            </div>
-
-                            <div class="service-content-box">
-                                <h4 class="h4 service-item-title">التصيد الاحتيالي (Phishing)</h4>
-                                <p class="service-item-text"> إرسال رسائل بريد إلكتروني أو روابط وهمية تبدو شرعية لخداع المستخدمين</p>
-                            </div>
-                        </li>
-
-                        <li class="service-item">
-                            <div class="service-icon-box">
-                                <img src="https://i.postimg.cc/xjLdzYxZ/icon-app.png" alt="icon" width="40">
-                            </div>
-
-                            <div class="service-content-box">
-                                <h4 class="h4 service-item-title">الهاتف الزائف (Vishing)</h4>
-                                <p class="service-item-text"> الاتصال بالضحايا عبر الهاتف وادعاء أنهم من جهات رسمية مثل البنوك أو مزودي الخدمة</p>
-                            </div>
-                        </li>
-
-                        <li class="service-item">
-                            <div class="service-icon-box">
-                                <img src="https://i.postimg.cc/0NL8zHpx/icon-photo.png" alt="icon" width="40">
-                            </div>
-
-                            <div class="service-content-box">
-                                <h4 class="h4 service-item-title">التظاهر (Pretexting)</h4>
-                                <p class="service-item-text">بناء سيناريو زائف للحصول على معلومات حساسة من الضحية</p>
-                            </div>
-                        </li>
-                    </ul>
-                </section>
-
-                <section class="testimonials">
-                    <h3 class="h3 testimonials-title">بواسطة</h3>
-
-                    <ul class="testimonials-list has-scrollbar">
-                        <li class="testimonials-item">
-                            <div class="content-card" data-testimonials-item="">
-                                <figure class="testimonials-avatar-box">
-                                    <img src="https://i.postimg.cc/zGDHfn3G/avatar-1.png" alt="avatar" data-testimonials-avatar="" width="60">
-                                </figure>
-
-                                <h4 class="h4 testimonials-item-title" data-testimonials-title="">صالح لطفي صالح باداؤد
-</h4>
-
-                                <div class="testimonials-text" data-testimonials-text="">
-                                    <p>طالب جامعي مستوى اول ( الأمن السيراني) . . . . جامعة العلوم والتكنلوجيا ( حضرموت )  </p>
-                                </div>
-                            </div>
-                        </li>
-
-                        <li class="testimonials-item">
-                            
-                        </li>
-
-                        <li class="testimonials-item">
-                            <div class="content-card" data-testimonials-item="">
-                                <figure class="testimonials-avatar-box">
-                                    <img src="https://i.postimg.cc/fRFWhX9F/avatar-3.png" alt="avatar" data-testimonials-avatar="" width="60">
-                                </figure>
-
-                                <h4 class="h4 testimonials-item-title" data-testimonials-title="">Emily Evans</h4>
-
-                                <div class="testimonials-text" data-testimonials-text="">
-                                    <p>I couldn't be happier with the website that Richard created for us. His attention to detail and creativity is unmatched. Our clients frequently compliment the design, and it has significantly improved our brand image.</p>
-                                </div>
-                            </div>
-                        </li>
-
-                        <li class="testimonials-item">
-                            <div class="content-card" data-testimonials-item="">
-                                <figure class="testimonials-avatar-box">
-                                    <img src="https://i.postimg.cc/zXv1Xv81/avatar-4.png" alt="avatar" data-testimonials-avatar="" width="60">
-                                </figure>
-
-                                <h4 class="h4 testimonials-item-title" data-testimonials-title="">Henry Williams</h4>
-
-                                <div class="testimonials-text" data-testimonials-text="">
-                                    <p>I was overwhelmed with the thought of redesigning my online store, but Richard made the process seamless. The site is not only visually appealing but also optimized for conversions. I've seen a 50% increase in traffic since the launch!</p>
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
-                </section>
-
-                <div class="modal-container " data-modal-container="">
-                    <div class="overlay " data-overlay=""></div>
-
-                    <section class="testimonials-modal">
-                        <button class="modal-close-btn" data-modal-close-btn=""><ion-icon name="close-outline" role="img" class="md hydrated"></ion-icon></button>
-
-                        <div class="modal-img-wrapper">
-                            <figure class="modal-avatar-box">
-                                <img src="https://i.postimg.cc/zGDHfn3G/avatar-1.png" alt="Daniel Lewis" data-modal-img="" width="80">
-                            </figure>
-
-                            <img src="https://i.postimg.cc/mZ00RwX7/icon-quote.png" alt="quote icon">
-                        </div>
-
-                        <div class="modal-content">
-                            <h4 class="h3 modal-title" data-modal-title="">Daniel Lewis</h4>
-                            <time datetime="2023-06-14">14 June, 2023</time>
-
-                            <div class="modal-text" data-modal-text="">
-                                <p>Richard was hired to create a corporate identity. It's modern, clean and with a beautiful design that got a lot of praises from colleagues and visitors. We were very pleased with the work done. He has a lot of experience and is very concerned about the needs of client.</p>
-                            </div>
-                        </div>
-                    </section>
-                </div>
-
-                <section class="clients">
-                    <h3 class="h3 clients-title">Py.Saleh Lutfi Badawood</h3>
-
-                    <ul class="clients-list has-scrollbar">
-                        <li class="clients-item">
-            <article class="resume " data-page="resume">
-                <header>
-                    <h2 class="h2 article-title">Resume</h2>
-                </header>
-
-                <section class="timeline">
-                    <div class="title-wrapper">
-                        <div class="icon-box"><ion-icon name="book-outline" role="img" class="md hydrated"></ion-icon></div>
-
-                        <h3 class="h3">Education</h3>
-                    </div>
-
-                    <ol class="timeline-list">
-                        <li class="timeline-item">
-                            <h4 class="h4 timeline-item-title">University school of the arts</h4>
-                            <span>2008 - 2010</span>
-                            <p class="timeline-text">There I learnt a wide range of topics that are essential to understanding both the theory and practical aspects of computing. This involves programming fundamentals, computer architecture, operating systems, databases, software engineering, problem solving, collaboration and communication soft skills.</p>
-                        </li>
-
-                        <li class="timeline-item">
-                            <h4 class="h4 timeline-item-title">New York Academy of Art</h4>
-                            <span>2006 - 2007</span>
-                            <p class="timeline-text">I chose my master degree in technology. There I deepened my knowledge, enhanced my skills in the area and learnt how to increase my career prospects in a competitive job market.</p>
-                        </li>
-
-                        <li class="timeline-item">
-                            <h4 class="h4 timeline-item-title">High School of Art and Design</h4>
-                            <span>2003 - 2005</span>
-                            <p class="timeline-text">There I learnt foundational courses and computer sciences fundamentals. In the institution, I chose my specialization in web-development that involves front-end and back-end technologies, user interface designs and content management systems.</p>
-                        </li>
-                    </ol>
-                </section>
-
-                <section class="timeline">
-                    <div class="title-wrapper">
-                        <div class="icon-box"><ion-icon name="book-outline" role="img" class="md hydrated"></ion-icon></div>
-
-                        <h3 class="h3">Experience</h3>
-                    </div>
-
-                    <ol class="timeline-list">
-                        <li class="timeline-item">
-                            <h4 class="h4 timeline-item-title">Creative director</h4>
-                            <span>2015 - Present</span>
-                            <p class="timeline-text">I can develop and oversee creative concepts for projects and campaigns managing a team of designers, writers, and other creative professionals.</p>
-                        </li>
-
-                        <li class="timeline-item">
-                            <h4 class="h4 timeline-item-title">Art director</h4>
-                            <span>2013 - 2015</span>
-                            <p class="timeline-text">I create and develop visual concepts that align with the project's goals and objectives, supervising the design process and managing timelines and budgets for design projects.</p>
-                        </li>
-
-                        <li class="timeline-item">
-                            <h4 class="h4 timeline-item-title">Web designer</h4>
-                            <span>2010 - 2013</span>
-                            <p class="timeline-text">I create logos, color schemes and typography for a brand's identity. Also I develop graphics for websites, social media and digital ads with applications that enhance user experience.</p>
-                        </li>
-                    </ol>
-                </section>
-
-                <section class="skill">
-                    <h3 class="h3 skills-title">My Skills</h3>
-
-                    <ul class="skills-list content-card">
-                        <li class="skills-item">
-                            <div class="title-wrapper">
-                                <h5 class="h5">Web Design</h5>
-                                <data value="80">80%</data>
-                            </div>
-
-                            <div class="skills-progress-bg">
-                                <div class="skills-progress-fill" style="width: 80%;"></div>
-                            </div>
-                        </li>
-
-                        <li class="skills-item">
-                            <div class="title-wrapper">
-                                <h5 class="h5">Graphic Design</h5>
-                                <data value="70">70%</data>
-                            </div>
-
-                            <div class="skills-progress-bg">
-                                <div class="skills-progress-fill" style="width: 70%;"></div>
-                            </div>
-                        </li>
-
-                        <li class="skills-item">
-                            <div class="title-wrapper">
-                                <h5 class="h5">Branding</h5>
-                                <data value="90">90%</data>
-                            </div>
-
-                            <div class="skills-progress-bg">
-                                <div class="skills-progress-fill" style="width: 90%;"></div>
-                            </div>
-                        </li>
-
-                        <li class="skills-item">
-                            <div class="title-wrapper">
-                                <h5 class="h5">WordPress</h5>
-                                <data value="50">50%</data>
-                            </div>
-
-                            <div class="skills-progress-bg">
-                                <div class="skills-progress-fill" style="width: 50%;"></div>
-                            </div>
-                        </li>
-                    </ul>
-                </section>
-            </article>
-
-            <article class="portfolio " data-page="portfolio">
-                <header>
-                    <h2 class="h2 article-title">Portfolio</h2>
-                </header>
-
-                <section class="projects">
-                    <ul class="filter-list">
-                        <li class="filter-item"><button class="active" data-filter-btn="">All</button></li>
-                        <li class="filter-item"><button data-filter-btn="">Web Design</button></li>
-                        <li class="filter-item"><button data-filter-btn="">Applications</button></li>
-                        <li class="filter-item"><button data-filter-btn="">Web Development</button></li>
-                    </ul>
-
-                    <div class="filter-select-box">
-                        <button class="filter-select " data-select="">
-                            <div class="select-value" data-select-value="">Select Category</div>
-
-                            <div class="select-icon">
-                                <ion-icon name="chevron-down" role="img" class="md hydrated"></ion-icon>
-                            </div>
-                        </button>
-
-                        <ul class="select-list">
-                            <li class="select-item"><button data-select-item="">All</button></li>
-                            <li class="select-item"><button data-select-item="">Web Design</button></li>
-                            <li class="select-item"><button data-select-item="">Applications</button></li>
-                            <li class="select-item"><button data-select-item="">Web Development</button></li>
-                        </ul>
-                    </div>
-
-                    <ul class="project-list">
-                        <li class="project-item active" data-filter-item="" data-category="web development">
-                            <a href="#">
-                                <figure class="project-img">
-                                    <div class="project-item-icon-box">
-                                        <ion-icon name="eye-outline" role="img" class="md hydrated"></ion-icon>
-                                    </div>
-
-                                    <img src="https://i.postimg.cc/qRHpHMyd/project-1.jpg" alt="finance" loading="lazy">
-                                </figure>
-
-                                <h3 class="project-title">Finance</h3>
-                                <p class="project-category">Web Development</p>
-                            </a>
-                        </li>
-
-                        <li class="project-item active" data-filter-item="" data-category="web development">
-                            <a href="#">
-                                <figure class="project-img">
-                                    <div class="project-item-icon-box">
-                                        <ion-icon name="eye-outline" role="img" class="md hydrated"></ion-icon>
-                                    </div>
-
-                                    <img src="https://i.postimg.cc/bNrcM2Wt/project-2.png" alt="orizon" loading="lazy">
-                                </figure>
-
-                                <h3 class="project-title">Orizon</h3>
-                                <p class="project-category">Web Development</p>
-                            </a>
-                        </li>
-
-                        <li class="project-item active" data-filter-item="" data-category="web design">
-                            <a href="#">
-                                <figure class="project-img">
-                                    <div class="project-item-icon-box">
-                                        <ion-icon name="eye-outline" role="img" class="md hydrated"></ion-icon>
-                                    </div>
-
-                                    <img src="https://i.postimg.cc/jSJVqYsq/project-3.jpg" alt="fundo" loading="lazy">
-                                </figure>
-
-                                <h3 class="project-title">Fundo</h3>
-                                <p class="project-category">Web Design</p>
-                            </a>
-                        </li>
-
-                        <li class="project-item active" data-filter-item="" data-category="applications">
-                            <a href="#">
-                                <figure class="project-img">
-                                    <div class="project-item-icon-box">
-                                        <ion-icon name="eye-outline" role="img" class="md hydrated"></ion-icon>
-                                    </div>
-
-                                    <img src="https://i.postimg.cc/dtpXxNGb/project-4.png" alt="brawlhalla" loading="lazy">
-                                </figure>
-
-                                <h3 class="project-title">Brawlhalla</h3>
-                                <p class="project-category">Applications</p>
-                            </a>
-                        </li>
-
-                        <li class="project-item active" data-filter-item="" data-category="web design">
-                            <a href="#">
-                                <figure class="project-img">
-                                    <div class="project-item-icon-box">
-                                        <ion-icon name="eye-outline" role="img" class="md hydrated"></ion-icon>
-                                    </div>
-
-                                    <img src="https://i.postimg.cc/43T0JKLw/project-5.png" alt="dsm." loading="lazy">
-                                </figure>
-
-                                <h3 class="project-title">DSM.</h3>
-                                <p class="project-category">Web Design</p>
-                            </a>
-                        </li>
-
-                        <li class="project-item active" data-filter-item="" data-category="web design">
-                            <a href="#">
-                                <figure class="project-img">
-                                    <div class="project-item-icon-box">
-                                        <ion-icon name="eye-outline" role="img" class="md hydrated"></ion-icon>
-                                    </div>
-
-                                    <img src="https://i.postimg.cc/qR1DX1kZ/project-6.png" alt="metaspark" loading="lazy">
-                                </figure>
-
-                                <h3 class="project-title">Metaspark</h3>
-                                <p class="project-category">Web Design</p>
-                            </a>
-                        </li>
-
-                        <li class="project-item active" data-filter-item="" data-category="web development">
-                            <a href="#">
-                                <figure class="project-img">
-                                    <div class="project-item-icon-box">
-                                        <ion-icon name="eye-outline" role="img" class="md hydrated"></ion-icon>
-                                    </div>
-
-                                    <img src="https://i.postimg.cc/Kj4q9tjc/project-7.png" alt="summary" loading="lazy">
-                                </figure>
-
-                                <h3 class="project-title">Summary</h3>
-                                <p class="project-category">Web Development</p>
-                            </a>
-                        </li>
-
-                        <li class="project-item active" data-filter-item="" data-category="applications">
-                            <a href="#">
-                                <figure class="project-img">
-                                    <div class="project-item-icon-box">
-                                        <ion-icon name="eye-outline" role="img" class="md hydrated"></ion-icon>
-                                    </div>
-
-                                    <img src="https://i.postimg.cc/rw2j4B1w/project-8.jpg" alt="task manager" loading="lazy">
-                                </figure>
-
-                                <h3 class="project-title">Task Manager</h3>
-                                <p class="project-category">Applications</p>
-                            </a>
-                        </li>
-
-                        <li class="project-item active" data-filter-item="" data-category="web development">
-                            <a href="#">
-                                <figure class="project-img">
-                                    <div class="project-item-icon-box">
-                                        <ion-icon name="eye-outline" role="img" class="md hydrated"></ion-icon>
-                                    </div>
-
-                                    <img src="https://i.postimg.cc/7LxNsSQv/project-9.png" alt="arrival" loading="lazy">
-                                </figure>
-
-                                <h3 class="project-title">Arrival</h3>
-                                <p class="project-category">Web Development</p>
-                            </a>
-                        </li>
-                    </ul>
-                </section>
-            </article>
-
-            <article class="blog " data-page="blog">
-                <header>
-                    <h2 class="h2 article-title">Blog</h2>
-                </header>
-
-                <section class="blog-posts">
-                    <ul class="blog-posts-list">
-                        <li class="blog-post-item">
-                            <a href="#">
-                                    <figure class="blog-banner-box">
-                                        <img src="https://i.postimg.cc/DysCZrWs/blog-1.jpg" alt="Design conferences in 2024" loading="lazy">
-                                    </figure>
-
-                                <div class="blog-content">
-                                    <div class="blog-meta">
-                                        <p class="blog-category">Design</p>
-                                        <span class="dot"></span>
-                                        <time datetime="2024-02-23">Feb 23, 2024</time>
-                                    </div>
-
-                                    <h3 class="h3 blog-item-title">Design conferences in 2024</h3>
-                                    <p class="blog-text">In 2024, several exciting design conferences are set to take place, offering opportunities for professionals and enthusiasts to connect, learn, and share innovative ideas.</p>
-                                </div>
-                            </a>
-                        </li>
-
-                        <li class="blog-post-item">
-                            <a href="#">
-                                <figure class="blog-banner-box">
-                                    <img src="https://i.postimg.cc/QC7qFDMs/blog-2.jpg" alt="Best fonts every designer" loading="lazy">
-                                </figure>
-
-
-                                <div class="blog-content">
-                                    <div class="blog-meta">
-                                        <p class="blog-category">Design</p>
-                                        <span class="dot"></span>
-                                        <time datetime="2024-01-29">Jan 29, 2024</time>
-                                    </div>
-
-                                    <h3 class="h3 blog-item-title">Best fonts every designer</h3>
-                                    <p class="blog-text">When it comes to typography, choosing the right font is essential for effective design. In this article, I'll bring a brief overview of some of the best fonts that every designer should consider incorporating into their toolkit.</p>
-                                </div>
-                            </a>
-                        </li>
-
-                        <li class="blog-post-item">
-                            <a href="#">
-                                <figure class="blog-banner-box">
-                                    <img src="https://i.postimg.cc/W1T71QcL/blog-3.jpg" alt="Design digest #80" loading="lazy">
-                                </figure>
-
-                                <div class="blog-content">
-                                    <div class="blog-meta">
-                                        <p class="blog-category">Design</p>
-                                        <span class="dot"></span>
-                                        <time datetime="2023-12-20">Dec 20, 2023</time>
-                                    </div>
-
-                                    <h3 class="h3 blog-item-title">Design digest #80</h3>
-                                    <p class="blog-text">Hello, my friends. In this Design Digest, I'll show you a curated collection of the latest trends, insights, and innovations in the design world. This edition highlights key themes and discussions that are shaping the future of design.</p>
-                                </div>
-                            </a>
-                        </li>
-
-                        <li class="blog-post-item">
-                            <a href="#">
-                                <figure class="blog-banner-box">
-                                    <img src="https://i.postimg.cc/2S0n8yxh/blog-4.jpg" alt="2023 UI interactions" loading="lazy">
-                                </figure>
-
-                                <div class="blog-content">
-                                    <div class="blog-meta">
-                                        <p class="blog-category">Design</p>
-                                        <span class="dot"></span>
-                                        <time datetime="2023-11-29">Nov 29, 2023</time>
-                                    </div>
-
-                                    <h3 class="h3 blog-item-title">2023 UI interactions</h3>
-                                    <p class="blog-text">As we move into 2024, 2023 was marked by the rapidly evolution of the landscape of UI interactions, driven by advancements in technology and user expectations. Dive with me in this text to see the main areas changed in this year.</p>
-                                </div>
-                            </a>
-                        </li>
-
-                        <li class="blog-post-item">
-                            <a href="#">
-                                <figure class="blog-banner-box">
-                                    <img src="https://i.postimg.cc/YCCmVkw9/blog-5.jpg" alt="The forgotten art of spacing" loading="lazy">
-                                </figure>
-
-                                <div class="blog-content">
-                                    <div class="blog-meta">
-                                        <p class="blog-category">Design</p>
-                                        <span class="dot"></span>
-                                        <time datetime="2023-11-12">Nov 12, 2023</time>
-                                    </div>
-
-                                    <h3 class="h3 blog-item-title">The forgotten art of spacing</h3>
-                                    <p class="blog-text">In the realm of design, spacing is often an overlooked yet crucial element that can significantly impact the overall aesthetic and functionality of a composition. This post will emphasize the importance of white space, margins, and padding in creating visually appealing and effective designs.</p>
-                                </div>
-                            </a>
-                        </li>
-
-                        <li class="blog-post-item">
-                            <a href="#">
-                                <figure class="blog-banner-box">
-                                    <img src="https://i.postimg.cc/zBCBvP16/blog-6.jpg" alt="Design digest #79" loading="lazy">
-                                </figure>
-
-                                <div class="blog-content">
-                                    <div class="blog-meta">
-                                        <p class="blog-category">Design</p>
-                                        <span class="dot"></span>
-                                        <time datetime="2023-10-20">Oct 20, 2023</time>
-                                    </div>
-
-                                    <h3 class="h3 blog-item-title">Design digest #79</h3>
-                                    <p class="blog-text">Hi, my friends. In this Design Digest I'll focus in the tools and resources that we use daily in our projects. Also, I'll include examples of software recommendations, online courses, and design communities that foster collaboration and learning.</p>
-                                </div>
-                            </a>
-                        </li>
-                    </ul>
-                </section>
-            </article>
-
-            <article class="contact " data-page="contact">
-                <header>
-                    <h2 class="h2 article-title">Contact</h2>
-                </header>
-
-                <section class="mapbox" data-mapbox="">
-                    <figure>
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d199666.5651251294!2d-121.58334177520186!3d38.56165006739519!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x809ac672b28397f9%3A0x921f6aaa74197fdb!2sSacramento%2C%20CA%2C%20USA!5e0!3m2!1sen!2sbd!4v1647608789441!5m2!1sen!2sbd" loading="lazy" width="400" height="300"></iframe>
-                    </figure>
-                </section>
-
-                <section class="contact-form">
-                    <h3 class="h3 form-title">Contact Form</h3>
-
-                    <form action="#" class="form" data-form="">
-                        <div class="input-wrapper">
-                            <input type="text" name="fullname" class="form-input" placeholder="Full name" required="" data-form-input="">
-                            <input type="email" name="email" class="form-input" placeholder="Email Address" required="" data-form-input="">
-                        </div>
-
-                        <textarea name="message" class="form-input" placeholder="Your Message" required="" data-form-input=""></textarea>
-
-                        <button class="form-btn" type="submit" disabled="" data-form-btn="">
-                            <ion-icon name="paper-plane" role="img" class="md hydrated"></ion-icon>
-                            <span>Send Message</span>
-                        </button>
-                    </form>
-                </section>
-            </article>
-        </li></ul></section></article></div>
-    </main>
-
-    <script src="main.js"></script>
-
-    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule="" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-
-
-
-</body></html>
+        <div class="form-group">
+            <label for="bloodType">فصيلة الدم المطلوبة:</label>
+            <select id="bloodType">
+                <option value="">-- اختر فصيلة الدم --</option>
+                <option value="+A">A+</option>
+                <option value="+B">B+</option>
+                <option value="+AB">AB+</option>
+                <option value="+O">O+</option>
+                <option value="-A">A-</option>
+                <option value="-B">B-</option>
+                <option value="-AB">AB-</option>
+                <option value="-O">O-</option>
+            </select>
+        </div>
+        
+        <button onclick="findDonors()">ابحث عن متبرع</button>
+        
+        <div id="result" class="result">
+            <h3>المتبرعون المتاحون:</h3>
+            <ul id="donorList" class="donor-list"></ul>
+        </div>
+        
+        <div class="hospitals">
+            <h3>المستشفيات المستفيدة في المكلا والمنطقة:</h3>
+            <ul class="hospital-list">
+                <li class="hospital-item">مستشفى ابن سيناء</li>
+                <li class="hospital-item">مستشفى البرج في الشرج</li>
+                <li class="hospital-item">مستشفى المدينة في الشرج</li>
+                <li class="hospital-item">مستشفى الريان في الشرج</li>
+                <li class="hospital-item">مستشفى باشراحيل في المكلا</li>
+                <li class="hospital-item">مستشفى البرج في الديس</li>
+                <li class="hospital-item">مستشفى حضرموت في الديس</li>
+            </ul>
+        </div>
+        
+        <footer>
+            <p>تبرع بالدم ... أنقذ حياة ❤️</p>
+            <p>الدال على الخير كفاعله</p>
+            <p>للتبرع تواصل على 733322433</p>
+        </footer>
+    </div>
+
+    <script>
+        // بيانات المتبرعين
+        const donors = [
+            {number: "773497833", bloodType: "+A"},
+            {number: "734673490", bloodType: "+A"},
+            {number: "774911416", bloodType: "+O"},
+            {number: "738823607", bloodType: "+A"},
+            {number: "738128618", bloodType: "+A"},
+            {number: "734724607", bloodType: "+O"},
+            {number: "733888098", bloodType: "+O"},
+            {number: "739116411", bloodType: "+A"},
+            {number: "777753212", bloodType: "+A"},
+            {number: "716523218", bloodType: "+O"},
+            {number: "735681339", bloodType: "+A"},
+            {number: "733550144", bloodType: "+O"},
+            {number: "736493739", bloodType: "+O"},
+            {number: "737373807", bloodType: "+O"},
+            {number: "736772548", bloodType: "+A"},
+            {number: "733488001", bloodType: "+O"},
+            {number: "734892962", bloodType: "+O"},
+            {number: "736457836", bloodType: "-O"},
+            {number: "738190067", bloodType: "+O"},
+            {number: "737678685", bloodType: "+A"},
+            {number: "733027138", bloodType: "+B"},
+            {number: "735893663", bloodType: "+O"},
+            {number: "736164450", bloodType: "+O"},
+            {number: "733756235", bloodType: "+A"},
+            {number: "734705647", bloodType: "+O"},
+            {number: "739136110", bloodType: "+A"},
+            {number: "735006523", bloodType: "-O"},
+            {number: "777205878", bloodType: "+AB"},
+            {number: "700335854", bloodType: "+B"},
+            {number: "777335854", bloodType: "+B"},
+            {number: "734666916", bloodType: "+O"},
+            {number: "737096416", bloodType: "+O"},
+            {number: "700710592", bloodType: "+O"},
+            {number: "735456521", bloodType: "+AB"},
+            {number: "712725832", bloodType: "-O"},
+            {number: "712355523", bloodType: "+O"},
+            {number: "773080449", bloodType: "+A"},
+            {number: "772360230", bloodType: "+O"},
+            {number: "777318385", bloodType: "+A"},
+            {number: "770506544", bloodType: "+AB"},
+            {number: "777361261", bloodType: "+B"},
+            {number: "771359281", bloodType: "+A"},
+            {number: "711147004", bloodType: "+A"},
+            {number: "774623389", bloodType: "+O"},
+            {number: "770269627", bloodType: "+B"},
+            {number: "774983317", bloodType: "+O"},
+            {number: "714580017", bloodType: "+A"},
+            {number: "736363767", bloodType: "-A"},
+            {number: "735379735", bloodType: "+A"},
+            {number: "771727811", bloodType: "+B"},
+            {number: "701954831", bloodType: "+B"},
+            {number: "777636247", bloodType: "+B"},
+            {number: "737867760", bloodType: "+B"},
+            {number: "775029948", bloodType: "+A"},
+            {number: "730001050", bloodType: "+A"},
+            {number: "716466298", bloodType: "+A"},
+            {number: "734543249", bloodType: "+A"},
+            {number: "777858813", bloodType: "+A"},
+            {number: "770151099", bloodType: "+AB"},
+            {number: "714406644", bloodType: "-AB"},
+            {number: "774460881", bloodType: "-O"}
+        ];
+
+        function findDonors() {
+            const bloodType = document.getElementById('bloodType').value;
+            const resultDiv = document.getElementById('result');
+            const donorList = document.getElementById('donorList');
+            
+            // مسح القائمة السابقة
+            donorList.innerHTML = '';
+            
+            if (!bloodType) {
+                resultDiv.style.display = 'block';
+                donorList.innerHTML = '<li class="donor-item">يرجى اختيار فصيلة الدم أولاً</li>';
+                return;
+            }
+            
+            // البحث عن المتبرعين المناسبين
+            const matchingDonors = donors.filter(donor => donor.bloodType === bloodType);
+            
+            if (matchingDonors.length === 0) {
+                resultDiv.style.display = 'block';
+                donorList.innerHTML = '<li class="donor-item">لا يوجد متبرعون متاحون لهذه الفصيلة حالياً</li>';
+            } else {
+                resultDiv.style.display = 'block';
+                matchingDonors.forEach(donor => {
+                    const listItem = document.createElement('li');
+                    listItem.className = 'donor-item';
+                    listItem.innerHTML = `
+                        <span class="donor-number">${donor.number}</span>
+                        <span class="donor-blood-type">${donor.bloodType}</span>
+                    `;
+                    donorList.appendChild(listItem);
+                });
+            }
+        }
+    </script>
+</body>
+</html>
