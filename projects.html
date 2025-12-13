@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="مشاريع باداؤود - الهندسة المعمارية">
+    <title>المشاريع - باداؤود للهندسة المعمارية</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <div class="logo-section">
+                <img src="images/logo.png" alt="شعار باداؤود للهندسة المعمارية">
+                <h1>باداؤود للهندسة المعمارية</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">الرئيسية</a></li>
+                    <li><a href="projects.html" class="active">المشاريع</a></li>
+                    <li><a href="portfolio.html">نماذج الأعمال</a></li>
+                    <li><a href="login.html" style="color: #d4af37; border: 1px solid #d4af37; padding: 0.5rem 1rem; border-radius: 4px;">لوحة التحكم</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="hero" style="padding: 4rem 2rem;">
+        <h2>مشاريعنا</h2>
+        <p>استكشف مجموعة متنوعة من المشاريع المعمارية والتصاميم الداخلية</p>
+    </section>
+
+    <!-- Projects Section -->
+	    <section class="container">
+	        <div id="projectFilterButtons" style="margin-bottom: 2rem; display: flex; gap: 1rem; flex-wrap: wrap;">
+	            <!-- Filter buttons will be loaded here dynamically -->
+	        </div>
+
+        <div class="projects-grid" id="projectsList">
+            <!-- Projects will be loaded here -->
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+
+            <div class="logo-section">
+                <img src="images/logo.png" alt="شعار باداؤود للهندسة المعمارية">
+                <h1>باداؤود للهندسة المعمارية</h1>
+            </div>
+            <div class="footer-section">
+                 <p>مكتب هندسي متخصص في التصميم المعماري والتصميم الداخلي</p>
+            </div>
+            <div class="footer-section">
+                <h3>روابط سريعة</h3>
+                <ul>
+                    <li><a href="index.html">الرئيسية</a></li>
+                    <li><a href="projects.html">المشاريع</a></li>
+                    <li><a href="portfolio.html">نماذج الأعمال</a></li>
+                    <li><a href="login.html">لوحة التحكم</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>التواصل</h3>
+                <a href="tel:+966774794542">774794542</a>
+                <a href="tel:+739044170">739044170</a>
+                <a href="tel:+733322433">733322433</a>
+                <a href="mailto:BADAWOOD@gmail.com">BADAWOOD@gmail.com</a>
+                <p> حضرموت - المكلا - الشرج ميدان بن عزون</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 باداؤود للهندسة المعمارية. جميع الحقوق محفوظة.</p>
+        </div>
+    </footer>
+
+
+    <script src="js/app.js"></script>
+    <script>
+	        let currentFilter = 'all';
+	
+	        function loadFilterButtons() {
+	            const buttonsContainer = document.getElementById('projectFilterButtons');
+	            const categories = dataManager.getCategories().filter(c => c.type === 'project');
+	
+	            const allButton = { id: 0, nameAr: 'جميع المشاريع', nameEn: 'All Projects', type: 'project' };
+	            const allCategories = [allButton, ...categories];
+	
+	            buttonsContainer.innerHTML = allCategories.map(category => `
+	                <button class="filter-btn ${category.id === 0 ? 'active' : ''}" data-category-id="${category.id}" onclick="filterProjects(event, '${category.nameAr}')" style="padding: 0.6rem 1.5rem; background-color: ${category.id === 0 ? '#d4af37' : 'transparent'}; color: ${category.id === 0 ? '#1a1a1a' : '#1a1a1a'}; border: ${category.id === 0 ? 'none' : '1px solid #d4af37'}; border-radius: 3px; cursor: pointer; font-family: 'Cairo', sans-serif; font-weight: 600;">${category.nameAr}</button>
+	            `).join('');
+	        }
+	
+	        function filterProjects(event, categoryName) {
+	            currentFilter = categoryName;
+	            loadProjects();
+	            
+	            // Update active button
+	            document.querySelectorAll('#projectFilterButtons .filter-btn').forEach(btn => {
+	                btn.style.backgroundColor = 'transparent';
+	                btn.style.color = '#1a1a1a';
+	                btn.style.border = '1px solid #d4af37';
+	            });
+	            event.target.style.backgroundColor = '#d4af37';
+	            event.target.style.color = '#1a1a1a';
+	            event.target.style.border = 'none';
+	        }
+	
+	        function loadProjects() {
+	            const projects = dataManager.getProjects();
+	            const container = document.getElementById('projectsList');
+	            
+	            let filtered = projects;
+	            if (currentFilter !== 'جميع المشاريع') {
+	                filtered = projects.filter(p => p.projectType && p.projectType.includes(currentFilter));
+	            }
+	
+	            if (filtered.length === 0) {
+	                container.innerHTML = '<p style="grid-column: 1/-1; text-align: center; color: #999;">لا توجد مشاريع في هذه الفئة</p>';
+	            } else {
+	                container.innerHTML = filtered.map(project => `
+	                    <div class="project-card" onclick="window.location.href='project-detail.html?id=${project.id}'">
+	                        <div class="project-image">
+	                            <img src="${project.imageUrl}" alt="${project.titleAr}">
+	                        </div>
+	                        <div class="project-info">
+	                            <div class="project-type">${project.projectType || 'مشروع'}</div>
+	                            <h3>${project.titleAr}</h3>
+	                            <div class="project-location">${project.location || ''}</div>
+	                            <p class="project-description">${project.descriptionAr || ''}</p>
+	                        </div>
+	                    </div>
+	                `).join('');
+	            }
+	        }
+	
+	        // Load projects and buttons on page load
+	        document.addEventListener('DOMContentLoaded', function() {
+	            loadFilterButtons();
+	            loadProjects();
+	        });
+    </script>
+</body>
+</html>
