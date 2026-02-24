@@ -115,33 +115,83 @@ class DataManager {
             // ⭐⭐ إضافة نماذج الأعمال هنا ⭐⭐
             // ================================
             const samplePortfolio = [
-                // ===== نموذج عمل 1 =====
+                           // ===== نموذج حدائق 1 =====
                 {
                     id: 1,
-                    titleAr: 'تصميم واجهات حديثة',
-                    titleEn: 'Modern Facade Design',
-                    descriptionAr: 'تصميم واجهات معمارية عصرية تجمع بين الزجاج والحجر الطبيعي',
-                    category: 'تصاميم',
+                    titleAr: 'تصميم حدائق ',
+                    titleEn: 'Garden design',
+                    descriptionAr: 'تصميم حديقة فيلا عصرية ',
+                    category: 'حديقة',
                     imageUrl: 'images/portfolio/portfolio1.jpg'
                 },
-                // ===== نموذج عمل 2 =====
                 {
                     id: 2,
-                    titleAr: ' تصاميم خارجية',
-                    titleEn: ' Exterior designs',
-                    descriptionAr: ' تصاميم خارجية عصرية تجمع بين الجمال والمتانة باستخدام مواد فاخرة وتراعي العوامل المناخية والاستدامة مع تعزيز الهوية المعمارية للمشروع ',
-                    category: 'مفاهيم',
+                    titleAr: 'تصميم حدائق',
+                    titleEn: 'Garden design',
+                    descriptionAr: 'تصميم حديقة سطح هادئه',
+                    category: 'حديقة',
                     imageUrl: 'images/portfolio/portfolio2.jpg'
                 },
-                // ===== نموذج عمل 3 =====
+                                 // ===== نموذج خارجي 2 =====
                 {
                     id: 3,
+                    titleAr: ' تصاميم خارجية',
+                    titleEn: ' Exterior designs',
+                    descriptionAr: 'عمارة سكنية مكونة من ٧ أدوار تم تصميمها على الطراز الحديث',
+                    category: 'تصميم',
+                    imageUrl: 'images/portfolio/portfolio3.jpg'
+                },
+                               
+                {
+                    id: 4,
+                    titleAr: ' تصاميم خارجية',
+                    titleEn: ' Exterior designs',
+                    descriptionAr: ' تنفيذ دور ثالث لفيلا ',
+                    category: 'تشطيب',
+                    imageUrl: 'images/portfolio/portfolio4.jpg'
+                },
+                {
+                    id: 5,
+                    titleAr: ' تصاميم خارجية',
+                    titleEn: ' Exterior designs',
+                    descriptionAr: ' تنفيذ عمارة سكنية تجارية ',
+                    category: 'تشطيب',
+                    imageUrl: 'images/portfolio/portfolio5.jpg'
+                },
+                    // ===== نموذج داخلي 3 =====
+                {
+                    id: 6,
                     titleAr: 'تصاميم داخلية ',
                     titleEn: 'Interior Designs',
-                    descriptionAr: 'تصاميم داخلية تعكس الذوق الرفيع مع استخدام مواد فاخرة',
-                    category: 'تصاميم',
-                    imageUrl: 'images/portfolio/portfolio3.jpg'
+                    descriptionAr: 'تصميم داخلي لصالة معيشة مودرن يعكس الذوق الرفيع مع استخدام مواد فاخرة',
+                    category: 'صالة',
+                    imageUrl: 'images/portfolio/portfolio6.png'
+                },
+                {
+                    id: 7,
+                    titleAr: 'تصاميم داخلية ',
+                    titleEn: 'Interior Designs',
+                    descriptionAr: 'تصميم داخلي لمجلس رجال كبيرة يعكس الذوق الرفيع مع استخدام مواد فاخرة',
+                    category: 'مجلس',
+                    imageUrl: 'images/portfolio/portfolio7.jpg'
+                },
+                {
+                    id: 8,
+                    titleAr: 'تصاميم داخلية ',
+                    titleEn: 'Interior Designs',
+                    descriptionAr: 'تصميم داخلي لمجلس رجال على الطراز القديم   ',
+                    category: 'مجلس',
+                    imageUrl: 'images/portfolio/portfolio8.jpg'
+                },
+                {
+                    id: 9,
+                    titleAr: 'تصاميم داخلية ',
+                    titleEn: 'Interior Designs',
+                    descriptionAr: ' تصميم داخلي لمجلس رجال مودرن يعكس الذوق الرفيع    ',
+                    category: 'مجلس',
+                    imageUrl: 'images/portfolio/portfolio9.jpg'
                 }
+                
                 // ════════════════════════════
                 // 🆕 أضف نماذج جديدة هنا 🆕
                 // ════════════════════════════
