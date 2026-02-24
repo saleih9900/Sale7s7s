@@ -165,7 +165,7 @@ class DataManager {
                     titleEn: 'Interior Designs',
                     descriptionAr: 'تصميم داخلي لصالة معيشة مودرن يعكس الذوق الرفيع مع استخدام مواد فاخرة',
                     category: 'صالة',
-                    imageUrl: 'images/portfolio/portfolio6.png'
+                    imageUrl: 'images/portfolio/portfolio6.jpg'
                 },
                 {
                     id: 7,
