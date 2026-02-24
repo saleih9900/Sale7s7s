@@ -1,205 +1,0 @@
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="باداؤود - مكتب هندسة معمارية وتصميم داخلي">
-    <title>باداؤود للهندسة و المقاولات</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css">
-</head>
-<body>
-    <!-- Header -->
-    <header>
-        <div class="header-container">
-            <div class="logo-section">
-                <img src="images/logo.png" alt="شعار باداؤود للهندسة و المقاولات">
-                <h1>باداؤود للهندسة و المقاولات</h1>
-            </div>
-            <button class="mobile-menu-btn" onclick="toggleMenu()">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-            <nav id="mainNav">
-                <ul>
-                    <li><a href="index.html" class="active">الرئيسية</a></li>
-                    <li><a href="projects.html">المشاريع</a></li>
-                    <li><a href="portfolio.html">نماذج الأعمال</a></li>
-                    <li><a href="admin.html">لوحة التحكم</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
-    <div class="menu-overlay" onclick="toggleMenu()"></div>
-
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-content">
-            <h2>باداؤود للهندسة و المقاولات</h2>
-            <p>حلول هندسية مبتكرة وتصاميم داخلية عصرية</p>
-            <div class="hero-buttons">
-                <a href="projects.html" class="btn btn-primary">استكشف المشاريع</a>
-                <a href="portfolio.html" class="btn btn-secondary">نماذج الأعمال</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section class="container">
-        <h2>عن الشركة</h2>
-        <div style="max-width: 900px; margin: 0 auto; text-align: right; line-height: 1.8; color: #666; font-size: 1.05rem;">
-            <p style="margin-bottom: 1.5rem;">
-                نحن مكتب هندسي رائد متخصص في العمارة والإنشاء، نضع بين يديك عملائنا باقة شاملة من الخدمات الهندسية المبتكرة، تشمل التصميم والإشراف والتنفيذ والمقاولات وفق أعلى المعايير العالمية.
-            </p>
-            <p style="margin-bottom: 1.5rem;">
-                يضم فريقنا نخبة من المهندسين والاستشاريين أصحاب الخبرة الواسعة، الذين يعملون بروح إبداعية واسعة، لضمان تقديم حلول مميزة تلبي احتياجات المشاريع على اختلاف أنواعها وأحجامها.
-            </p>
-            <p>
-                نحرص على تطوير الأفكار وتحويلها إلى واقع ملموس من خلال متابعة دقيقة لكافة مراحل المشروع، ليكون دائماً الشريك الأمثل في بناء وتطوير أبرز وأهم المشاريع المعمارية.
-            </p>
-        </div>
-    </section>
-
-    <!-- Vision & Mission Section -->
-    <section style="background-color: #f5f5f5;">
-        <div class="container">
-            <h2>الرؤية والرسالة والقيم</h2>
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 3rem; margin-top: 3rem;">
-                <!-- Vision -->
-                <div style="text-align: center;">
-                    <h3 style="color: #d4af37; font-size: 1.8rem; margin-bottom: 1.5rem;">الرؤيا</h3>
-                    <p style="color: #666; line-height: 1.8;">
-                        أن نكون من بين المكاتب الرائدة في تقديم حلول هندسية مبتكرة وشاملة ثري التطور المعماري ونسهم في بناء مستقبل حضري متميز
-                    </p>
-                </div>
-
-                <!-- Mission -->
-                <div style="text-align: center;">
-                    <h3 style="color: #d4af37; font-size: 1.8rem; margin-bottom: 1.5rem;">الرسالة</h3>
-                    <p style="color: #666; line-height: 1.8;">
-                        نلتزم بتوفير حلول هندسية شاملة تتميز بالجودة العالية والكفاءة، مع حرصنا على تلبية تطلعات عملائنا وتجاوز توقعاتهم، ليكون شركاء فاعلين في نجاح مشاريعهم
-                    </p>
-                </div>
-
-                <!-- Values -->
-                <div style="text-align: center;">
-                    <h3 style="color: #d4af37; font-size: 1.8rem; margin-bottom: 1.5rem;">القيم</h3>
-                    <div style="display: flex; flex-direction: column; gap: 1rem; text-align: right;">
-                        <p style="color: #666;"><strong>01 | التميز:</strong> نطمح باستمرار إلى ابتكار حلول هندسية استثنائية تمزج بين الإبداع والتفان</p>
-                        <p style="color: #666;"><strong>02 | الجودة:</strong> نحرص على تطبيق أعلى معايير الجودة في كل تفاصيل مشاريعنا لضمان نتائج دقيقة تعكس احترافنا</p>
-                        <p style="color: #666;"><strong>03 | الحداثة:</strong> نؤمن بأهمية التطور المستمر لذا نسعى لدمج أحدث التقنيات والأساليب الحديثة في التصميم والبناء</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Featured Projects Section -->
-    <section class="container">
-        <h2>المشاريع المميزة</h2>
-        <div class="projects-grid" id="featuredProjects">
-            <!-- Projects will be loaded dynamically -->
-        </div>
-    </section>
-
-    <!-- Services Section -->
-    <section style="background-color: #f5f5f5;">
-        <div class="container">
-            <h2>خدماتنا</h2>
-            <div class="services-grid">
-                <div class="service-card">
-                    <h3>التصميم المعماري</h3>
-                    <p>تصاميم معمارية مبتكرة تجمع بين الجمال والوظيفة</p>
-                </div>
-                <div class="service-card">
-                    <h3>التصميم الداخلي</h3>
-                    <p>تصاميم داخلية عصرية تعكس الذوق الرفيع</p>
-                </div>
-                <div class="service-card">
-                    <h3>الإشراف الهندسي</h3>
-                    <p>إشراف كامل على تنفيذ المشاريع بأعلى معايير الجودة</p>
-                </div>
-                <div class="service-card">
-                    <h3>الاستشارات الهندسية</h3>
-                    <p>استشارات متخصصة في جميع مجالات الهندسة المعمارية</p>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Footer -->
-    <footer>
-        <div class="footer-container">
-
-            <div class="logo-section">
-                <img src="images/logo.png" alt="شعار باداؤود للهندسة والمقاولات">
-                <h1>باداؤود للهندسة والمقاولات</h1>
-            </div>
-            <div class="footer-section">
-                 <p>مكتب هندسي متخصص في التصميم المعماري والتصميم الداخلي</p>
-            </div>
-            <div class="footer-section">
-                <h3>روابط سريعة</h3>
-                <ul>
-                    <li><a href="index.html">الرئيسية</a></li>
-                    <li><a href="projects.html">المشاريع</a></li>
-                    <li><a href="portfolio.html">نماذج الأعمال</a></li>
-                </ul>
-            </div>
-            <div class="footer-section">
-                <h3>التواصل</h3>
-                <a href="tel:+966774794542">774794542</a>
-                <a href="tel:+739044170">739044170</a>
-                <a href="tel:+733322433">733322433</a>
-                <a href="mailto:BADAWOOD@gmail.com">BADAWOOD@gmail.com</a>
-                <p> حضرموت - المكلا - الشرج ميدان بن عزون</p>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>© 2026 باداؤود للهندسة و المقاولات. جميع الحقوق محفوظة.</p>
-        </div>
-        <!-- تحديث بيانات الموقع -->
-<div style="text-align: center; margin-top: 30px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1);">
-    <button onclick="resetUserData()" 
-            style="background: transparent; border: 1px solid #d4af37; color: #d4af37; 
-                   padding: 8px 20px; border-radius: 5px; cursor: pointer; 
-                   font-size: 14px; margin: 10px;">
-        🔄 تحديث محتوى الموقع
-    </button>
-    <p style="font-size: 12px; color: #aaa; margin-top: 5px;">
-        اضغط إذا لم تظهر المشاريع أو النماذج الجديدة
-    </p>
-</div>
-
-<script>
-function resetUserData() {
-    if (confirm('هل تريد تحديث محتوى الموقع إلى أحدث نسخة؟')) {
-        // مسح بيانات الإصدار الحالي
-        localStorage.removeItem('arch_projects_v3');
-        localStorage.removeItem('arch_portfolio_v3');
-        localStorage.removeItem('site_last_update');
-        
-        // مسح أي بيانات قديمة
-        ['arch_projects', 'arch_portfolio', 
-         'arch_projects_v1', 'arch_portfolio_v1',
-         'arch_projects_v2', 'arch_portfolio_v2'].forEach(key => {
-            localStorage.removeItem(key);
-        });
-        
-        alert('تم تحديث البيانات. سيتم إعادة تحميل الصفحة...');
-        setTimeout(() => location.reload(), 1000);
-    }
-}
-</script>
-    </footer>
-
-    <script src="js/app.js"></script>
-    <script src="js/mobile-menu.js"></script>
-    <script>
-        // Load featured projects on page load
-        document.addEventListener('DOMContentLoaded', function() {
-            loadFeaturedProjects();
-        });
-    </script>
-</body>
-</html>
