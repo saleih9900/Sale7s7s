@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="تفاصيل المشروع">
+    <title>تفاصيل المشروع - مكتب هندسة معمارية</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <div class="logo-section">
+                <img src="images/logo.png" alt="شعار باداؤود للهندسة المعمارية">
+                <h1>باداؤود للهندسة والمقاولات</h1>
+            </div>
+            <button class="mobile-menu-btn" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <nav id="mainNav">
+                <ul>
+                    <li><a href="index.html">الرئيسية</a></li>
+                    <li><a href="projects.html">المشاريع</a></li>
+                    <li><a href="portfolio.html">نماذج الأعمال</a></li>
+                    <li><a href="admin.html">لوحة التحكم</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <div class="menu-overlay" onclick="toggleMenu()"></div>
+
+    <!-- Back Button -->
+    <div class="container" style="padding-top: 2rem;">
+        <a href="projects.html" style="color: #d4af37; text-decoration: none; font-weight: 600;">← العودة إلى المشاريع</a>
+    </div>
+
+    <!-- Project Detail -->
+    <section class="container" style="padding-top: 2rem;">
+        <div class="project-detail" id="projectDetail">
+            <!-- Project details will be loaded here by JavaScript -->
+        </div>
+    </section>
+
+    <!-- Footer -->
+<footer>
+        <div class="footer-container">
+
+            <div class="logo-section">
+                <img src="images/logo.png" alt="شعار باداؤود للهندسة والمقاولات">
+                <h1>باداؤود للهندسة والمقاولات</h1>
+            </div>
+            <div class="footer-section">
+                 <p>مكتب هندسي متخصص في التصميم المعماري والتصميم الداخلي</p>
+            </div>
+            <div class="footer-section">
+                <h3>روابط سريعة</h3>
+                <ul>
+                    <li><a href="index.html">الرئيسية</a></li>
+                    <li><a href="projects.html">المشاريع</a></li>
+                    <li><a href="portfolio.html">نماذج الأعمال</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>التواصل</h3>
+                <a href="tel:+966774794542">774794542</a>
+                <a href="tel:+739044170">739044170</a>
+                <a href="tel:+733322433">733322433</a>
+                <a href="mailto:BADAWOOD@gmail.com">BADAWOOD@gmail.com</a>
+                <p> حضرموت - المكلا - الشرج ميدان بن عزون</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 باداؤود للهندسة والمقاولات . جميع الحقوق محفوظة.</p>
+        </div>
+        <!-- تحديث بيانات الموقع -->
+<div style="text-align: center; margin-top: 30px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1);">
+    <button onclick="resetUserData()" 
+            style="background: transparent; border: 1px solid #d4af37; color: #d4af37; 
+                   padding: 8px 20px; border-radius: 5px; cursor: pointer; 
+                   font-size: 14px; margin: 10px;">
+        🔄 تحديث محتوى الموقع
+    </button>
+    <p style="font-size: 12px; color: #aaa; margin-top: 5px;">
+        اضغط إذا لم تظهر المشاريع أو النماذج الجديدة
+    </p>
+</div>
+
+<script>
+function resetUserData() {
+    if (confirm('هل تريد تحديث محتوى الموقع إلى أحدث نسخة؟')) {
+        // مسح بيانات الإصدار الحالي
+        localStorage.removeItem('arch_projects_v3');
+        localStorage.removeItem('arch_portfolio_v3');
+        localStorage.removeItem('site_last_update');
+        
+        // مسح أي بيانات قديمة
+        ['arch_projects', 'arch_portfolio', 
+         'arch_projects_v1', 'arch_portfolio_v1',
+         'arch_projects_v2', 'arch_portfolio_v2'].forEach(key => {
+            localStorage.removeItem(key);
+        });
+        
+        alert('تم تحديث البيانات. سيتم إعادة تحميل الصفحة...');
+        setTimeout(() => location.reload(), 1000);
+    }
+}
+</script>
+    </footer>
+
+    <script src="js/app.js"></script>
+    <script src="js/mobile-menu.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            loadProjectDetail();
+        });
+    </script>
+</body>
+</html>
