@@ -15,8 +15,8 @@
     // إذا لم تُعرّف المفاتيح → محلي
     if (!window.SUPABASE_URL || !window.SUPABASE_ANON_KEY) return true;
     // إذا كانت المفاتيح وهمية → محلي
-    if (String(window.SUPABASE_URL).includes("https://mlwdxvbnblendnfhhxux.supabase.co")) return true;
-    if (String(window.SUPABASE_ANON_KEY).includes("sb_publishable_ewfGV7ryQn1RAYJw7NPtgA_B7c6bedN")) return true;
+    if (String(window.SUPABASE_URL).includes("YOUR-PROJECT")) return true;
+    if (String(window.SUPABASE_ANON_KEY).includes("YOUR-ANON")) return true;
     return false;
   })();
 
