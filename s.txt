@@ -1,8 +1,8 @@
 -- ============================================
---  جداول مكتب باداؤود للهندسة والمقاولات
+--  جداول مكتب باداؤود
 -- ============================================
 
--- ============ 1) جدول الإعدادات ============
+-- 1) الإعدادات
 create table if not exists settings (
   id int primary key default 1,
   "officeName" text default 'مكتب باداؤود للهندسة والمقاولات',
@@ -14,10 +14,9 @@ create table if not exists settings (
   updated_at timestamptz default now(),
   constraint single_row check (id = 1)
 );
-
 insert into settings (id) values (1) on conflict (id) do nothing;
 
--- ============ 2) جدول إعدادات الواجهة ============
+-- 2) إعدادات الواجهة
 create table if not exists ui_settings (
   id int primary key default 1,
   site_name text default 'مكتب باداؤود للهندسة والمقاولات',
@@ -28,10 +27,9 @@ create table if not exists ui_settings (
   show_projects boolean default true,
   constraint ui_single_row check (id = 1)
 );
-
 insert into ui_settings (id) values (1) on conflict (id) do nothing;
 
--- ============ 3) جدول الخدمات ============
+-- 3) الخدمات
 create table if not exists services (
   id bigserial primary key,
   icon text default '✦',
@@ -40,7 +38,7 @@ create table if not exists services (
   created_at timestamptz default now()
 );
 
--- ============ 4) جدول المشاريع ============
+-- 4) المشاريع
 create table if not exists projects (
   id bigserial primary key,
   slug text unique,
@@ -58,7 +56,7 @@ create table if not exists projects (
   created_at timestamptz default now()
 );
 
--- ============ 5) جدول الرسائل ============
+-- 5) الرسائل
 create table if not exists messages (
   id bigserial primary key,
   name text,
@@ -68,67 +66,37 @@ create table if not exists messages (
   created_at timestamptz default now()
 );
 
--- ============ 6) بيانات تجريبية ============
+-- 6) بيانات تجريبية
 insert into services (icon, title, description) values
-  ('✎', 'التصميم المعماري', 'تصاميم عصرية مبتكرة تلبي احتياجاتك'),
-  ('⌂', 'الإشراف الهندسي', 'متابعة دقيقة لتنفيذ المشاريع'),
-  ('◈', 'التصميم الداخلي', 'حلول داخلية أنيقة وعملية')
+  ('✎', 'التصميم المعماري', 'تصاميم عصرية مبتكرة'),
+  ('⌂', 'الإشراف الهندسي', 'متابعة دقيقة للتنفيذ'),
+  ('◈', 'التصميم الداخلي', 'حلول داخلية أنيقة')
 on conflict do nothing;
 
-insert into projects (slug, icon, cat, title, description, content, location, year, area) values
-  ('villa-al-yasmin', '⌂', 'سكني', 'فيلا الياسمين', 'فيلا سكنية حديثة بمساحة 400م²', 'مشروع فيلا سكنية عصرية بتصميم يجمع بين الأصالة والحداثة.', 'صنعاء', '2025', '400 م²'),
-  ('business-center', '▣', 'تجاري', 'مركز الأعمال', 'مبنى تجاري متعدد الطوابق', 'مركز تجاري حديث يضم مكاتب ومحلات تجارية.', 'صنعاء', '2024', '1200 م²'),
-  ('city-library', '◈', 'ثقافي', 'مكتبة المدينة', 'مشروع ثقافي بتصميم معاصر', 'مكتبة عامة بتصميم معماري فريد.', 'عدن', '2025', '800 م²')
-on conflict (slug) do nothing;
-
--- ============ 7) تفعيل RLS ============
+-- 7) RLS
 alter table settings enable row level security;
 alter table ui_settings enable row level security;
 alter table services enable row level security;
 alter table projects enable row level security;
 alter table messages enable row level security;
 
--- ============ 8) سياسات settings ============
-drop policy if exists "settings_read" on settings;
+-- 8) سياسات settings
 create policy "settings_read" on settings for select using (true);
+create policy "settings_write" on settings for all to authenticated using (true) with check (true);
 
-drop policy if exists "settings_write" on settings;
-create policy "settings_write" on settings for all
-  to authenticated using (true) with check (true);
-
--- ============ 9) سياسات ui_settings ============
-drop policy if exists "ui_read" on ui_settings;
+-- 9) سياسات ui_settings
 create policy "ui_read" on ui_settings for select using (true);
+create policy "ui_write" on ui_settings for all to authenticated using (true) with check (true);
 
-drop policy if exists "ui_write" on ui_settings;
-create policy "ui_write" on ui_settings for all
-  to authenticated using (true) with check (true);
-
--- ============ 10) سياسات services ============
-drop policy if exists "services_read" on services;
+-- 10) سياسات services
 create policy "services_read" on services for select using (true);
+create policy "services_write" on services for all to authenticated using (true) with check (true);
 
-drop policy if exists "services_write" on services;
-create policy "services_write" on services for all
-  to authenticated using (true) with check (true);
-
--- ============ 11) سياسات projects ============
-drop policy if exists "projects_read" on projects;
+-- 11) سياسات projects
 create policy "projects_read" on projects for select using (true);
+create policy "projects_write" on projects for all to authenticated using (true) with check (true);
 
-drop policy if exists "projects_write" on projects;
-create policy "projects_write" on projects for all
-  to authenticated using (true) with check (true);
-
--- ============ 12) سياسات messages ============
-drop policy if exists "messages_insert" on messages;
-create policy "messages_insert" on messages for insert
-  to anon, authenticated with check (true);
-
-drop policy if exists "messages_read" on messages;
-create policy "messages_read" on messages for select
-  to authenticated using (true);
-
-drop policy if exists "messages_delete" on messages;
-create policy "messages_delete" on messages for delete
-  to authenticated using (true);
+-- 12) سياسات messages
+create policy "messages_insert" on messages for insert to anon, authenticated with check (true);
+create policy "messages_read" on messages for select to authenticated using (true);
+create policy "messages_delete" on messages for delete to authenticated using (true);
