@@ -1,7 +1,7 @@
 // ===== الموقع الرئيسي — يقرأ من Supabase (أو LocalStorage كاحتياطي) =====
 const FALLBACK = {
-  settings:{officeName:'مكتب بناء للهندسة المعمارية',tagline:'نصمم فضاءً يلهم الحياة',
-    phone:'+966 55 000 0000',email:'info@binaa-arch.com',address:'الرياض، المملكة العربية السعودية',
+  settings:{officeName:'مكتب باداؤود للهندسة والمقاولات',tagline:'نصمم فضاءً يلهم الحياة',
+    phone:'+967 733322433',email:'saleih900@gmail.com',address:'المكلا ، حضرموت',
     about:'مكتب متخصص في التصميم المعماري والإشراف الهندسي.',
     stats:[{n:'250+',t:'مشروع منجز'},{n:'15',t:'عاماً من الخبرة'},{n:'40+',t:'جائزة وتكريم'}]},
   services:[], projects:[]
