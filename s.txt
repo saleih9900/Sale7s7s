@@ -1,8 +1,0 @@
--- ============================================
---  حذف جميع الجداول القديمة
--- ============================================
-drop table if exists messages cascade;
-drop table if exists projects cascade;
-drop table if exists services cascade;
-drop table if exists ui_settings cascade;
-drop table if exists settings cascade;
