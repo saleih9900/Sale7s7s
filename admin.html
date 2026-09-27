@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>لوحة التحكم — CMS</title>
+<style>
+:root{--bg:#0e1116;--bg2:#151a22;--card:#1b222c;--line:#2a3441;--txt:#e8ecf1;--muted:#9aa7b5;--accent:#c8a15a;--danger:#c05a5a}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Segoe UI',Tahoma,sans-serif;background:var(--bg);color:var(--txt);direction:rtl}
+.wrap{width:min(1100px,94%);margin:2rem auto}
+.box{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:2rem;max-width:420px;margin:8vh auto}
+.box h1{font-size:1.4rem;margin-bottom:1.2rem}
+input,textarea,select{width:100%;background:var(--bg2);border:1px solid var(--line);color:var(--txt);padding:.75rem 1rem;border-radius:4px;margin-bottom:.9rem;font-family:inherit}
+input:focus,textarea:focus{outline:none;border-color:var(--accent)}
+button{background:var(--accent);color:#151009;border:none;padding:.6rem 1.4rem;border-radius:4px;cursor:pointer;font-weight:700;font-family:inherit}
+button.del{background:var(--danger);color:#fff;padding:.3rem .8rem}
+button.ghost{background:transparent;border:1px solid var(--accent);color:var(--accent);padding:.5rem 1.2rem}
+.tabs{display:flex;gap:.5rem;margin:1.5rem 0;flex-wrap:wrap}
+.tab{background:var(--card);border:1px solid var(--line);color:var(--muted);padding:.6rem 1.4rem;border-radius:4px;cursor:pointer}
+.tab.on{border-color:var(--accent);color:var(--accent)}
+.tab-pane{display:none;background:var(--card);border:1px solid var(--line);border-radius:6px;padding:2rem}
+.tab-pane.on{display:block}
+.row-item{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.9rem 0;border-bottom:1px solid var(--line);flex-wrap:wrap}
+.tag{font-size:.75rem;color:var(--accent);border:1px solid var(--accent);padding:.1rem .7rem;border-radius:20px}
+.muted{color:var(--muted)}
+#toast{position:fixed;bottom:24px;right:24px;background:var(--accent);color:#151009;padding:.8rem 1.6rem;border-radius:4px;opacity:0;transition:.3s;font-weight:700}
+#toast.show{opacity:1}
+h2{font-size:1.3rem;margin-bottom:1.4rem}
+label{font-size:.85rem;color:var(--muted);display:block;margin-bottom:.3rem}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- تسجيل الدخول -->
+  <div class="box" id="loginBox">
+    <h1>🔐 دخول لوحة التحكم</h1>
+    <form id="loginForm">
+      <input type="email" id="email" placeholder="البريد الإلكتروني للمدير" required>
+      <input type="password" id="pw" placeholder="كلمة المرور" required>
+      <button type="submit" id="loginBtn" style="width:100%">دخول</button>
+    </form>
+    <p id="loginErr" style="color:var(--danger);margin-top:.8rem"></p>
+    <p class="muted" style="margin-top:1rem;font-size:.85rem">أنشئ حساب المدير من لوحة Supabase ← Authentication ← Users.<br>الوضع المحلي: البريد <b>admin</b> / كلمة المرور <b>admin123</b></p>
+    <p style="margin-top:.8rem"><a href="index.html" class="muted">← العودة للموقع</a></p>
+  </div>
+
+  <!-- اللوحة -->
+  <div id="panel" style="display:none">
+    <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem">
+      <h1>🛠️ لوحة تحكم الموقع <span class="muted" style="font-size:.9rem">(CMS)</span><br><small id="dbBadge" class="muted" style="font-size:.8rem;font-weight:400"></small></h1>
+      <div style="display:flex;gap:.6rem">
+        <button class="ghost" id="exportBtn">⬇ تصدير قاعدة البيانات</button>
+        
+        <button class="ghost" id="logout">خروج</button>
+      </div>
+    </div>
+
+    <div class="tabs">
+      <div class="tab on" data-tab="tabSettings">الإعدادات</div>
+      <div class="tab" data-tab="tabServices">الخدمات</div>
+      <div class="tab" data-tab="tabProjects">المشاريع</div>
+      <div class="tab" data-tab="tabMessages">الرسائل</div>
+    </div>
+
+    <div class="tab-pane on" id="tabSettings">
+      <h2>إعدادات الموقع</h2>
+      <form id="settingsForm">
+        <label>اسم المكتب</label><input id="s_officeName">
+        <label>الشعار النصي (Tagline)</label><input id="s_tagline">
+        <label>الهاتف</label><input id="s_phone">
+        <label>البريد الإلكتروني</label><input id="s_email">
+        <label>العنوان</label><input id="s_address">
+        <label>نبذة عن المكتب</label><textarea id="s_about" rows="4"></textarea>
+        <button type="submit">💾 حفظ الإعدادات</button>
+      </form>
+    </div>
+
+    <div class="tab-pane" id="tabServices">
+      <h2>إدارة الخدمات</h2>
+      <form id="serviceForm">
+        <input type="hidden" id="sv_idx">
+        <label>الأيقونة (رمز)</label><input id="sv_icon" placeholder="مثال: ✎" required>
+        <label>العنوان</label><input id="sv_title" required>
+        <label>الوصف</label><textarea id="sv_desc" rows="2" required></textarea>
+        <button type="submit">💾 حفظ الخدمة</button>
+      </form>
+      <div id="servicesList" style="margin-top:1.5rem"></div>
+    </div>
+
+    <div class="tab-pane" id="tabProjects">
+      <h2>إدارة المشاريع</h2>
+      <form id="projectForm">
+        <input type="hidden" id="p_idx">
+        <label>الأيقونة (رمز)</label><input id="p_icon" placeholder="مثال: ⌂" required>
+        <label>التصنيف</label>
+        <select id="p_cat"><option>سكني</option><option>تجاري</option><option>إداري</option><option>ثقافي</option><option>ضيافة</option></select>
+        <label>اسم المشروع</label><input id="p_title" required>
+        <label>الوصف</label><textarea id="p_desc" rows="2" required></textarea>
+        <button type="submit">💾 حفظ المشروع</button>
+      </form>
+      <div id="projectsList" style="margin-top:1.5rem"></div>
+    </div>
+
+    <div class="tab-pane" id="tabMessages">
+      <h2>رسائل الزوار</h2>
+      <button class="ghost" id="clearMsgs" style="margin-bottom:1rem">🗑 حذف الكل</button>
+      <div id="messagesList"></div>
+    </div>
+
+    <p style="margin-top:1.5rem"><a href="index.html" class="muted">← معاينة الموقع</a></p>
+  </div>
+</div>
+<div id="toast"></div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="assets/config.js"></script>
+<script src="assets/db.js"></script>
+<script src="assets/admin.js"></script>
+</body>
+</html>

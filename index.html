@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>مكتب هندسة معمارية</title>
+<link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+
+<header>
+  <div class="container nav">
+    <a href="#home" class="logo"><span class="mark">ب</span><span id="officeName">مكتب هندسة معمارية</span></a>
+    <nav class="nav-links">
+      <a href="#home">الرئيسية</a><a href="#services">خدماتنا</a>
+      <a href="#projects">مشاريعنا</a><a href="#about">من نحن</a><a href="#contact">تواصل</a>
+    </nav>
+    <a href="#contact" class="btn">اطلب استشارة</a>
+  </div>
+</header>
+
+<!-- الرئيسية -->
+<section class="hero" id="home">
+  <div class="container hero-grid">
+    <div>
+      <div class="kicker">هندسة معمارية • تصميم • إشراف</div>
+      <h1 id="tagline">نصمم فضاءً <span>يلهم الحياة</span></h1>
+      <p id="heroAbout"></p>
+      <div style="display:flex;gap:1rem">
+        <a href="#projects" class="btn">استكشف مشاريعنا</a>
+        <a href="admin.html" class="btn ghost">لوحة التحكم</a>
+      </div>
+      <div class="stats" id="stats"></div>
+    </div>
+    <div class="hero-card">
+      <div class="kicker">مشروع مميز</div>
+      <div class="num">برج الأفق</div>
+      <p class="muted">برج إداري متعدد الاستخدامات من 24 طابقاً — حيث يلتقي الطموح بالتصميم.</p>
+    </div>
+  </div>
+</section>
+
+<!-- الخدمات -->
+<section id="services">
+  <div class="container">
+    <div class="sec-head reveal">
+      <div><div class="kicker">ماذا نقدم</div><h2>خدماتنا</h2></div>
+      <p class="muted" style="max-width:420px">من الفكرة الأولى حتى تسليم المفتاح، نرافقك في كل خطوة.</p>
+    </div>
+    <div class="grid-3" id="servicesGrid"></div>
+  </div>
+</section>
+
+<!-- المشاريع -->
+<section id="projects" style="background:var(--bg2)">
+  <div class="container">
+    <div class="sec-head reveal">
+      <div><div class="kicker">أعمالنا</div><h2>مشاريعنا</h2></div>
+      <div id="filterBtns" style="display:flex;gap:.5rem">
+        <button class="btn ghost" data-cat="all" style="padding:.4rem 1.1rem">الكل</button>
+        <button class="btn ghost" data-cat="سكني" style="padding:.4rem 1.1rem">سكني</button>
+        <button class="btn ghost" data-cat="تجاري" style="padding:.4rem 1.1rem">تجاري</button>
+        <button class="btn ghost" data-cat="إداري" style="padding:.4rem 1.1rem">إداري</button>
+        <button class="btn ghost" data-cat="ثقافي" style="padding:.4rem 1.1rem">ثقافي</button>
+      </div>
+    </div>
+    <div class="grid-3" id="projectsGrid"></div>
+  </div>
+</section>
+
+<!-- من نحن -->
+<section id="about">
+  <div class="container grid-2" style="align-items:center;gap:3rem">
+    <div class="reveal">
+      <div class="kicker">قصتنا</div>
+      <h2>من نحن</h2>
+      <p class="muted" id="aboutText" style="margin-top:1.2rem"></p>
+    </div>
+    <div class="grid-2">
+      <div class="card service reveal"><div class="icon">◈</div><h3>رؤية</h3><p class="muted">أن نكون مرجعاً في التصميم المعماري المستدام بالمنطقة.</p></div>
+      <div class="card service reveal"><div class="icon">◇</div><h3>رسالة</h3><p class="muted">تحويل طموح عملائنا إلى فضاءات عملية تفوق التوقعات.</p></div>
+      <div class="card service reveal"><div class="icon">✦</div><h3>قيمنا</h3><p class="muted">الإبداع، الدقة، الشفافية، والالتزام بالمواعيد.</p></div>
+      <div class="card service reveal"><div class="icon">☰</div><h3>منهجيتنا</h3><p class="muted">تحليل الاحتياج، تصميم مفاهيمي، تطوير، ثم إشراف كامل.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- تواصل -->
+<section id="contact" style="background:var(--bg2)">
+  <div class="container grid-2" style="gap:3rem">
+    <div class="reveal">
+      <div class="kicker">نسعد بخدمتك</div>
+      <h2>تواصل معنا</h2>
+      <p class="muted" style="margin:1.2rem 0">يسعدنا استقبال استفساراتك ومناقشة مشروعك القادم.</p>
+      <p>📞 <span id="contactPhone"></span></p>
+      <p>✉ <span id="contactEmail"></span></p>
+      <p>📍 <span id="contactAddress"></span></p>
+    </div>
+    <form id="contactForm" class="reveal" name="f">
+      <input name="name" placeholder="الاسم الكامل" required>
+      <input name="email" type="email" placeholder="البريد الإلكتروني" required>
+      <textarea name="msg" rows="5" placeholder="رسالتك..." required></textarea>
+      <button class="btn" type="submit">إرسال</button>
+      <p id="formMsg" style="color:#7bc98a;margin-top:.8rem"></p>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="container" style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem">
+    <span>© 2026 <span class="officeNameFooter">مكتب هندسة معمارية</span> — جميع الحقوق محفوظة</span>
+    <span><a href="admin.html">لوحة التحكم</a></span>
+  </div>
+</footer>
+
+<div class="toTop" id="toTop">↑</div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="assets/config.js"></script>
+<script src="assets/db.js"></script>
+<script src="assets/app.js"></script>
+</body>
+</html>
