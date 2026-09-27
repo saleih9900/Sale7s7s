@@ -3,120 +3,1595 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>باداؤود للهندسة والمقاولات</title>
-<link rel="stylesheet" href="assets/styles.css">
+<title>مكتب باداؤود للهندسة والمقاولات</title>
+<meta name="description" content="مكتب باداؤود للهندسة والمقاولات — تصميم معماري عصري وإشراف هندسي.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  /* Dark theme (default) */
+  --bg:#08090d;
+  --bg-2:#0f1117;
+  --surface:rgba(255,255,255,0.04);
+  --surface-2:rgba(255,255,255,0.07);
+  --glass:rgba(255,255,255,0.05);
+  --glass-border:rgba(255,255,255,0.09);
+  --border:rgba(255,255,255,0.08);
+  --border-strong:rgba(255,255,255,0.14);
+  --txt:#f0f2f6;
+  --txt-2:#b8c0cc;
+  --muted:#7a8494;
+  --brand-1:#6366f1;    /* indigo */
+  --brand-2:#8b5cf6;    /* violet */
+  --brand-3:#06b6d4;    /* cyan */
+  --accent:#a78bfa;
+  --glow:rgba(139,92,246,0.35);
+  --success:#10b981;
+  --danger:#ef4444;
+  --radius:20px;
+  --radius-sm:12px;
+  --radius-lg:28px;
+  --shadow-sm:0 2px 8px rgba(0,0,0,.3);
+  --shadow:0 20px 50px -20px rgba(0,0,0,.6);
+  --shadow-lg:0 40px 80px -30px rgba(139,92,246,.25);
+  color-scheme:dark;
+}
+
+[data-theme="light"]{
+  --bg:#f7f8fb;
+  --bg-2:#ffffff;
+  --surface:rgba(255,255,255,0.9);
+  --surface-2:rgba(255,255,255,1);
+  --glass:rgba(255,255,255,0.7);
+  --glass-border:rgba(0,0,0,0.06);
+  --border:rgba(0,0,0,0.08);
+  --border-strong:rgba(0,0,0,0.12);
+  --txt:#0b0d12;
+  --txt-2:#3f4854;
+  --muted:#6b7280;
+  --accent:#7c3aed;
+  --glow:rgba(124,58,237,0.2);
+  --shadow:0 20px 50px -20px rgba(15,23,42,.15);
+  --shadow-lg:0 40px 80px -30px rgba(124,58,237,.15);
+  color-scheme:light;
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
+
+body{
+  font-family:'Tajawal','Segoe UI',system-ui,sans-serif;
+  background:var(--bg);
+  color:var(--txt);
+  line-height:1.7;
+  direction:rtl;
+  overflow-x:hidden;
+  transition:background .4s ease, color .4s ease;
+  position:relative;
+}
+
+/* ===== Mesh gradient background ===== */
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  z-index:-2;
+  background:
+    radial-gradient(circle at 15% 20%, rgba(99,102,241,.18), transparent 45%),
+    radial-gradient(circle at 85% 15%, rgba(139,92,246,.15), transparent 40%),
+    radial-gradient(circle at 75% 85%, rgba(6,182,212,.12), transparent 45%),
+    radial-gradient(circle at 20% 90%, rgba(168,85,247,.12), transparent 45%);
+  pointer-events:none;
+  animation:meshShift 20s ease-in-out infinite;
+}
+@keyframes meshShift{
+  0%,100%{transform:translate(0,0) scale(1)}
+  50%{transform:translate(-3%,2%) scale(1.05)}
+}
+
+/* Grain overlay */
+body::after{
+  content:"";
+  position:fixed;
+  inset:0;
+  z-index:-1;
+  pointer-events:none;
+  opacity:.025;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+button{font-family:inherit}
+
+.container{width:min(1200px,92%);margin:0 auto}
+
+/* ===== Header (Glass) ===== */
+header{
+  position:fixed;
+  top:16px;
+  left:50%;
+  transform:translateX(-50%);
+  width:min(1200px,94%);
+  z-index:100;
+  border-radius:var(--radius);
+  background:var(--glass);
+  backdrop-filter:blur(20px) saturate(180%);
+  -webkit-backdrop-filter:blur(20px) saturate(180%);
+  border:1px solid var(--glass-border);
+  box-shadow:var(--shadow);
+  transition:.35s ease;
+}
+header.scrolled{
+  top:8px;
+  background:color-mix(in srgb, var(--bg) 65%, transparent);
+  border-color:var(--border-strong);
+}
+
+.nav{
+  display:flex;align-items:center;justify-content:space-between;
+  height:64px;padding:0 1.4rem;gap:1rem;
+}
+
+.logo{display:flex;align-items:center;gap:.7rem;font-weight:800;font-size:1.02rem;letter-spacing:-.2px}
+.logo .mark{
+  width:38px;height:38px;
+  background:linear-gradient(135deg,var(--brand-1),var(--brand-2));
+  display:grid;place-items:center;
+  color:#fff;font-size:1.15rem;font-weight:900;
+  border-radius:12px;
+  box-shadow:0 8px 24px -6px var(--glow);
+  overflow:hidden;flex-shrink:0;
+  position:relative;
+}
+.logo .mark::after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(135deg,transparent 40%,rgba(255,255,255,.25));
+  pointer-events:none;
+}
+.logo .mark img{width:100%;height:100%;object-fit:cover}
+.logo span:last-child{
+  background:linear-gradient(135deg,var(--txt),var(--txt-2));
+  -webkit-background-clip:text;background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+
+.nav-links{display:flex;gap:.3rem;font-size:.9rem;list-style:none}
+.nav-links a{
+  color:var(--txt-2);
+  padding:.5rem .9rem;
+  border-radius:10px;
+  transition:.25s;
+  font-weight:500;
+  position:relative;
+}
+.nav-links a:hover{
+  color:var(--txt);
+  background:var(--surface);
+}
+
+.nav-actions{display:flex;gap:.5rem;align-items:center}
+.theme-toggle{
+  background:var(--surface);border:1px solid var(--border);
+  color:var(--txt);width:40px;height:40px;border-radius:12px;
+  cursor:pointer;font-size:1rem;
+  display:grid;place-items:center;transition:.25s;
+}
+.theme-toggle:hover{
+  background:var(--surface-2);
+  border-color:var(--border-strong);
+  transform:scale(1.05);
+}
+.menu-btn{
+  display:none;background:var(--surface);
+  border:1px solid var(--border);color:var(--txt);
+  width:40px;height:40px;border-radius:12px;
+  cursor:pointer;font-size:1.15rem;place-items:center;
+}
+
+/* ===== Buttons ===== */
+.btn{
+  display:inline-flex;align-items:center;gap:.5rem;
+  padding:.75rem 1.5rem;
+  border-radius:14px;
+  font-weight:700;
+  font-size:.92rem;
+  transition:.3s cubic-bezier(.4,0,.2,1);
+  border:none;cursor:pointer;
+  font-family:inherit;
+  position:relative;
+  overflow:hidden;
+  letter-spacing:-.1px;
+}
+.btn-primary{
+  background:linear-gradient(135deg,var(--brand-1),var(--brand-2));
+  color:#fff;
+  box-shadow:0 10px 30px -10px var(--glow);
+}
+.btn-primary::before{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(135deg,var(--brand-2),var(--brand-3));
+  opacity:0;transition:.3s;
+}
+.btn-primary:hover::before{opacity:1}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 16px 40px -12px var(--glow)}
+.btn-primary span{position:relative;z-index:1}
+
+.btn-ghost{
+  background:var(--surface);
+  color:var(--txt);
+  border:1px solid var(--border);
+}
+.btn-ghost:hover{
+  background:var(--surface-2);
+  border-color:var(--border-strong);
+  transform:translateY(-2px);
+}
+
+.btn:focus-visible{outline:2px solid var(--brand-1);outline-offset:3px}
+
+/* ===== Hero ===== */
+.hero{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  padding:10rem 0 5rem;
+  position:relative;
+}
+
+.hero-grid{
+  display:grid;
+  grid-template-columns:1.15fr .85fr;
+  gap:4rem;
+  align-items:center;
+  width:100%;
+}
+
+.hero-badge{
+  display:inline-flex;align-items:center;gap:.6rem;
+  padding:.4rem 1rem;
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:100px;
+  font-size:.82rem;
+  color:var(--txt-2);
+  margin-bottom:1.5rem;
+  font-weight:500;
+}
+.hero-badge .dot{
+  width:6px;height:6px;border-radius:50%;
+  background:var(--success);
+  box-shadow:0 0 12px var(--success);
+  animation:pulse 2s infinite;
+}
+@keyframes pulse{
+  0%,100%{opacity:1;transform:scale(1)}
+  50%{opacity:.6;transform:scale(1.3)}
+}
+
+.hero h1{
+  font-size:clamp(2.4rem,5.5vw,4.2rem);
+  line-height:1.15;
+  font-weight:900;
+  letter-spacing:-1.5px;
+  margin-bottom:1.5rem;
+  font-family:'Cairo','Tajawal',sans-serif;
+}
+.hero h1 .gradient-text{
+  background:linear-gradient(135deg,var(--brand-1) 0%,var(--brand-2) 40%,var(--brand-3) 100%);
+  -webkit-background-clip:text;background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-size:200% auto;
+  animation:gradientMove 4s ease infinite;
+  display:inline-block;
+}
+@keyframes gradientMove{
+  0%,100%{background-position:0% center}
+  50%{background-position:100% center}
+}
+
+.hero p{
+  color:var(--txt-2);
+  font-size:1.08rem;
+  margin-bottom:2.5rem;
+  max-width:540px;
+  line-height:1.85;
+}
+
+.hero-actions{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:3.5rem}
+
+.stats{
+  display:flex;gap:2.5rem;flex-wrap:wrap;
+}
+.stats > div{
+  display:flex;flex-direction:column;
+}
+.stats b{
+  font-size:2rem;
+  font-weight:900;
+  background:linear-gradient(135deg,var(--txt),var(--txt-2));
+  -webkit-background-clip:text;background-clip:text;
+  -webkit-text-fill-color:transparent;
+  font-family:'Cairo',sans-serif;
+  letter-spacing:-1px;
+}
+.stats span{font-size:.85rem;color:var(--muted);margin-top:-4px}
+
+/* ===== Hero Card (Glass) ===== */
+.hero-visual{
+  position:relative;
+  aspect-ratio:1/1.15;
+  border-radius:var(--radius-lg);
+  overflow:hidden;
+  border:1px solid var(--glass-border);
+  background:linear-gradient(135deg,
+    rgba(99,102,241,.12),
+    rgba(139,92,246,.08),
+    rgba(6,182,212,.12));
+  backdrop-filter:blur(20px);
+  padding:2rem;
+  display:flex;flex-direction:column;justify-content:space-between;
+  box-shadow:var(--shadow-lg);
+  animation:floatCard 6s ease-in-out infinite;
+}
+@keyframes floatCard{
+  0%,100%{transform:translateY(0) rotate(0deg)}
+  50%{transform:translateY(-12px) rotate(-1deg)}
+}
+
+.hero-visual::before{
+  content:"";position:absolute;
+  inset:-2px;
+  border-radius:var(--radius-lg);
+  padding:2px;
+  background:linear-gradient(135deg,var(--brand-1),var(--brand-3),var(--brand-2));
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+  -webkit-mask-composite:xor;
+  mask-composite:exclude;
+  opacity:.5;
+  pointer-events:none;
+}
+
+.hero-visual .visual-icon{
+  width:64px;height:64px;
+  background:linear-gradient(135deg,var(--brand-1),var(--brand-2));
+  border-radius:18px;
+  display:grid;place-items:center;
+  font-size:1.8rem;color:#fff;
+  box-shadow:0 12px 30px -8px var(--glow);
+}
+
+.hero-visual h3{
+  font-size:1.7rem;
+  font-weight:900;
+  margin:.5rem 0;
+  font-family:'Cairo',sans-serif;
+  letter-spacing:-.5px;
+}
+.hero-visual p{color:var(--txt-2);font-size:.92rem}
+
+.hero-visual .visual-tags{
+  display:flex;gap:.5rem;flex-wrap:wrap;
+  margin-top:1.2rem;
+}
+.hero-visual .visual-tags span{
+  padding:.3rem .8rem;
+  background:rgba(255,255,255,.06);
+  border:1px solid var(--glass-border);
+  border-radius:100px;
+  font-size:.75rem;
+  color:var(--txt-2);
+}
+
+/* ===== Sections ===== */
+section{padding:7rem 0;position:relative}
+
+.section-head{
+  text-align:center;
+  max-width:680px;
+  margin:0 auto 4rem;
+}
+.section-head .kicker{
+  display:inline-block;
+  padding:.35rem .9rem;
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:100px;
+  font-size:.78rem;
+  color:var(--accent);
+  font-weight:600;
+  letter-spacing:.5px;
+  margin-bottom:1.2rem;
+  text-transform:uppercase;
+}
+.section-head h2{
+  font-size:clamp(1.9rem,3.5vw,2.8rem);
+  font-weight:900;
+  letter-spacing:-1px;
+  margin-bottom:.8rem;
+  font-family:'Cairo',sans-serif;
+  line-height:1.2;
+}
+.section-head h2 .gradient-text{
+  background:linear-gradient(135deg,var(--brand-1),var(--brand-2));
+  -webkit-background-clip:text;background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+.section-head p{color:var(--muted);font-size:1.02rem}
+
+/* ===== Services (Bento) ===== */
+.services-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:1.2rem;
+}
+
+.service-card{
+  position:relative;
+  padding:2rem;
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  backdrop-filter:blur(10px);
+  transition:.4s cubic-bezier(.4,0,.2,1);
+  overflow:hidden;
+  cursor:default;
+}
+.service-card::before{
+  content:"";position:absolute;inset:0;
+  background:radial-gradient(circle at var(--x,50%) var(--y,50%),
+    color-mix(in srgb,var(--brand-1) 15%,transparent),transparent 45%);
+  opacity:0;transition:.4s;
+  pointer-events:none;
+}
+.service-card:hover::before{opacity:1}
+.service-card:hover{
+  border-color:var(--border-strong);
+  transform:translateY(-6px);
+  box-shadow:0 30px 60px -25px rgba(0,0,0,.5);
+}
+
+.service-card .icon-wrap{
+  width:56px;height:56px;
+  border-radius:16px;
+  background:linear-gradient(135deg,
+    color-mix(in srgb,var(--brand-1) 18%,transparent),
+    color-mix(in srgb,var(--brand-2) 18%,transparent));
+  border:1px solid color-mix(in srgb,var(--brand-1) 25%,transparent);
+  display:grid;place-items:center;
+  font-size:1.5rem;
+  color:var(--accent);
+  margin-bottom:1.4rem;
+  transition:.4s;
+}
+.service-card:hover .icon-wrap{
+  transform:rotate(-6deg) scale(1.08);
+  background:linear-gradient(135deg,var(--brand-1),var(--brand-2));
+  color:#fff;
+  border-color:transparent;
+  box-shadow:0 12px 30px -8px var(--glow);
+}
+
+.service-card h3{
+  font-size:1.15rem;
+  font-weight:800;
+  margin-bottom:.6rem;
+  letter-spacing:-.3px;
+}
+.service-card p{color:var(--muted);font-size:.93rem;line-height:1.75}
+
+/* ===== Projects ===== */
+.toolbar{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:1rem;
+  flex-wrap:wrap;
+  margin-bottom:2.5rem;
+}
+
+.filters{
+  display:flex;gap:.4rem;flex-wrap:wrap;
+  padding:.4rem;
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:100px;
+  backdrop-filter:blur(10px);
+}
+.filter{
+  background:transparent;
+  border:none;
+  color:var(--txt-2);
+  padding:.5rem 1.1rem;
+  border-radius:100px;
+  cursor:pointer;
+  font-size:.87rem;
+  font-weight:600;
+  transition:.25s;
+  font-family:inherit;
+}
+.filter:hover{color:var(--txt);background:var(--surface-2)}
+.filter.on{
+  background:linear-gradient(135deg,var(--brand-1),var(--brand-2));
+  color:#fff;
+  box-shadow:0 6px 20px -6px var(--glow);
+}
+
+.search-box{
+  position:relative;
+  min-width:260px;
+  flex:1;
+  max-width:340px;
+}
+.search-box input{
+  width:100%;
+  background:var(--surface);
+  border:1px solid var(--border);
+  color:var(--txt);
+  padding:.7rem 2.8rem .7rem 1rem;
+  border-radius:100px;
+  font-family:inherit;
+  font-size:.9rem;
+  transition:.25s;
+}
+.search-box input:focus{
+  outline:none;
+  border-color:var(--brand-1);
+  box-shadow:0 0 0 4px color-mix(in srgb,var(--brand-1) 15%,transparent);
+}
+.search-box::before{
+  content:"";
+  position:absolute;
+  right:1.1rem;
+  top:50%;
+  transform:translateY(-50%);
+  width:16px;height:16px;
+  background:
+    radial-gradient(circle at 40% 40%,transparent 40%,var(--muted) 41% 55%,transparent 56%),
+    linear-gradient(45deg,transparent 40%,var(--muted) 41% 60%,transparent 61%);
+  background-size:14px 14px, 8px 8px;
+  background-position:0 0, 12px 12px;
+  background-repeat:no-repeat;
+  opacity:.7;
+}
+
+.projects-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:1.5rem;
+}
+
+.project-card{
+  position:relative;
+  border-radius:var(--radius);
+  overflow:hidden;
+  background:var(--surface);
+  border:1px solid var(--border);
+  cursor:pointer;
+  transition:.4s cubic-bezier(.4,0,.2,1);
+  display:flex;flex-direction:column;
+}
+.project-card:hover{
+  transform:translateY(-8px);
+  border-color:var(--border-strong);
+  box-shadow:0 40px 80px -30px rgba(0,0,0,.6);
+}
+
+.project-card .thumb{
+  aspect-ratio:16/11;
+  background:linear-gradient(135deg,
+    color-mix(in srgb,var(--brand-1) 12%,var(--bg-2)),
+    color-mix(in srgb,var(--brand-2) 15%,var(--bg-2)));
+  display:grid;place-items:center;
+  font-size:3rem;color:var(--accent);
+  overflow:hidden;position:relative;
+}
+.project-card .thumb img{
+  width:100%;height:100%;object-fit:cover;
+  transition:.6s cubic-bezier(.4,0,.2,1);
+}
+.project-card:hover .thumb img{transform:scale(1.08)}
+
+.project-card .thumb::after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(to top,rgba(0,0,0,.4),transparent 50%);
+  opacity:0;transition:.4s;
+}
+.project-card:hover .thumb::after{opacity:1}
+
+.project-card .body{padding:1.5rem}
+.project-card .cat{
+  display:inline-block;
+  font-size:.72rem;
+  color:var(--accent);
+  background:color-mix(in srgb,var(--brand-1) 12%,transparent);
+  border:1px solid color-mix(in srgb,var(--brand-1) 25%,transparent);
+  padding:.25rem .75rem;
+  border-radius:100px;
+  margin-bottom:.8rem;
+  font-weight:600;
+}
+.project-card h3{
+  font-size:1.15rem;
+  font-weight:800;
+  margin-bottom:.5rem;
+  letter-spacing:-.3px;
+}
+.project-card p{
+  color:var(--muted);
+  font-size:.9rem;
+  display:-webkit-box;
+  -webkit-line-clamp:2;
+  -webkit-box-orient:vertical;
+  overflow:hidden;
+}
+
+/* ===== About ===== */
+.about-grid{
+  display:grid;
+  grid-template-columns:1fr 1.15fr;
+  gap:4rem;
+  align-items:center;
+}
+.about-text h2{
+  font-size:clamp(1.9rem,3.5vw,2.6rem);
+  font-weight:900;
+  letter-spacing:-1px;
+  margin-bottom:1.2rem;
+  font-family:'Cairo',sans-serif;
+  line-height:1.2;
+}
+.about-text p{color:var(--txt-2);line-height:1.9;font-size:1.02rem}
+
+.values-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:1rem;
+}
+.value-card{
+  padding:1.6rem;
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  transition:.35s;
+  position:relative;
+  overflow:hidden;
+}
+.value-card:hover{
+  border-color:var(--border-strong);
+  transform:translateY(-4px);
+  background:var(--surface-2);
+}
+.value-card .v-icon{
+  width:44px;height:44px;
+  border-radius:12px;
+  background:linear-gradient(135deg,
+    color-mix(in srgb,var(--brand-1) 15%,transparent),
+    color-mix(in srgb,var(--brand-3) 15%,transparent));
+  display:grid;place-items:center;
+  font-size:1.15rem;color:var(--accent);
+  margin-bottom:1rem;
+  border:1px solid color-mix(in srgb,var(--brand-1) 20%,transparent);
+}
+.value-card h3{
+  font-size:1rem;font-weight:800;
+  margin-bottom:.4rem;letter-spacing:-.2px;
+}
+.value-card p{color:var(--muted);font-size:.87rem;line-height:1.7}
+
+/* ===== Contact ===== */
+.contact-grid{
+  display:grid;
+  grid-template-columns:1fr 1.15fr;
+  gap:3rem;
+  align-items:start;
+}
+
+.contact-info .info-item{
+  display:flex;gap:1rem;align-items:flex-start;
+  padding:1.2rem;
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:var(--radius-sm);
+  margin-bottom:.8rem;
+  transition:.3s;
+}
+.contact-info .info-item:hover{
+  border-color:var(--border-strong);
+  transform:translateX(-4px);
+}
+.contact-info .info-icon{
+  width:42px;height:42px;flex-shrink:0;
+  border-radius:12px;
+  background:linear-gradient(135deg,
+    color-mix(in srgb,var(--brand-1) 18%,transparent),
+    color-mix(in srgb,var(--brand-2) 18%,transparent));
+  display:grid;place-items:center;
+  font-size:1.05rem;
+  color:var(--accent);
+  border:1px solid color-mix(in srgb,var(--brand-1) 25%,transparent);
+}
+.contact-info .info-label{font-size:.78rem;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:.5px}
+.contact-info .info-value{font-weight:600;color:var(--txt);margin-top:.1rem;font-size:.95rem}
+
+.contact-form{
+  padding:2rem;
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  backdrop-filter:blur(10px);
+}
+
+.form-group{margin-bottom:1rem}
+.form-group label{
+  display:block;
+  font-size:.82rem;
+  color:var(--txt-2);
+  font-weight:600;
+  margin-bottom:.4rem;
+}
+.form-group input,
+.form-group textarea{
+  width:100%;
+  background:var(--bg-2);
+  border:1px solid var(--border);
+  color:var(--txt);
+  padding:.85rem 1rem;
+  border-radius:var(--radius-sm);
+  font-family:inherit;
+  font-size:.95rem;
+  transition:.25s;
+  resize:vertical;
+}
+.form-group input:focus,
+.form-group textarea:focus{
+  outline:none;
+  border-color:var(--brand-1);
+  box-shadow:0 0 0 4px color-mix(in srgb,var(--brand-1) 15%,transparent);
+}
+.form-group input::placeholder,
+.form-group textarea::placeholder{color:var(--muted)}
+
+/* ===== Footer ===== */
+footer{
+  padding:4rem 0 2rem;
+  border-top:1px solid var(--border);
+  margin-top:4rem;
+}
+.footer-content{
+  display:flex;justify-content:space-between;
+  align-items:center;gap:1.5rem;flex-wrap:wrap;
+  color:var(--muted);font-size:.88rem;
+}
+.footer-content a{
+  color:var(--txt-2);
+  transition:.25s;
+  padding:.4rem .9rem;
+  border-radius:10px;
+  background:var(--surface);
+  border:1px solid var(--border);
+  font-size:.82rem;
+  font-weight:600;
+}
+.footer-content a:hover{
+  color:var(--txt);
+  border-color:var(--brand-1);
+  background:var(--surface-2);
+}
+
+/* ===== Toast ===== */
+#toast{
+  position:fixed;
+  bottom:28px;
+  right:28px;
+  padding:.9rem 1.6rem;
+  background:linear-gradient(135deg,var(--brand-1),var(--brand-2));
+  color:#fff;
+  border-radius:14px;
+  font-weight:700;
+  font-size:.9rem;
+  opacity:0;
+  transform:translateY(20px);
+  transition:.35s cubic-bezier(.4,0,.2,1);
+  z-index:200;
+  pointer-events:none;
+  box-shadow:0 20px 40px -12px var(--glow);
+}
+#toast.show{opacity:1;transform:translateY(0)}
+
+/* ===== toTop ===== */
+.toTop{
+  position:fixed;
+  bottom:28px;
+  left:28px;
+  width:48px;height:48px;
+  background:var(--glass);
+  backdrop-filter:blur(20px);
+  border:1px solid var(--glass-border);
+  color:var(--txt);
+  border-radius:14px;
+  cursor:pointer;
+  display:grid;place-items:center;
+  opacity:0;
+  pointer-events:none;
+  transition:.35s cubic-bezier(.4,0,.2,1);
+  z-index:90;
+  font-size:1.15rem;
+  box-shadow:var(--shadow);
+}
+.toTop:hover{
+  background:linear-gradient(135deg,var(--brand-1),var(--brand-2));
+  color:#fff;
+  border-color:transparent;
+  transform:translateY(-4px);
+}
+.toTop.show{opacity:1;pointer-events:auto}
+
+/* ===== Reveal ===== */
+.reveal{
+  opacity:0;
+  transform:translateY(30px);
+  transition:.9s cubic-bezier(.4,0,.2,1);
+}
+.reveal.on{opacity:1;transform:translateY(0)}
+
+/* ===== Project Detail ===== */
+#projectView{display:none;padding:8rem 0 4rem}
+.project-detail{max-width:980px;margin:0 auto}
+.back-btn{
+  display:inline-flex;align-items:center;gap:.5rem;
+  padding:.6rem 1.2rem;
+  background:var(--surface);
+  border:1px solid var(--border);
+  color:var(--txt);
+  border-radius:100px;
+  cursor:pointer;
+  font-family:inherit;
+  font-size:.88rem;
+  font-weight:600;
+  margin-bottom:2rem;
+  transition:.25s;
+}
+.back-btn:hover{
+  background:var(--surface-2);
+  border-color:var(--brand-1);
+  transform:translateX(4px);
+}
+
+.project-hero{
+  position:relative;
+  height:60vh;
+  min-height:400px;
+  border-radius:var(--radius-lg);
+  overflow:hidden;
+  margin-bottom:2.5rem;
+  background:linear-gradient(135deg,
+    color-mix(in srgb,var(--brand-1) 20%,var(--bg-2)),
+    color-mix(in srgb,var(--brand-2) 20%,var(--bg-2)));
+  display:grid;place-items:center;
+  font-size:6rem;color:var(--accent);
+  box-shadow:var(--shadow-lg);
+}
+.project-hero img{width:100%;height:100%;object-fit:cover}
+.project-hero .overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(to top,rgba(0,0,0,.88),transparent 55%);
+  display:flex;flex-direction:column;justify-content:flex-end;
+  padding:3rem;color:#fff;
+}
+.project-hero h1{
+  font-size:clamp(1.9rem,4vw,3rem);
+  color:#fff;
+  font-weight:900;
+  letter-spacing:-1px;
+  font-family:'Cairo',sans-serif;
+  margin-top:1rem;
+}
+.project-meta{
+  display:flex;gap:1.5rem;flex-wrap:wrap;margin-top:1rem;
+  font-size:.9rem;opacity:.95;
+}
+.project-meta span{
+  display:flex;align-items:center;gap:.4rem;
+  padding:.4rem .9rem;
+  background:rgba(255,255,255,.1);
+  border:1px solid rgba(255,255,255,.15);
+  border-radius:100px;
+  backdrop-filter:blur(10px);
+}
+.project-content{
+  font-size:1.05rem;
+  line-height:1.9;
+  color:var(--txt-2);
+  margin:2rem 0;
+  white-space:pre-wrap;
+}
+
+.gallery{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:1rem;
+  margin-top:2rem;
+}
+.gallery img{
+  width:100%;height:230px;object-fit:cover;
+  border-radius:var(--radius);
+  border:1px solid var(--border);
+  cursor:pointer;
+  transition:.4s cubic-bezier(.4,0,.2,1);
+}
+.gallery img:hover{
+  transform:scale(1.03);
+  border-color:var(--brand-1);
+  box-shadow:0 20px 40px -15px var(--glow);
+}
+
+/* ===== Lightbox ===== */
+.lightbox{
+  position:fixed;inset:0;
+  background:rgba(0,0,0,.95);
+  backdrop-filter:blur(20px);
+  z-index:300;
+  display:none;place-items:center;
+  padding:2rem;cursor:zoom-out;
+}
+.lightbox.on{display:grid}
+.lightbox img{
+  max-width:92vw;max-height:92vh;
+  object-fit:contain;border-radius:var(--radius-sm);
+  box-shadow:0 40px 80px -20px rgba(0,0,0,.8);
+}
+
+/* ===== Responsive ===== */
+@media (max-width:1000px){
+  .hero-grid,
+  .about-grid,
+  .contact-grid{grid-template-columns:1fr;gap:3rem}
+  .hero-visual{max-width:480px;margin:0 auto;aspect-ratio:1/1}
+  .services-grid,
+  .projects-grid{grid-template-columns:repeat(2,1fr)}
+}
+
+@media (max-width:768px){
+  header{top:10px;width:94%}
+  .nav{padding:0 1rem;height:58px}
+  .nav-links{
+    display:none;
+    position:absolute;
+    top:calc(100% + 8px);
+    right:0;left:0;
+    background:var(--glass);
+    backdrop-filter:blur(20px);
+    border:1px solid var(--glass-border);
+    border-radius:var(--radius);
+    flex-direction:column;
+    padding:.6rem;
+    gap:.2rem;
+    box-shadow:var(--shadow);
+  }
+  .nav-links.open{display:flex}
+  .nav-links a{padding:.8rem 1rem;border-radius:12px}
+  .menu-btn{display:grid}
+
+  .hero{padding:8rem 0 4rem}
+  .hero h1{letter-spacing:-1px}
+  .stats{gap:1.5rem}
+  .stats b{font-size:1.6rem}
+
+  section{padding:5rem 0}
+  .services-grid,
+  .projects-grid{grid-template-columns:1fr}
+  .toolbar{flex-direction:column;align-items:stretch}
+  .search-box{max-width:none}
+  .filters{justify-content:center}
+
+  .project-hero{height:50vh;min-height:320px;font-size:4rem;border-radius:var(--radius)}
+  .project-hero .overlay{padding:1.8rem}
+
+  .toTop{left:16px;bottom:16px;width:44px;height:44px}
+  #toast{right:16px;bottom:16px;left:16px;text-align:center}
+}
+
+@media (max-width:480px){
+  .logo span:last-child{font-size:.85rem;max-width:150px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .hero h1{font-size:2rem}
+  .btn{padding:.7rem 1.2rem;font-size:.85rem}
+  .values-grid{grid-template-columns:1fr}
+  .contact-form{padding:1.4rem}
+}
+
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{animation-duration:.01ms !important;transition-duration:.01ms !important}
+  html{scroll-behavior:auto}
+}
+</style>
 </head>
 <body>
 
-<header>
-  <div class="container nav">
-    <a href="#home" class="logo"><span class="mark">ب</span><span id="officeName">مكتب باداؤود للهندسة والمقاولات</span></a>
-    <nav class="nav-links">
-      <a href="#home">الرئيسية</a><a href="#services">خدماتنا</a>
-      <a href="#projects">مشاريعنا</a><a href="#about">من نحن</a><a href="#contact">تواصل</a>
+<!-- ===== Header ===== -->
+<header id="siteHeader">
+  <div class="nav">
+    <a href="#home" class="logo">
+      <span class="mark" id="logoMark">ب</span>
+      <span id="officeName">مكتب باداؤود للهندسة والمقاولات</span>
+    </a>
+    <nav class="nav-links" id="navLinks">
+      <a href="#home">الرئيسية</a>
+      <a href="#services">خدماتنا</a>
+      <a href="#projects">مشاريعنا</a>
+      <a href="#about">من نحن</a>
+      <a href="#contact">تواصل</a>
     </nav>
-    <a href="#contact" class="btn">اطلب استشارة</a>
+    <div class="nav-actions">
+      <button class="theme-toggle" id="themeToggle" aria-label="تبديل الوضع">🌙</button>
+      <button class="menu-btn" id="menuBtn" aria-label="القائمة">☰</button>
+    </div>
   </div>
 </header>
 
-<!-- الرئيسية -->
+<!-- ===== Hero ===== -->
 <section class="hero" id="home">
   <div class="container hero-grid">
     <div>
-      <div class="kicker">هندسة معمارية • تصميم • إشراف</div>
-      <h1 id="tagline">نصمم فضاءً <span>يلهم الحياة</span></h1>
-      <p id="heroAbout"></p>
-      <div style="display:flex;gap:1rem">
-        <a href="#projects" class="btn">استكشف مشاريعنا</a>
-        <a href="admin.html" class="btn ghost">لوحة التحكم</a>
+      <div class="hero-badge">
+        <span class="dot"></span>
+        <span>متاحون لمشاريع 2026</span>
       </div>
-      <div class="stats" id="stats"></div>
+      <h1 id="tagline">
+        نصمم فضاءات
+        <span class="gradient-text">تُلهم الحياة</span>
+      </h1>
+      <p id="heroAbout">
+        مكتب باداؤود للهندسة والمقاولات — حلول معمارية مبتكرة تجمع بين الأصالة والحداثة، من الفكرة الأولى حتى تسليم المفتاح.
+      </p>
+      <div class="hero-actions">
+        <a href="#projects" class="btn btn-primary">
+          <span>استكشف مشاريعنا</span>
+        </a>
+        <a href="#contact" class="btn btn-ghost">اطلب استشارة</a>
+      </div>
+      <div class="stats">
+        <div><b>120+</b><span>مشروع منجز</span></div>
+        <div><b>85+</b><span>عميل سعيد</span></div>
+        <div><b>15+</b><span>سنة خبرة</span></div>
+      </div>
     </div>
-    <div class="hero-card">
-      <div class="kicker">مشروع مميز</div>
-      <div class="num">برج الأفق</div>
-      <p class="muted">برج إداري متعدد الاستخدامات من 24 طابقاً — حيث يلتقي الطموح بالتصميم.</p>
+
+    <div class="hero-visual">
+      <div class="visual-icon">✦</div>
+      <div>
+        <div style="font-size:.8rem;color:var(--accent);font-weight:700;letter-spacing:1px;text-transform:uppercase">مشروع مميز</div>
+        <h3>برج الأفق</h3>
+        <p>برج إداري متعدد الاستخدامات من 24 طابقاً — حيث يلتقي الطموح بالتصميم.</p>
+        <div class="visual-tags">
+          <span>🏢 إداري</span>
+          <span>📐 24 طابق</span>
+          <span>📍 صنعاء</span>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- الخدمات -->
+<!-- ===== Services ===== -->
 <section id="services">
   <div class="container">
-    <div class="sec-head reveal">
-      <div><div class="kicker">ماذا نقدم</div><h2>خدماتنا</h2></div>
-      <p class="muted" style="max-width:420px">من الفكرة الأولى حتى تسليم المفتاح، نرافقك في كل خطوة.</p>
+    <div class="section-head reveal">
+      <div class="kicker">خدماتنا</div>
+      <h2>حلول <span class="gradient-text">هندسية شاملة</span></h2>
+      <p>من الفكرة الأولى حتى تسليم المفتاح، نرافقك في كل خطوة باحترافية.</p>
     </div>
-    <div class="grid-3" id="servicesGrid"></div>
+    <div class="services-grid" id="servicesGrid">
+      <div class="service-card"><div class="icon-wrap">✎</div><h3>جارٍ التحميل...</h3><p></p></div>
+      <div class="service-card"><div class="icon-wrap">⌂</div><h3>جارٍ التحميل...</h3><p></p></div>
+      <div class="service-card"><div class="icon-wrap">◈</div><h3>جارٍ التحميل...</h3><p></p></div>
+    </div>
   </div>
 </section>
 
-<!-- المشاريع -->
-<section id="projects" style="background:var(--bg2)">
+<!-- ===== Projects ===== -->
+<section id="projects">
   <div class="container">
-    <div class="sec-head reveal">
-      <div><div class="kicker">أعمالنا</div><h2>مشاريعنا</h2></div>
-      <div id="filterBtns" style="display:flex;gap:.5rem">
-        <button class="btn ghost" data-cat="all" style="padding:.4rem 1.1rem">الكل</button>
-        <button class="btn ghost" data-cat="سكني" style="padding:.4rem 1.1rem">سكني</button>
-        <button class="btn ghost" data-cat="تجاري" style="padding:.4rem 1.1rem">تجاري</button>
-        <button class="btn ghost" data-cat="إداري" style="padding:.4rem 1.1rem">إداري</button>
-        <button class="btn ghost" data-cat="ثقافي" style="padding:.4rem 1.1rem">ثقافي</button>
+    <div class="section-head reveal">
+      <div class="kicker">أعمالنا</div>
+      <h2>مشاريع <span class="gradient-text">نفتخر بها</span></h2>
+      <p>مختارات من أعمالنا المنجزة في مختلف التصنيفات.</p>
+    </div>
+
+    <div class="toolbar">
+      <div class="filters" id="filterBtns">
+        <button class="filter on" data-cat="all">الكل</button>
+      </div>
+      <div class="search-box">
+        <input type="text" id="projSearch" placeholder="ابحث عن مشروع...">
       </div>
     </div>
-    <div class="grid-3" id="projectsGrid"></div>
+
+    <div class="projects-grid" id="projectsGrid">
+      <p class="muted" style="grid-column:1/-1;text-align:center;padding:3rem 0">جارٍ التحميل...</p>
+    </div>
   </div>
 </section>
 
-<!-- من نحن -->
+<!-- ===== About ===== -->
 <section id="about">
-  <div class="container grid-2" style="align-items:center;gap:3rem">
-    <div class="reveal">
-      <div class="kicker">قصتنا</div>
-      <h2>من نحن</h2>
-      <p class="muted" id="aboutText" style="margin-top:1.2rem"></p>
+  <div class="container about-grid">
+    <div class="about-text reveal">
+      <div class="kicker" style="display:inline-block;padding:.35rem .9rem;background:var(--surface);border:1px solid var(--border);border-radius:100px;font-size:.78rem;color:var(--accent);font-weight:600;letter-spacing:.5px;margin-bottom:1.2rem">من نحن</div>
+      <h2>نبني <span style="background:linear-gradient(135deg,var(--brand-1),var(--brand-2));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent">الثقة</span> قبل المباني</h2>
+      <p id="aboutText">
+        مكتب باداؤود للهندسة والمقاولات — خبرة تمتد لسنوات في التصميم المعماري والإشراف الهندسي وتنفيذ المشاريع، نجمع بين الإبداع والدقة لنقدم فضاءات تلبي تطلعات عملائنا.
+      </p>
     </div>
-    <div class="grid-2">
-      <div class="card service reveal"><div class="icon">◈</div><h3>رؤية</h3><p class="muted">أن نكون مرجعاً في التصميم المعماري المستدام بالمنطقة.</p></div>
-      <div class="card service reveal"><div class="icon">◇</div><h3>رسالة</h3><p class="muted">تحويل طموح عملائنا إلى فضاءات عملية تفوق التوقعات.</p></div>
-      <div class="card service reveal"><div class="icon">✦</div><h3>قيمنا</h3><p class="muted">الإبداع، الدقة، الشفافية، والالتزام بالمواعيد.</p></div>
-      <div class="card service reveal"><div class="icon">☰</div><h3>منهجيتنا</h3><p class="muted">تحليل الاحتياج، تصميم مفاهيمي، تطوير، ثم إشراف كامل.</p></div>
+
+    <div class="values-grid">
+      <div class="value-card reveal">
+        <div class="v-icon">◈</div>
+        <h3>رؤيتنا</h3>
+        <p>أن نكون مرجعاً في التصميم المعماري المستدام بالمنطقة.</p>
+      </div>
+      <div class="value-card reveal">
+        <div class="v-icon">◇</div>
+        <h3>رسالتنا</h3>
+        <p>تحويل طموح عملائنا إلى فضاءات عملية تفوق التوقعات.</p>
+      </div>
+      <div class="value-card reveal">
+        <div class="v-icon">✦</div>
+        <h3>قيمنا</h3>
+        <p>الإبداع، الدقة، الشفافية، والالتزام بالمواعيد.</p>
+      </div>
+      <div class="value-card reveal">
+        <div class="v-icon">☰</div>
+        <h3>منهجيتنا</h3>
+        <p>تحليل، تصميم مفاهيمي، تطوير، ثم إشراف كامل.</p>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- تواصل -->
-<section id="contact" style="background:var(--bg2)">
-  <div class="container grid-2" style="gap:3rem">
-    <div class="reveal">
-      <div class="kicker">نسعد بخدمتك</div>
-      <h2>تواصل معنا</h2>
-      <p class="muted" style="margin:1.2rem 0">يسعدنا استقبال استفساراتك ومناقشة مشروعك القادم.</p>
-      <p>📞 <span id="contactPhone"></span></p>
-      <p>✉ <span id="contactEmail"></span></p>
-      <p>📍 <span id="contactAddress"></span></p>
+<!-- ===== Contact ===== -->
+<section id="contact">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="kicker">تواصل معنا</div>
+      <h2>لنبدأ <span class="gradient-text">مشروعك القادم</span></h2>
+      <p>يسعدنا استقبال استفساراتك ومناقشة أفكارك.</p>
     </div>
-    <form id="contactForm" class="reveal" name="f">
-      <input name="name" placeholder="الاسم الكامل" required>
-      <input name="email" type="email" placeholder="البريد الإلكتروني" required>
-      <textarea name="msg" rows="5" placeholder="رسالتك..." required></textarea>
-      <button class="btn" type="submit">إرسال</button>
-      <p id="formMsg" style="color:#7bc98a;margin-top:.8rem"></p>
-    </form>
+
+    <div class="contact-grid">
+      <div class="contact-info reveal">
+        <div class="info-item">
+          <div class="info-icon">📞</div>
+          <div>
+            <div class="info-label">الهاتف</div>
+            <div class="info-value" id="contactPhone">—</div>
+          </div>
+        </div>
+        <div class="info-item">
+          <div class="info-icon">✉</div>
+          <div>
+            <div class="info-label">البريد الإلكتروني</div>
+            <div class="info-value" id="contactEmail">—</div>
+          </div>
+        </div>
+        <div class="info-item">
+          <div class="info-icon">📍</div>
+          <div>
+            <div class="info-label">العنوان</div>
+            <div class="info-value" id="contactAddress">—</div>
+          </div>
+        </div>
+      </div>
+
+      <form class="contact-form reveal" id="contactForm">
+        <div class="form-group">
+          <label>الاسم الكامل</label>
+          <input name="name" placeholder="اكتب اسمك" required>
+        </div>
+        <div class="form-group">
+          <label>البريد الإلكتروني</label>
+          <input name="email" type="email" placeholder="you@example.com" required>
+        </div>
+        <div class="form-group">
+          <label>رقم الهاتف (اختياري)</label>
+          <input name="phone" placeholder="+967...">
+        </div>
+        <div class="form-group">
+          <label>رسالتك</label>
+          <textarea name="msg" rows="5" placeholder="أخبرنا عن مشروعك..." required></textarea>
+        </div>
+        <button class="btn btn-primary" type="submit" style="width:100%">
+          <span>إرسال الرسالة</span>
+        </button>
+        <p id="formMsg" style="margin-top:1rem;font-size:.9rem;text-align:center"></p>
+      </form>
+    </div>
   </div>
 </section>
 
+<!-- ===== Project Detail ===== -->
+<section id="projectView">
+  <div class="container project-detail" id="projectDetail"></div>
+</section>
+
+<!-- ===== Footer ===== -->
 <footer>
-  <div class="container" style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem">
-    <span>© 2026 <span class="officeNameFooter">مكتب باداؤود للهندسة والمقاولات</span> — جميع الحقوق محفوظة</span>
-    <span><a href="admin.html">لوحة التحكم</a></span>
+  <div class="container footer-content">
+    <span>© <span id="year"></span> مكتب باداؤود للهندسة والمقاولات — جميع الحقوق محفوظة</span>
+    <a href="admin.html">لوحة التحكم →</a>
   </div>
 </footer>
 
-<div class="toTop" id="toTop">↑</div>
+<!-- ===== Lightbox ===== -->
+<div class="lightbox" id="lightbox">
+  <img id="lightboxImg" alt="">
+</div>
+
+<!-- ===== toTop ===== -->
+<div class="toTop" id="toTop" role="button" aria-label="أعلى">↑</div>
+
+<!-- ===== Toast ===== -->
+<div id="toast"></div>
+
+<!-- ===== Scripts ===== -->
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="assets/config.js"></script>
 <script src="assets/db.js"></script>
-<script src="assets/app.js"></script>
+
+<script>
+// ====== منطق الموقع — مكتب باداؤود (تصميم عصري) ======
+(function () {
+  const $ = (s) => document.querySelector(s);
+  const $$ = (s) => document.querySelectorAll(s);
+
+  // ---------- Helpers ----------
+  function toast(msg) {
+    const t = $("#toast");
+    t.textContent = msg;
+    t.classList.add("show");
+    clearTimeout(t._tid);
+    t._tid = setTimeout(() => t.classList.remove("show"), 2500);
+  }
+
+  function escapeHtml(str) {
+    return String(str ?? "").replace(/[&<>"']/g, (m) => ({
+      "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
+    }[m]));
+  }
+
+  // ---------- Theme ----------
+  function applyTheme(theme) {
+    document.documentElement.setAttribute("data-theme", theme);
+    if (window.DB && DB.setTheme) DB.setTheme(theme);
+    else localStorage.setItem("cms_theme", theme);
+    const btn = $("#themeToggle");
+    if (btn) btn.textContent = theme === "dark" ? "☀️" : "🌙";
+  }
+  function initTheme(defaultTheme) {
+    const saved = (window.DB && DB.getTheme) ? DB.getTheme() : localStorage.getItem("cms_theme");
+    applyTheme(saved || defaultTheme || "dark");
+  }
+  $("#themeToggle")?.addEventListener("click", () => {
+    const cur = document.documentElement.getAttribute("data-theme") || "dark";
+    applyTheme(cur === "dark" ? "light" : "dark");
+  });
+
+  // ---------- Header scroll ----------
+  const header = $("#siteHeader");
+  window.addEventListener("scroll", () => {
+    header?.classList.toggle("scrolled", window.scrollY > 30);
+    $("#toTop")?.classList.toggle("show", window.scrollY > 500);
+  });
+
+  // ---------- Mobile menu ----------
+  $("#menuBtn")?.addEventListener("click", () => $("#navLinks")?.classList.toggle("open"));
+  $("#navLinks")?.addEventListener("click", (e) => {
+    if (e.target.tagName === "A") $("#navLinks").classList.remove("open");
+  });
+
+  // ---------- toTop ----------
+  $("#toTop")?.addEventListener("click", () =>
+    window.scrollTo({ top: 0, behavior: "smooth" })
+  );
+
+  // ---------- Reveal ----------
+  let io;
+  function observeReveal() {
+    if (!("IntersectionObserver" in window)) {
+      $$(".reveal").forEach(el => el.classList.add("on"));
+      return;
+    }
+    if (!io) {
+      io = new IntersectionObserver((entries) => {
+        entries.forEach(en => {
+          if (en.isIntersecting) {
+            en.target.classList.add("on");
+            io.unobserve(en.target);
+          }
+        });
+      }, { threshold: 0.12 });
+    }
+    $$(".reveal:not(.on)").forEach(el => io.observe(el));
+  }
+
+  // ---------- Mouse-follow glow on cards ----------
+  function bindCardGlow() {
+    $$(".service-card").forEach(card => {
+      card.addEventListener("mousemove", (e) => {
+        const r = card.getBoundingClientRect();
+        card.style.setProperty("--x", ((e.clientX - r.left) / r.width * 100) + "%");
+        card.style.setProperty("--y", ((e.clientY - r.top) / r.height * 100) + "%");
+      });
+    });
+  }
+
+  // ---------- State ----------
+  let allProjects = [];
+  let currentFilter = "all";
+  let currentSearch = "";
+
+  // ---------- Load Settings ----------
+  async function loadSettings() {
+    try {
+      const s = await DB.getSettings();
+      const ui = (DB.getUiSettings) ? await DB.getUiSettings() : {};
+
+      const name = s.officeName || ui.site_name || "مكتب باداؤود للهندسة والمقاولات";
+      $("#officeName").textContent = name;
+      document.title = name + " | باداؤود";
+
+      if (s.tagline) $("#tagline").innerHTML = s.tagline.replace(
+        /(\S+)$/,
+        '<span class="gradient-text">$1</span>'
+      );
+      if (s.about)   { $("#heroAbout").textContent = s.about; $("#aboutText").textContent = s.about; }
+      if (s.phone)   $("#contactPhone").textContent = s.phone;
+      if (s.email)   $("#contactEmail").textContent = s.email;
+      if (s.address) $("#contactAddress").textContent = s.address;
+
+      if (ui.logo_url) {
+        $("#logoMark").innerHTML = `<img src="${escapeHtml(ui.logo_url)}" alt="logo">`;
+      }
+      if (ui.primary_color) {
+        document.documentElement.style.setProperty("--brand-1", ui.primary_color);
+      }
+      initTheme(ui.default_theme);
+
+      if (ui.show_services === false) $("#services").style.display = "none";
+      if (ui.show_projects === false) $("#projects").style.display = "none";
+    } catch (e) {
+      console.warn("settings:", e);
+      initTheme("dark");
+    }
+  }
+
+  // ---------- Services ----------
+  async function loadServices() {
+    const box = $("#servicesGrid");
+    let list = [];
+    try {
+      list = await DB.getServices();
+    } catch (e) { console.warn(e); }
+
+    if (!list.length) {
+      list = [
+        { icon: "✎", title: "التصميم المعماري", description: "تصاميم عصرية مبتكرة تلبي احتياجاتك وتواكب أحدث الاتجاهات العالمية." },
+        { icon: "⌂", title: "الإشراف الهندسي", description: "متابعة دقيقة لتنفيذ المشاريع وفق أعلى المعايير الهندسية." },
+        { icon: "◈", title: "التصميم الداخلي", description: "حلول داخلية أنيقة وعملية تعكس هويتك وتناسب أسلوب حياتك." },
+        { icon: "▣", title: "المقاولات العامة", description: "تنفيذ كامل للمشاريع من الأساس حتى التسليم بأعلى جودة." },
+        { icon: "✦", title: "الاستشارات الهندسية", description: "دراسات فنية ومقترحات تطوير ذكية لمشروعك." },
+        { icon: "☰", title: "إدارة المشاريع", description: "تخطيط ومتابعة شاملة لضمان الجودة والالتزام بالوقت." }
+      ];
+    }
+
+    box.innerHTML = list.map(s => `
+      <article class="service-card reveal">
+        <div class="icon-wrap">${escapeHtml(s.icon || "✦")}</div>
+        <h3>${escapeHtml(s.title)}</h3>
+        <p>${escapeHtml(s.description || s.desc || "")}</p>
+      </article>
+    `).join("");
+
+    observeReveal();
+    bindCardGlow();
+  }
+
+  // ---------- Projects ----------
+  async function loadProjects() {
+    try {
+      allProjects = await DB.getProjects();
+    } catch (e) { console.warn(e); allProjects = []; }
+
+    const defaultCats = ["سكني", "تجاري", "إداري", "ثقافي", "ضيافة"];
+    const foundCats = allProjects.map(p => p.cat).filter(Boolean);
+    const cats = ["all", ...new Set([...defaultCats, ...foundCats])];
+
+    $("#filterBtns").innerHTML = cats.map(c => `
+      <button class="filter ${c === "all" ? "on" : ""}" data-cat="${escapeHtml(c)}">
+        ${c === "all" ? "الكل" : escapeHtml(c)}
+      </button>
+    `).join("");
+
+    $("#filterBtns").addEventListener("click", (e) => {
+      const btn = e.target.closest(".filter");
+      if (!btn) return;
+      $$("#filterBtns .filter").forEach(b => b.classList.remove("on"));
+      btn.classList.add("on");
+      currentFilter = btn.dataset.cat;
+      renderProjects();
+    });
+
+    renderProjects();
+  }
+
+  function renderProjects() {
+    const box = $("#projectsGrid");
+    let list = [...allProjects];
+
+    if (currentFilter !== "all") list = list.filter(p => p.cat === currentFilter);
+    if (currentSearch.trim()) {
+      const q = currentSearch.trim().toLowerCase();
+      list = list.filter(p =>
+        (p.title || "").toLowerCase().includes(q) ||
+        (p.description || p.desc || "").toLowerCase().includes(q) ||
+        (p.location || "").toLowerCase().includes(q)
+      );
+    }
+
+    if (!list.length) {
+      box.innerHTML = `<p class="muted" style="grid-column:1/-1;text-align:center;padding:3rem 0">لا توجد مشاريع مطابقة حالياً.</p>`;
+      return;
+    }
+
+    box.innerHTML = list.map(p => `
+      <article class="project-card reveal" data-slug="${escapeHtml(p.slug || "")}">
+        <div class="thumb">
+          ${p.cover_image
+            ? `<img src="${escapeHtml(p.cover_image)}" alt="${escapeHtml(p.title)}" loading="lazy">`
+            : escapeHtml(p.icon || "⌂")}
+        </div>
+        <div class="body">
+          <span class="cat">${escapeHtml(p.cat || "مشروع")}</span>
+          <h3>${escapeHtml(p.title)}</h3>
+          <p>${escapeHtml(p.description || p.desc || "")}</p>
+        </div>
+      </article>
+    `).join("");
+
+    $$("#projectsGrid .project-card").forEach(card => {
+      card.addEventListener("click", () => {
+        const slug = card.dataset.slug;
+        if (slug) openProject(slug);
+      });
+    });
+
+    observeReveal();
+  }
+
+  $("#projSearch")?.addEventListener("input", (e) => {
+    currentSearch = e.target.value;
+    renderProjects();
+  });
+
+  // ---------- Project Detail ----------
+  async function openProject(slug) {
+    const proj = (DB.getProjectBySlug)
+      ? await DB.getProjectBySlug(slug)
+      : allProjects.find(p => p.slug === slug);
+
+    if (!proj) { toast("لم يتم العثور على المشروع"); return; }
+
+    const detail = $("#projectDetail");
+    const gallery = Array.isArray(proj.gallery) ? proj.gallery.filter(Boolean) : [];
+
+    detail.innerHTML = `
+      <button class="back-btn" id="backBtn">← رجوع للمشاريع</button>
+
+      <div class="project-hero">
+        ${proj.cover_image
+          ? `<img src="${escapeHtml(proj.cover_image)}" alt="${escapeHtml(proj.title)}">`
+          : escapeHtml(proj.icon || "⌂")}
+        <div class="overlay">
+          <span class="cat" style="align-self:flex-start;padding:.35rem 1rem;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.25);border-radius:100px;font-size:.78rem;font-weight:600;backdrop-filter:blur(10px)">${escapeHtml(proj.cat || "مشروع")}</span>
+          <h1>${escapeHtml(proj.title)}</h1>
+          <div class="project-meta">
+            ${proj.location ? `<span>📍 ${escapeHtml(proj.location)}</span>` : ""}
+            ${proj.year ? `<span>📅 ${escapeHtml(proj.year)}</span>` : ""}
+            ${proj.area ? `<span>📐 ${escapeHtml(proj.area)}</span>` : ""}
+            ${proj.client ? `<span>👤 ${escapeHtml(proj.client)}</span>` : ""}
+          </div>
+        </div>
+      </div>
+
+      <div class="project-content">
+        ${escapeHtml(proj.content || proj.description || proj.desc || "")}
+      </div>
+
+      ${gallery.length ? `
+        <h2 style="margin-top:2.5rem;font-size:1.6rem;font-weight:900;letter-spacing:-.5px;font-family:'Cairo',sans-serif">معرض الصور</h2>
+        <div class="gallery">
+          ${gallery.map(url => `<img src="${escapeHtml(url)}" alt="" loading="lazy">`).join("")}
+        </div>
+      ` : ""}
+    `;
+
+    $$("body > section").forEach(s => {
+      if (s.id !== "projectView") s.style.display = "none";
+    });
+    $("#projectView").style.display = "block";
+    window.scrollTo({ top: 0, behavior: "smooth" });
+
+    $("#backBtn").addEventListener("click", closeProject);
+    bindGallery();
+  }
+
+  function closeProject() {
+    $("#projectView").style.display = "none";
+    $$("body > section").forEach(s => s.style.display = "");
+    location.hash = "#projects";
+  }
+
+  function bindGallery() {
+    $$("#projectDetail .gallery img").forEach(img => {
+      img.addEventListener("click", () => {
+        $("#lightboxImg").src = img.src;
+        $("#lightbox").classList.add("on");
+      });
+    });
+  }
+
+  $("#lightbox")?.addEventListener("click", () => {
+    $("#lightbox").classList.remove("on");
+    $("#lightboxImg").src = "";
+  });
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") {
+      $("#lightbox").classList.remove("on");
+      if ($("#projectView").style.display === "block") closeProject();
+    }
+  });
+
+  function checkHashForProject() {
+    const m = location.hash.match(/^#project\/(.+)$/);
+    if (m) openProject(decodeURIComponent(m[1]));
+  }
+  window.addEventListener("hashchange", checkHashForProject);
+
+  // ---------- Contact Form ----------
+  $("#contactForm")?.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const fd = new FormData(e.target);
+    const msg = {
+      name: (fd.get("name") || "").toString().trim(),
+      email: (fd.get("email") || "").toString().trim(),
+      phone: (fd.get("phone") || "").toString().trim(),
+      message: (fd.get("msg") || "").toString().trim()
+    };
+    const ok = await DB.addMessage(msg);
+    if (ok) {
+      e.target.reset();
+      $("#formMsg").style.color = "var(--success)";
+      $("#formMsg").textContent = "✅ تم إرسال رسالتك، سنعاود التواصل قريباً.";
+      toast("✅ تم إرسال الرسالة");
+    } else {
+      $("#formMsg").style.color = "var(--danger)";
+      $("#formMsg").textContent = "❌ فشل الإرسال، حاول لاحقاً.";
+    }
+  });
+
+  // ---------- Year ----------
+  $("#year").textContent = new Date().getFullYear();
+
+  // ---------- Init ----------
+  (async () => {
+    await loadSettings();
+    await loadServices();
+    await loadProjects();
+    checkHashForProject();
+    observeReveal();
+  })();
+})();
+</script>
 </body>
 </html>
