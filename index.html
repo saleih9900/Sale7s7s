@@ -10,60 +10,58 @@
 <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
 <style>
 /* =========================================
-   المتغيرات والألوان (أسود وأصفر)
+   FUTURISTIC ARCHITECTURE — BADAWOOD
    ========================================= */
 :root{
-  --bg: #0a0a0a;
-  --bg-2: #141414;
-  --surface: rgba(255, 255, 255, 0.03);
-  --surface-2: rgba(255, 255, 255, 0.06);
-  --glass: rgba(255, 255, 255, 0.04);
-  --glass-border: rgba(255, 255, 255, 0.08);
-  --border: rgba(255, 255, 255, 0.07);
-  --border-strong: rgba(255, 255, 255, 0.12);
-  --txt: #f5f5f5;
-  --txt-2: #a3a3a3;
-  --muted: #737373;
-  --brand-1: #f5c518; /* الأصفر الأساسي */
-  --brand-2: #e0b000; /* أصفر غامق قليلاً */
-  --brand-3: #fff8e1; /* أصفر فاتح جداً */
-  --accent: #f5c518;
-  --glow: rgba(245, 197, 24, 0.25);
-  --success: #10b981;
-  --danger: #ef4444;
-  --radius: 16px;
-  --radius-sm: 10px;
-  --radius-lg: 24px;
-  --shadow: 0 20px 50px -20px rgba(0,0,0,0.8);
-  --shadow-lg: 0 40px 80px -30px rgba(245, 197, 24, 0.15);
-  color-scheme: dark;
+  --bg:#050507;
+  --bg-2:#0c0c11;
+  --surface:rgba(255,255,255,0.025);
+  --surface-2:rgba(255,255,255,0.05);
+  --glass:rgba(255,255,255,0.04);
+  --glass-border:rgba(255,255,255,0.07);
+  --border:rgba(255,255,255,0.06);
+  --border-strong:rgba(255,255,255,0.12);
+  --txt:#f5f5f7;
+  --txt-2:#a1a1aa;
+  --muted:#71717a;
+  --brand-1:#f5c518;
+  --brand-2:#ffd84d;
+  --brand-3:#fff8e1;
+  --accent:#f5c518;
+  --glow:rgba(245,197,24,0.35);
+  --glow-soft:rgba(245,197,24,0.12);
+  --success:#10b981;
+  --danger:#ef4444;
+  --radius:18px;
+  --radius-sm:12px;
+  --radius-lg:26px;
+  --shadow:0 20px 50px -20px rgba(0,0,0,0.9);
+  --shadow-lg:0 40px 80px -30px rgba(245,197,24,0.15);
+  color-scheme:dark;
 }
 
-/* الوضع الفاتح (اختياري) */
 [data-theme="light"]{
-  --bg: #fafafa;
-  --bg-2: #ffffff;
-  --surface: rgba(0, 0, 0, 0.03);
-  --surface-2: rgba(0, 0, 0, 0.05);
-  --glass: rgba(255, 255, 255, 0.8);
-  --glass-border: rgba(0, 0, 0, 0.06);
-  --border: rgba(0, 0, 0, 0.08);
-  --border-strong: rgba(0, 0, 0, 0.12);
-  --txt: #0a0a0a;
-  --txt-2: #404040;
-  --muted: #737373;
-  --brand-1: #d4a800;
-  --brand-2: #b38f00;
-  --brand-3: #8a6d00;
-  --glow: rgba(212, 168, 0, 0.2);
-  --shadow: 0 20px 50px -20px rgba(0,0,0,0.1);
-  --shadow-lg: 0 40px 80px -30px rgba(212, 168, 0, 0.15);
-  color-scheme: light;
+  --bg:#fafafa;
+  --bg-2:#ffffff;
+  --surface:rgba(0,0,0,0.02);
+  --surface-2:rgba(0,0,0,0.04);
+  --glass:rgba(255,255,255,0.8);
+  --glass-border:rgba(0,0,0,0.06);
+  --border:rgba(0,0,0,0.08);
+  --border-strong:rgba(0,0,0,0.12);
+  --txt:#0a0a0a;
+  --txt-2:#404040;
+  --muted:#737373;
+  --brand-1:#d4a800;
+  --brand-2:#b38f00;
+  --brand-3:#8a6d00;
+  --glow:rgba(212,168,0,0.2);
+  --glow-soft:rgba(212,168,0,0.08);
+  --shadow:0 20px 50px -20px rgba(0,0,0,0.1);
+  --shadow-lg:0 40px 80px -30px rgba(212,168,0,0.15);
+  color-scheme:light;
 }
 
-/* =========================================
-   إعادة الضبط الأساسية
-   ========================================= */
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
 
@@ -90,52 +88,54 @@ button{font-family:inherit;cursor:pointer}
   padding:0 1.5rem;
 }
 
-/* =========================================
-   الخلفية المتدرجة
-   ========================================= */
 body::before{
   content:"";
-  position:fixed;
-  inset:0;
-  z-index:-2;
+  position:fixed;inset:0;z-index:-2;pointer-events:none;
   background:
-    radial-gradient(circle at 15% 20%, rgba(245, 197, 24, 0.06), transparent 45%),
-    radial-gradient(circle at 85% 15%, rgba(245, 197, 24, 0.04), transparent 40%),
-    radial-gradient(circle at 75% 85%, rgba(245, 197, 24, 0.04), transparent 45%);
-  pointer-events:none;
+    radial-gradient(circle at 15% 20%, rgba(245,197,24,0.10), transparent 45%),
+    radial-gradient(circle at 85% 15%, rgba(245,197,24,0.06), transparent 40%),
+    radial-gradient(circle at 75% 85%, rgba(245,197,24,0.06), transparent 45%),
+    radial-gradient(circle at 20% 90%, rgba(255,216,77,0.05), transparent 45%);
+  animation:meshShift 20s ease-in-out infinite;
+}
+@keyframes meshShift{
+  0%,100%{transform:translate(0,0) scale(1)}
+  50%{transform:translate(-2%,2%) scale(1.05)}
 }
 
-/* =========================================
-   الهيدر (Navbar)
-   ========================================= */
+body::after{
+  content:"";
+  position:fixed;inset:0;z-index:-1;pointer-events:none;
+  background-image:
+    linear-gradient(rgba(245,197,24,0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(245,197,24,0.025) 1px, transparent 1px);
+  background-size:60px 60px;
+  mask-image:radial-gradient(ellipse at center, black 40%, transparent 80%);
+  -webkit-mask-image:radial-gradient(ellipse at center, black 40%, transparent 80%);
+}
+
 header{
   position:fixed;
-  top:0;
-  left:0;
-  right:0;
+  top:0;left:0;right:0;
   z-index:100;
-  background:rgba(10, 10, 10, 0.8);
-  backdrop-filter:blur(20px) saturate(180%);
-  -webkit-backdrop-filter:blur(20px) saturate(180%);
-  border-bottom:1px solid var(--border);
+  background:rgba(5,5,7,0.7);
+  backdrop-filter:blur(24px) saturate(180%);
+  -webkit-backdrop-filter:blur(24px) saturate(180%);
+  border-bottom:1px solid var(--glass-border);
   transition:.35s ease;
 }
-[data-theme="light"] header{
-  background:rgba(250, 250, 250, 0.8);
-}
+[data-theme="light"] header{background:rgba(250,250,250,0.8)}
 header.scrolled{
-  background:rgba(10, 10, 10, 0.95);
-  border-bottom-color:var(--border-strong);
+  background:rgba(5,5,7,0.95);
+  border-bottom-color:rgba(245,197,24,0.15);
 }
-[data-theme="light"] header.scrolled{
-  background:rgba(250, 250, 250, 0.95);
-}
+[data-theme="light"] header.scrolled{background:rgba(250,250,250,0.95)}
 
 .nav{
   display:flex;
   align-items:center;
   justify-content:space-between;
-  height:70px;
+  height:72px;
   gap:1rem;
 }
 
@@ -149,24 +149,23 @@ header.scrolled{
   flex-shrink:0;
 }
 .logo .mark{
-  width:40px;
-  height:40px;
+  width:42px;height:42px;
   background:linear-gradient(135deg, var(--brand-1), var(--brand-2));
-  display:grid;
-  place-items:center;
+  display:grid;place-items:center;
   color:#000;
-  font-size:1.2rem;
-  font-weight:900;
-  border-radius:10px;
-  box-shadow:0 4px 15px -3px var(--glow);
+  font-size:1.2rem;font-weight:900;
+  border-radius:12px;
+  box-shadow:0 0 30px -8px var(--glow);
   overflow:hidden;
   flex-shrink:0;
+  position:relative;
 }
-.logo .mark img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
+.logo .mark::after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(135deg, transparent 40%, rgba(255,255,255,.3));
+  pointer-events:none;
 }
+.logo .mark img{width:100%;height:100%;object-fit:cover}
 .logo span:last-child{
   white-space:nowrap;
   overflow:hidden;
@@ -186,63 +185,54 @@ header.scrolled{
   transition:.25s;
   font-weight:500;
   white-space:nowrap;
+  position:relative;
 }
 .nav-links a:hover{
   color:var(--brand-1);
-  background:var(--surface);
+  background:rgba(245,197,24,0.06);
 }
 
-.nav-actions{
-  display:flex;
-  gap:.5rem;
-  align-items:center;
-  flex-shrink:0;
-}
+.nav-actions{display:flex;gap:.5rem;align-items:center;flex-shrink:0}
 .theme-toggle{
   background:var(--surface);
   border:1px solid var(--border);
   color:var(--txt);
-  width:40px;
-  height:40px;
+  width:40px;height:40px;
   border-radius:10px;
   cursor:pointer;
   font-size:1rem;
-  display:grid;
-  place-items:center;
+  display:grid;place-items:center;
   transition:.25s;
 }
 .theme-toggle:hover{
-  background:var(--surface-2);
+  background:rgba(245,197,24,0.08);
   border-color:var(--brand-1);
   color:var(--brand-1);
+  box-shadow:0 0 20px -8px var(--glow);
 }
 .menu-btn{
   display:none;
   background:var(--surface);
   border:1px solid var(--border);
   color:var(--txt);
-  width:40px;
-  height:40px;
+  width:40px;height:40px;
   border-radius:10px;
   cursor:pointer;
   font-size:1.2rem;
   place-items:center;
 }
 
-/* =========================================
-   الأزرار
-   ========================================= */
 .btn{
   display:inline-flex;
   align-items:center;
   justify-content:center;
   gap:.5rem;
-  padding:.75rem 1.5rem;
+  padding:.8rem 1.6rem;
   border-radius:12px;
   font-weight:700;
   font-size:.92rem;
   transition:.3s cubic-bezier(.4,0,.2,1);
-  border:none;
+  border:1px solid transparent;
   cursor:pointer;
   font-family:inherit;
   position:relative;
@@ -253,35 +243,40 @@ header.scrolled{
 .btn-primary{
   background:linear-gradient(135deg, var(--brand-1), var(--brand-2));
   color:#000;
-  box-shadow:0 8px 25px -8px var(--glow);
+  box-shadow:0 0 30px -8px var(--glow), 0 10px 25px -10px rgba(0,0,0,0.5);
 }
+.btn-primary::before{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(135deg, var(--brand-2), var(--brand-1));
+  opacity:0;transition:.3s;
+}
+.btn-primary:hover::before{opacity:1}
 .btn-primary:hover{
   transform:translateY(-2px);
-  box-shadow:0 12px 35px -10px var(--glow);
+  box-shadow:0 0 40px -5px var(--glow), 0 16px 35px -12px rgba(0,0,0,0.6);
 }
+.btn-primary span,.btn-primary *{position:relative;z-index:1}
+
 .btn-ghost{
-  background:var(--surface);
-  color:var(--txt);
+  background:rgba(255,255,255,0.03);
   border:1px solid var(--border);
+  color:var(--txt-2);
+  backdrop-filter:blur(10px);
 }
 .btn-ghost:hover{
-  background:var(--surface-2);
+  background:rgba(245,197,24,0.08);
   border-color:var(--brand-1);
   color:var(--brand-1);
   transform:translateY(-2px);
+  box-shadow:0 0 20px -8px var(--glow);
 }
-.btn-block{
-  width:100%;
-}
+.btn-block{width:100%}
 
-/* =========================================
-   قسم الـ Hero
-   ========================================= */
 .hero{
   min-height:100vh;
   display:flex;
   align-items:center;
-  padding:120px 0 60px;
+  padding:130px 0 60px;
   position:relative;
 }
 
@@ -293,28 +288,24 @@ header.scrolled{
   width:100%;
 }
 
-.hero-content{
-  display:flex;
-  flex-direction:column;
-  gap:1.5rem;
-}
+.hero-content{display:flex;flex-direction:column;gap:1.5rem}
 
 .hero-badge{
   display:inline-flex;
   align-items:center;
   gap:.6rem;
-  padding:.4rem 1rem;
-  background:var(--surface);
-  border:1px solid var(--border);
+  padding:.45rem 1.1rem;
+  background:rgba(245,197,24,0.06);
+  border:1px solid rgba(245,197,24,0.2);
   border-radius:100px;
-  font-size:.82rem;
-  color:var(--txt-2);
-  font-weight:500;
+  font-size:.8rem;
+  color:var(--brand-1);
+  font-weight:600;
   width:fit-content;
+  letter-spacing:.3px;
 }
 .hero-badge .dot{
-  width:6px;
-  height:6px;
+  width:6px;height:6px;
   border-radius:50%;
   background:var(--brand-1);
   box-shadow:0 0 12px var(--brand-1);
@@ -370,53 +361,75 @@ header.scrolled{
   padding-top:2rem;
   border-top:1px solid var(--border);
 }
-.stats > div{
-  display:flex;
-  flex-direction:column;
-  min-width:0;
-}
+.stats > div{display:flex;flex-direction:column;min-width:0}
 .stats b{
-  font-size:1.8rem;
+  font-size:2rem;
   font-weight:900;
-  color:var(--brand-1);
   font-family:'Cairo', sans-serif;
-  letter-spacing:-1px;
+  letter-spacing:-1.5px;
   line-height:1.1;
+  background:linear-gradient(135deg, #fff, var(--brand-2));
+  -webkit-background-clip:text;
+  background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+[data-theme="light"] .stats b{
+  background:linear-gradient(135deg, var(--brand-1), var(--brand-2));
+  -webkit-background-clip:text;
+  background-clip:text;
+  -webkit-text-fill-color:transparent;
 }
 .stats span{
   font-size:.82rem;
   color:var(--muted);
   margin-top:.2rem;
+  font-weight:600;
 }
 
-/* بطاقة الـ Hero */
 .hero-visual{
   position:relative;
   border-radius:var(--radius-lg);
   overflow:hidden;
-  border:1px solid var(--border);
-  background:linear-gradient(135deg, rgba(245, 197, 24, 0.08), rgba(20, 20, 20, 0.5));
-  backdrop-filter:blur(20px);
+  border:1px solid var(--glass-border);
+  background:linear-gradient(145deg, rgba(20,20,26,0.7), rgba(12,12,17,0.85));
+  backdrop-filter:blur(24px);
+  -webkit-backdrop-filter:blur(24px);
   padding:2rem;
   display:flex;
   flex-direction:column;
   gap:1.5rem;
   box-shadow:var(--shadow-lg);
-  min-height:400px;
+  min-height:420px;
+  transition:.5s cubic-bezier(.4,0,.2,1);
 }
-
+.hero-visual::before{
+  content:"";
+  position:absolute;
+  inset:-2px;
+  border-radius:var(--radius-lg);
+  padding:1px;
+  background:linear-gradient(135deg, var(--brand-1), transparent 40%, transparent 60%, var(--brand-2));
+  -webkit-mask:linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite:xor;
+  mask-composite:exclude;
+  opacity:.4;
+  pointer-events:none;
+}
+.hero-visual:hover{
+  transform:translateY(-5px);
+  box-shadow:0 50px 100px -40px rgba(0,0,0,0.9), 0 0 60px -20px var(--glow);
+}
 .hero-visual .visual-media{
   position:absolute;
   inset:0;
   height:60%;
-  background:linear-gradient(160deg, rgba(245, 197, 24, 0.15), transparent);
+  background:linear-gradient(160deg, rgba(245,197,24,0.15), transparent);
   opacity:.8;
   pointer-events:none;
   z-index:0;
 }
 .hero-visual .visual-media img{
-  width:100%;
-  height:100%;
+  width:100%;height:100%;
   object-fit:cover;
   opacity:.6;
 }
@@ -428,15 +441,13 @@ header.scrolled{
 }
 
 .hero-visual .visual-icon{
-  width:56px;
-  height:56px;
+  width:60px;height:60px;
   background:linear-gradient(135deg, var(--brand-1), var(--brand-2));
-  border-radius:14px;
-  display:grid;
-  place-items:center;
-  font-size:1.6rem;
+  border-radius:16px;
+  display:grid;place-items:center;
+  font-size:1.7rem;
   color:#000;
-  box-shadow:0 8px 25px -6px var(--glow);
+  box-shadow:0 0 40px -8px var(--glow);
   position:relative;
   z-index:1;
   flex-shrink:0;
@@ -452,10 +463,10 @@ header.scrolled{
 }
 
 .hero-visual .visual-cat{
-  font-size:.78rem;
+  font-size:.75rem;
   color:var(--brand-1);
   font-weight:700;
-  letter-spacing:1px;
+  letter-spacing:1.5px;
   text-transform:uppercase;
 }
 
@@ -483,20 +494,15 @@ header.scrolled{
 }
 .hero-visual .visual-tags span{
   padding:.3rem .8rem;
-  background:rgba(255, 255, 255, 0.05);
-  border:1px solid var(--border);
+  background:rgba(245,197,24,0.08);
+  border:1px solid rgba(245,197,24,0.2);
   border-radius:100px;
-  font-size:.75rem;
-  color:var(--txt-2);
+  font-size:.72rem;
+  color:var(--brand-1);
+  font-weight:600;
 }
 
-/* =========================================
-   الأقسام العامة
-   ========================================= */
-section{
-  padding:80px 0;
-  position:relative;
-}
+section{padding:90px 0;position:relative}
 
 .section-head{
   text-align:center;
@@ -505,14 +511,14 @@ section{
 }
 .section-head .kicker{
   display:inline-block;
-  padding:.35rem .9rem;
-  background:var(--surface);
-  border:1px solid var(--border);
+  padding:.4rem 1rem;
+  background:rgba(245,197,24,0.06);
+  border:1px solid rgba(245,197,24,0.2);
   border-radius:100px;
-  font-size:.78rem;
+  font-size:.75rem;
   color:var(--brand-1);
-  font-weight:600;
-  letter-spacing:.5px;
+  font-weight:700;
+  letter-spacing:1.5px;
   margin-bottom:1rem;
   text-transform:uppercase;
 }
@@ -536,9 +542,6 @@ section{
   line-height:1.7;
 }
 
-/* =========================================
-   الخدمات
-   ========================================= */
 .services-grid{
   display:grid;
   grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));
@@ -548,8 +551,10 @@ section{
 .service-card{
   position:relative;
   padding:2rem;
-  background:var(--surface);
-  border:1px solid var(--border);
+  background:linear-gradient(145deg, rgba(20,20,26,0.6), rgba(12,12,17,0.8));
+  backdrop-filter:blur(20px);
+  -webkit-backdrop-filter:blur(20px);
+  border:1px solid var(--glass-border);
   border-radius:var(--radius);
   transition:.4s cubic-bezier(.4,0,.2,1);
   overflow:hidden;
@@ -557,21 +562,31 @@ section{
   flex-direction:column;
   gap:1rem;
 }
+.service-card::before{
+  content:"";
+  position:absolute;
+  top:0;
+  inset-inline-start:0;
+  width:100%;
+  height:1px;
+  background:linear-gradient(90deg, transparent, var(--brand-1), transparent);
+  opacity:.3;
+  transition:.4s;
+}
+.service-card:hover::before{opacity:.8}
 .service-card:hover{
-  border-color:var(--border-strong);
-  transform:translateY(-4px);
-  box-shadow:0 20px 40px -20px rgba(0,0,0,0.5);
+  border-color:rgba(245,197,24,0.25);
+  transform:translateY(-6px);
+  box-shadow:0 30px 60px -25px rgba(0,0,0,0.7), 0 0 40px -15px var(--glow);
 }
 
 .service-card .icon-wrap{
-  width:52px;
-  height:52px;
+  width:56px;height:56px;
   border-radius:14px;
-  background:linear-gradient(135deg, rgba(245, 197, 24, 0.15), rgba(245, 197, 24, 0.05));
-  border:1px solid rgba(245, 197, 24, 0.2);
-  display:grid;
-  place-items:center;
-  font-size:1.4rem;
+  background:linear-gradient(135deg, rgba(245,197,24,0.15), rgba(245,197,24,0.04));
+  border:1px solid rgba(245,197,24,0.2);
+  display:grid;place-items:center;
+  font-size:1.5rem;
   color:var(--brand-1);
   flex-shrink:0;
   transition:.4s;
@@ -580,7 +595,8 @@ section{
   background:linear-gradient(135deg, var(--brand-1), var(--brand-2));
   color:#000;
   border-color:transparent;
-  transform:scale(1.05);
+  transform:scale(1.08) rotate(-4deg);
+  box-shadow:0 0 30px -8px var(--glow);
 }
 
 .service-card h3{
@@ -597,9 +613,6 @@ section{
   margin:0;
 }
 
-/* =========================================
-   المنهجية
-   ========================================= */
 .process-grid{
   display:grid;
   grid-template-columns:repeat(auto-fit, minmax(240px, 1fr));
@@ -608,32 +621,38 @@ section{
 
 .process-card{
   padding:1.75rem;
-  background:var(--surface);
-  border:1px solid var(--border);
+  background:linear-gradient(145deg, rgba(20,20,26,0.5), rgba(12,12,17,0.7));
+  backdrop-filter:blur(20px);
+  -webkit-backdrop-filter:blur(20px);
+  border:1px solid var(--glass-border);
   border-radius:var(--radius);
   position:relative;
   overflow:hidden;
   transition:.3s;
 }
 .process-card:hover{
-  border-color:var(--border-strong);
-  transform:translateY(-3px);
+  border-color:rgba(245,197,24,0.2);
+  transform:translateY(-4px);
+  box-shadow:0 20px 40px -20px rgba(0,0,0,0.6);
 }
 .process-card::before{
   content:"";
   position:absolute;
   top:0;
-  right:0;
+  inset-inline-start:0;
   width:100%;
   height:2px;
   background:linear-gradient(90deg, var(--brand-1), transparent);
 }
 .process-number{
   font-family:'Cairo', sans-serif;
-  font-size:1.8rem;
+  font-size:2rem;
   font-weight:900;
-  color:var(--brand-1);
-  opacity:.6;
+  background:linear-gradient(135deg, var(--brand-1), var(--brand-2));
+  -webkit-background-clip:text;
+  background-clip:text;
+  -webkit-text-fill-color:transparent;
+  opacity:.7;
   line-height:1;
 }
 .process-card h3{
@@ -648,9 +667,6 @@ section{
   margin:0;
 }
 
-/* =========================================
-   المشاريع
-   ========================================= */
 .toolbar{
   display:flex;
   justify-content:space-between;
@@ -665,9 +681,10 @@ section{
   gap:.4rem;
   flex-wrap:wrap;
   padding:.4rem;
-  background:var(--surface);
-  border:1px solid var(--border);
+  background:rgba(255,255,255,0.03);
+  border:1px solid var(--glass-border);
   border-radius:100px;
+  backdrop-filter:blur(10px);
 }
 .filter{
   background:transparent;
@@ -684,12 +701,12 @@ section{
 }
 .filter:hover{
   color:var(--brand-1);
-  background:var(--surface-2);
+  background:rgba(245,197,24,0.06);
 }
 .filter.on{
   background:linear-gradient(135deg, var(--brand-1), var(--brand-2));
   color:#000;
-  box-shadow:0 4px 15px -4px var(--glow);
+  box-shadow:0 4px 15px -4px var(--glow), 0 0 20px -8px var(--glow);
 }
 
 .search-box{
@@ -700,8 +717,8 @@ section{
 }
 .search-box input{
   width:100%;
-  background:var(--surface);
-  border:1px solid var(--border);
+  background:rgba(255,255,255,0.03);
+  border:1px solid var(--glass-border);
   color:var(--txt);
   padding:.7rem 1rem;
   border-radius:100px;
@@ -712,11 +729,9 @@ section{
 .search-box input:focus{
   outline:none;
   border-color:var(--brand-1);
-  box-shadow:0 0 0 4px rgba(245, 197, 24, 0.1);
+  box-shadow:0 0 0 4px var(--glow-soft), 0 0 20px -8px var(--glow);
 }
-.search-box input::placeholder{
-  color:var(--muted);
-}
+.search-box input::placeholder{color:var(--muted)}
 
 .projects-grid{
   display:grid;
@@ -728,22 +743,24 @@ section{
   position:relative;
   border-radius:var(--radius);
   overflow:hidden;
-  background:var(--surface);
-  border:1px solid var(--border);
+  background:linear-gradient(145deg, rgba(20,20,26,0.6), rgba(12,12,17,0.8));
+  backdrop-filter:blur(20px);
+  -webkit-backdrop-filter:blur(20px);
+  border:1px solid var(--glass-border);
   cursor:pointer;
   transition:.4s cubic-bezier(.4,0,.2,1);
   display:flex;
   flex-direction:column;
 }
 .project-card:hover{
-  transform:translateY(-6px);
-  border-color:var(--border-strong);
-  box-shadow:0 30px 60px -30px rgba(0,0,0,0.6);
+  transform:translateY(-8px);
+  border-color:rgba(245,197,24,0.25);
+  box-shadow:0 40px 80px -30px rgba(0,0,0,0.8), 0 0 50px -20px var(--glow);
 }
 
 .project-card .thumb{
   aspect-ratio:16/11;
-  background:linear-gradient(135deg, rgba(245, 197, 24, 0.1), rgba(20, 20, 20, 0.5));
+  background:linear-gradient(135deg, rgba(245,197,24,0.1), rgba(20,20,20,0.5));
   display:grid;
   place-items:center;
   font-size:2.5rem;
@@ -752,14 +769,11 @@ section{
   position:relative;
 }
 .project-card .thumb img{
-  width:100%;
-  height:100%;
+  width:100%;height:100%;
   object-fit:cover;
   transition:.6s cubic-bezier(.4,0,.2,1);
 }
-.project-card:hover .thumb img{
-  transform:scale(1.05);
-}
+.project-card:hover .thumb img{transform:scale(1.06)}
 
 .project-card .body{
   padding:1.5rem;
@@ -769,14 +783,16 @@ section{
 }
 .project-card .cat{
   display:inline-block;
-  font-size:.72rem;
+  font-size:.7rem;
   color:var(--brand-1);
-  background:rgba(245, 197, 24, 0.1);
-  border:1px solid rgba(245, 197, 24, 0.2);
+  background:rgba(245,197,24,0.08);
+  border:1px solid rgba(245,197,24,0.2);
   padding:.25rem .75rem;
   border-radius:100px;
-  font-weight:600;
+  font-weight:700;
   width:fit-content;
+  letter-spacing:.5px;
+  text-transform:uppercase;
 }
 .project-card h3{
   font-size:1.1rem;
@@ -794,9 +810,6 @@ section{
   margin:0;
 }
 
-/* =========================================
-   من نحن
-   ========================================= */
 .about-grid{
   display:grid;
   grid-template-columns:1fr 1.15fr;
@@ -831,27 +844,27 @@ section{
 }
 .value-card{
   padding:1.5rem;
-  background:var(--surface);
-  border:1px solid var(--border);
+  background:linear-gradient(145deg, rgba(20,20,26,0.5), rgba(12,12,17,0.7));
+  backdrop-filter:blur(20px);
+  -webkit-backdrop-filter:blur(20px);
+  border:1px solid var(--glass-border);
   border-radius:var(--radius);
   transition:.35s;
 }
 .value-card:hover{
-  border-color:var(--border-strong);
-  transform:translateY(-3px);
-  background:var(--surface-2);
+  border-color:rgba(245,197,24,0.2);
+  transform:translateY(-4px);
+  box-shadow:0 20px 40px -20px rgba(0,0,0,0.6);
 }
 .value-card .v-icon{
-  width:44px;
-  height:44px;
+  width:44px;height:44px;
   border-radius:12px;
-  background:linear-gradient(135deg, rgba(245, 197, 24, 0.15), rgba(245, 197, 24, 0.05));
-  display:grid;
-  place-items:center;
+  background:linear-gradient(135deg, rgba(245,197,24,0.15), rgba(245,197,24,0.04));
+  display:grid;place-items:center;
   font-size:1.1rem;
   color:var(--brand-1);
   margin-bottom:.75rem;
-  border:1px solid rgba(245, 197, 24, 0.2);
+  border:1px solid rgba(245,197,24,0.2);
 }
 .value-card h3{
   font-size:1rem;
@@ -866,9 +879,6 @@ section{
   margin:0;
 }
 
-/* =========================================
-   التواصل
-   ========================================= */
 .contact-grid{
   display:grid;
   grid-template-columns:1fr 1.15fr;
@@ -886,49 +896,64 @@ section{
   gap:1rem;
   align-items:flex-start;
   padding:1.2rem;
-  background:var(--surface);
-  border:1px solid var(--border);
+  background:linear-gradient(145deg, rgba(20,20,26,0.5), rgba(12,12,17,0.7));
+  backdrop-filter:blur(20px);
+  -webkit-backdrop-filter:blur(20px);
+  border:1px solid var(--glass-border);
   border-radius:var(--radius-sm);
   transition:.3s;
 }
 .contact-info .info-item:hover{
-  border-color:var(--border-strong);
+  border-color:rgba(245,197,24,0.25);
   transform:translateX(-4px);
+  box-shadow:0 0 30px -12px var(--glow);
 }
 .contact-info .info-icon{
-  width:42px;
-  height:42px;
+  width:44px;height:44px;
   flex-shrink:0;
   border-radius:12px;
-  background:linear-gradient(135deg, rgba(245, 197, 24, 0.15), rgba(245, 197, 24, 0.05));
-  display:grid;
-  place-items:center;
-  font-size:1rem;
+  background:linear-gradient(135deg, rgba(245,197,24,0.15), rgba(245,197,24,0.04));
+  display:grid;place-items:center;
+  font-size:1.05rem;
   color:var(--brand-1);
-  border:1px solid rgba(245, 197, 24, 0.2);
+  border:1px solid rgba(245,197,24,0.2);
 }
 .contact-info .info-label{
-  font-size:.78rem;
+  font-size:.75rem;
   color:var(--muted);
-  font-weight:600;
+  font-weight:700;
   text-transform:uppercase;
-  letter-spacing:.5px;
+  letter-spacing:.8px;
 }
 .contact-info .info-value{
   font-weight:600;
   color:var(--txt);
-  margin-top:.1rem;
+  margin-top:.15rem;
   font-size:.95rem;
 }
 
 .contact-form{
   padding:2rem;
-  background:var(--surface);
-  border:1px solid var(--border);
+  background:linear-gradient(145deg, rgba(20,20,26,0.6), rgba(12,12,17,0.8));
+  backdrop-filter:blur(20px);
+  -webkit-backdrop-filter:blur(20px);
+  border:1px solid var(--glass-border);
   border-radius:var(--radius);
   display:flex;
   flex-direction:column;
   gap:1rem;
+  position:relative;
+  overflow:hidden;
+}
+.contact-form::before{
+  content:"";
+  position:absolute;
+  top:0;
+  inset-inline-start:0;
+  width:100%;
+  height:1px;
+  background:linear-gradient(90deg, transparent, var(--brand-1), transparent);
+  opacity:.4;
 }
 
 .form-group{
@@ -937,14 +962,15 @@ section{
   gap:.4rem;
 }
 .form-group label{
-  font-size:.82rem;
+  font-size:.8rem;
   color:var(--txt-2);
   font-weight:600;
+  letter-spacing:.3px;
 }
 .form-group input,
 .form-group textarea{
   width:100%;
-  background:var(--bg-2);
+  background:rgba(0,0,0,0.4);
   border:1px solid var(--border);
   color:var(--txt);
   padding:.85rem 1rem;
@@ -958,20 +984,17 @@ section{
 .form-group textarea:focus{
   outline:none;
   border-color:var(--brand-1);
-  box-shadow:0 0 0 4px rgba(245, 197, 24, 0.1);
+  background:rgba(0,0,0,0.6);
+  box-shadow:0 0 0 4px var(--glow-soft), 0 0 20px -5px var(--glow);
 }
 .form-group input::placeholder,
-.form-group textarea::placeholder{
-  color:var(--muted);
-}
+.form-group textarea::placeholder{color:var(--muted)}
 
-/* =========================================
-   الفوتر
-   ========================================= */
 footer{
   padding:3rem 0 2rem;
   border-top:1px solid var(--border);
   margin-top:3rem;
+  position:relative;
 }
 .footer-content{
   display:flex;
@@ -985,30 +1008,28 @@ footer{
 .footer-content a{
   color:var(--txt-2);
   transition:.25s;
-  padding:.4rem .9rem;
-  border-radius:8px;
-  background:var(--surface);
-  border:1px solid var(--border);
+  padding:.5rem 1rem;
+  border-radius:10px;
+  background:rgba(255,255,255,0.03);
+  border:1px solid var(--glass-border);
   font-size:.82rem;
   font-weight:600;
 }
 .footer-content a:hover{
   color:var(--brand-1);
   border-color:var(--brand-1);
-  background:var(--surface-2);
+  background:rgba(245,197,24,0.06);
+  box-shadow:0 0 20px -8px var(--glow);
 }
 
-/* =========================================
-   رسائل التنبيه (Toast)
-   ========================================= */
 #toast{
   position:fixed;
   bottom:28px;
-  right:28px;
+  inset-inline-end:28px;
   padding:.9rem 1.6rem;
   background:linear-gradient(135deg, var(--brand-1), var(--brand-2));
   color:#000;
-  border-radius:12px;
+  border-radius:14px;
   font-weight:700;
   font-size:.9rem;
   opacity:0;
@@ -1016,36 +1037,29 @@ footer{
   transition:.35s cubic-bezier(.4,0,.2,1);
   z-index:200;
   pointer-events:none;
-  box-shadow:0 15px 35px -10px var(--glow);
+  box-shadow:0 20px 40px -12px var(--glow), 0 0 30px -10px var(--glow);
   max-width:calc(100vw - 56px);
 }
-#toast.show{
-  opacity:1;
-  transform:translateY(0);
-}
+#toast.show{opacity:1;transform:translateY(0)}
 
-/* =========================================
-   زر العودة للأعلى
-   ========================================= */
 .toTop{
   position:fixed;
   bottom:28px;
-  left:28px;
-  width:48px;
-  height:48px;
-  background:var(--glass);
+  inset-inline-start:28px;
+  width:48px;height:48px;
+  background:rgba(20,20,26,0.8);
   backdrop-filter:blur(20px);
+  -webkit-backdrop-filter:blur(20px);
   border:1px solid var(--glass-border);
   color:var(--txt);
   border-radius:12px;
   cursor:pointer;
-  display:grid;
-  place-items:center;
+  display:grid;place-items:center;
   opacity:0;
   pointer-events:none;
   transition:.35s cubic-bezier(.4,0,.2,1);
   z-index:90;
-  font-size:1.1rem;
+  font-size:1.15rem;
   box-shadow:var(--shadow);
 }
 .toTop:hover{
@@ -1053,43 +1067,26 @@ footer{
   color:#000;
   border-color:transparent;
   transform:translateY(-4px);
+  box-shadow:0 0 30px -8px var(--glow);
 }
-.toTop.show{
-  opacity:1;
-  pointer-events:auto;
-}
+.toTop.show{opacity:1;pointer-events:auto}
 
-/* =========================================
-   تأثير الظهور
-   ========================================= */
 .reveal{
   opacity:0;
   transform:translateY(30px);
   transition:.9s cubic-bezier(.4,0,.2,1);
 }
-.reveal.on{
-  opacity:1;
-  transform:translateY(0);
-}
+.reveal.on{opacity:1;transform:translateY(0)}
 
-/* =========================================
-   صفحة تفاصيل المشروع
-   ========================================= */
-#projectView{
-  display:none;
-  padding:120px 0 60px;
-}
-.project-detail{
-  max-width:980px;
-  margin:0 auto;
-}
+#projectView{display:none;padding:130px 0 60px}
+.project-detail{max-width:980px;margin:0 auto}
 .back-btn{
   display:inline-flex;
   align-items:center;
   gap:.5rem;
   padding:.6rem 1.2rem;
-  background:var(--surface);
-  border:1px solid var(--border);
+  background:rgba(255,255,255,0.03);
+  border:1px solid var(--glass-border);
   color:var(--txt);
   border-radius:100px;
   cursor:pointer;
@@ -1100,34 +1097,32 @@ footer{
   transition:.25s;
 }
 .back-btn:hover{
-  background:var(--surface-2);
+  background:rgba(245,197,24,0.08);
   border-color:var(--brand-1);
   color:var(--brand-1);
+  transform:translateX(4px);
+  box-shadow:0 0 20px -8px var(--glow);
 }
 
 .project-hero{
   position:relative;
-  height:50vh;
-  min-height:350px;
+  height:55vh;
+  min-height:380px;
   border-radius:var(--radius-lg);
   overflow:hidden;
-  margin-bottom:2rem;
-  background:linear-gradient(135deg, rgba(245, 197, 24, 0.15), rgba(20, 20, 20, 0.8));
+  margin-bottom:2.5rem;
+  background:linear-gradient(135deg, rgba(245,197,24,0.15), rgba(12,12,17,0.9));
   display:grid;
   place-items:center;
   font-size:5rem;
   color:var(--brand-1);
   box-shadow:var(--shadow-lg);
 }
-.project-hero img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-}
+.project-hero img{width:100%;height:100%;object-fit:cover}
 .project-hero .overlay{
   position:absolute;
   inset:0;
-  background:linear-gradient(to top, rgba(0,0,0,0.9), transparent 60%);
+  background:linear-gradient(to top, rgba(0,0,0,0.92), transparent 60%);
   display:flex;
   flex-direction:column;
   justify-content:flex-end;
@@ -1135,7 +1130,7 @@ footer{
   color:#fff;
 }
 .project-hero h1{
-  font-size:clamp(1.8rem, 4vw, 2.6rem);
+  font-size:clamp(1.8rem, 4vw, 2.8rem);
   color:#fff;
   font-weight:900;
   letter-spacing:-1px;
@@ -1154,10 +1149,12 @@ footer{
   align-items:center;
   gap:.4rem;
   padding:.4rem .9rem;
-  background:rgba(255, 255, 255, 0.1);
-  border:1px solid rgba(255, 255, 255, 0.15);
+  background:rgba(245,197,24,0.1);
+  border:1px solid rgba(245,197,24,0.25);
   border-radius:100px;
   backdrop-filter:blur(10px);
+  color:var(--brand-1);
+  font-weight:600;
 }
 .project-content{
   font-size:1.05rem;
@@ -1178,124 +1175,67 @@ footer{
   height:220px;
   object-fit:cover;
   border-radius:var(--radius);
-  border:1px solid var(--border);
+  border:1px solid var(--glass-border);
   cursor:pointer;
   transition:.4s cubic-bezier(.4,0,.2,1);
 }
 .gallery img:hover{
   transform:scale(1.03);
   border-color:var(--brand-1);
-  box-shadow:0 20px 40px -15px var(--glow);
+  box-shadow:0 20px 40px -15px var(--glow), 0 0 30px -10px var(--glow);
 }
 
-/* =========================================
-   معرض الصور (Lightbox)
-   ========================================= */
 .lightbox{
-  position:fixed;
-  inset:0;
+  position:fixed;inset:0;
   background:rgba(0,0,0,0.95);
-  backdrop-filter:blur(20px);
+  backdrop-filter:blur(24px);
   z-index:300;
-  display:none;
-  place-items:center;
-  padding:2rem;
-  cursor:zoom-out;
+  display:none;place-items:center;
+  padding:2rem;cursor:zoom-out;
 }
-.lightbox.on{
-  display:grid;
-}
+.lightbox.on{display:grid}
 .lightbox img{
-  max-width:92vw;
-  max-height:92vh;
+  max-width:92vw;max-height:92vh;
   object-fit:contain;
   border-radius:var(--radius-sm);
-  box-shadow:0 40px 80px -20px rgba(0,0,0,0.8);
+  box-shadow:0 40px 80px -20px rgba(0,0,0,0.8), 0 0 60px -20px var(--glow);
 }
 
-/* =========================================
-   التصميم المتجاوب (Responsive)
-   ========================================= */
-
-/* شاشات متوسطة (تابلت) */
-@media (max-width: 1024px) {
-  .hero-grid{
-    grid-template-columns:1fr;
-    gap:3rem;
-  }
-  .hero-visual{
-    max-width:500px;
-    margin:0 auto;
-    min-height:350px;
-  }
-  .about-grid,
-  .contact-grid{
-    grid-template-columns:1fr;
-    gap:2.5rem;
-  }
+@media (max-width:1024px){
+  .hero-grid{grid-template-columns:1fr;gap:3rem}
+  .hero-visual{max-width:520px;margin:0 auto;min-height:380px}
+  .about-grid,.contact-grid{grid-template-columns:1fr;gap:2.5rem}
 }
 
-/* شاشات صغيرة (جوال) */
-@media (max-width: 768px) {
-  .container{
-    padding:0 1rem;
-  }
+@media (max-width:768px){
+  .container{padding:0 1rem}
 
-  /* الهيدر */
-  .nav{
-    height:60px;
-  }
-  .logo span:last-child{
-    max-width:150px;
-    font-size:.85rem;
-  }
+  .nav{height:64px}
+  .logo span:last-child{max-width:150px;font-size:.85rem}
   .nav-links{
     display:none;
     position:absolute;
-    top:100%;
-    right:0;
-    left:0;
-    background:var(--bg-2);
-    border-bottom:1px solid var(--border);
+    top:100%;inset-inline:0;
+    background:rgba(12,12,17,0.98);
+    backdrop-filter:blur(24px);
+    -webkit-backdrop-filter:blur(24px);
+    border-bottom:1px solid var(--glass-border);
     flex-direction:column;
     padding:.75rem;
     gap:.25rem;
-    box-shadow:0 20px 40px -20px rgba(0,0,0,0.8);
+    box-shadow:0 20px 40px -20px rgba(0,0,0,0.9);
   }
-  .nav-links.open{
-    display:flex;
-  }
-  .nav-links a{
-    padding:.75rem 1rem;
-    border-radius:8px;
-  }
-  .menu-btn{
-    display:grid;
-  }
-  .theme-toggle{
-    width:36px;
-    height:36px;
-  }
+  [data-theme="light"] .nav-links{background:rgba(250,250,250,0.98)}
+  .nav-links.open{display:flex}
+  .nav-links a{padding:.75rem 1rem;border-radius:8px}
+  .menu-btn{display:grid}
+  .theme-toggle{width:36px;height:36px}
 
-  /* الـ Hero */
-  .hero{
-    min-height:auto;
-    padding:100px 0 50px;
-  }
-  .hero h1{
-    font-size:clamp(1.8rem, 8vw, 2.5rem);
-    line-height:1.3;
-  }
-  .hero p{
-    font-size:1rem;
-  }
-  .hero-actions{
-    flex-direction:column;
-    gap:.75rem;
-  }
-  .hero-actions .btn{
-    width:100%;
-  }
+  .hero{min-height:auto;padding:105px 0 50px}
+  .hero h1{font-size:clamp(1.8rem, 8vw, 2.5rem);line-height:1.3}
+  .hero p{font-size:1rem}
+  .hero-actions{flex-direction:column;gap:.75rem}
+  .hero-actions .btn{width:100%}
   .stats{
     display:grid;
     grid-template-columns:repeat(3, 1fr);
@@ -1303,148 +1243,74 @@ footer{
     margin-top:1rem;
     padding-top:1.5rem;
   }
-  .stats > div{
-    text-align:center;
-  }
-  .stats b{
-    font-size:1.3rem;
-  }
-  .stats span{
-    font-size:.7rem;
-  }
-  .hero-visual{
-    padding:1.5rem;
-    min-height:320px;
-  }
-  .hero-visual h3{
-    font-size:1.3rem;
-  }
+  .stats > div{text-align:center}
+  .stats b{font-size:1.3rem}
+  .stats span{font-size:.7rem}
+  .hero-visual{padding:1.5rem;min-height:340px}
+  .hero-visual h3{font-size:1.3rem}
 
-  /* الأقسام */
-  section{
-    padding:60px 0;
-  }
-  .section-head{
-    margin-bottom:2.5rem;
-  }
-  .section-head h2{
-    font-size:1.6rem;
-  }
+  section{padding:65px 0}
+  .section-head{margin-bottom:2.5rem}
+  .section-head h2{font-size:1.6rem}
 
-  /* الخدمات */
-  .services-grid{
-    grid-template-columns:1fr;
-  }
+  .services-grid,.projects-grid{grid-template-columns:1fr}
 
-  /* المشاريع */
-  .toolbar{
-    flex-direction:column;
-    align-items:stretch;
-  }
+  .toolbar{flex-direction:column;align-items:stretch}
   .filters{
     overflow-x:auto;
     flex-wrap:nowrap;
     border-radius:12px;
     padding:.3rem;
     justify-content:flex-start;
+    scrollbar-width:none;
   }
-  .filter{
-    flex:0 0 auto;
-  }
-  .search-box{
-    max-width:none;
-    min-width:0;
-  }
-  .projects-grid{
-    grid-template-columns:1fr;
-  }
+  .filters::-webkit-scrollbar{display:none}
+  .filter{flex:0 0 auto}
+  .search-box{max-width:none;min-width:0}
 
-  /* من نحن */
-  .values-grid{
-    grid-template-columns:1fr;
-  }
+  .values-grid{grid-template-columns:1fr}
+  .contact-form{padding:1.5rem}
 
-  /* التواصل */
-  .contact-form{
-    padding:1.5rem;
-  }
+  .footer-content{flex-direction:column;text-align:center;gap:1rem}
 
-  /* الفوتر */
-  .footer-content{
-    flex-direction:column;
-    text-align:center;
-    gap:1rem;
-  }
+  .toTop{inset-inline-start:16px;bottom:16px;width:44px;height:44px}
+  #toast{inset-inline:16px;bottom:16px;text-align:center}
 
-  /* زر العودة للأعلى */
-  .toTop{
-    left:16px;
-    bottom:16px;
-    width:44px;
-    height:44px;
-  }
-
-  /* التنبيهات */
-  #toast{
-    right:16px;
-    left:16px;
-    bottom:16px;
-    text-align:center;
-  }
-
-  /* صفحة المشروع */
-  .project-hero{
-    height:40vh;
-    min-height:280px;
-    font-size:3.5rem;
-  }
-  .project-hero .overlay{
-    padding:1.5rem;
-  }
-  .gallery{
-    grid-template-columns:repeat(auto-fit, minmax(150px, 1fr));
-  }
-  .gallery img{
-    height:160px;
-  }
+  .project-hero{height:45vh;min-height:300px;font-size:3.5rem}
+  .project-hero .overlay{padding:1.5rem}
+  .gallery{grid-template-columns:repeat(auto-fit, minmax(150px, 1fr))}
+  .gallery img{height:160px}
 }
 
-/* شاشات صغيرة جداً */
-@media (max-width: 400px) {
-  .logo span:last-child{
-    max-width:120px;
-    font-size:.8rem;
-  }
-  .hero h1{
-    font-size:1.6rem;
-  }
-  .stats b{
-    font-size:1.1rem;
-  }
-  .stats span{
-    font-size:.65rem;
-  }
-  .btn{
-    padding:.7rem 1.2rem;
-    font-size:.85rem;
-  }
+@media (max-width:400px){
+  .logo span:last-child{max-width:120px;font-size:.8rem}
+  .hero h1{font-size:1.6rem}
+  .stats b{font-size:1.1rem}
+  .stats span{font-size:.65rem}
+  .btn{padding:.7rem 1.2rem;font-size:.85rem}
 }
 
-/* تقليل الحركة لمن يفضل ذلك */
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after{
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{
     animation-duration:.01ms !important;
     transition-duration:.01ms !important;
   }
-  html{
-    scroll-behavior:auto;
-  }
+  html{scroll-behavior:auto}
 }
+
+::-webkit-scrollbar{width:10px;height:10px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{
+  background:rgba(245,197,24,0.15);
+  border-radius:100px;
+  border:2px solid transparent;
+  background-clip:content-box;
+}
+::-webkit-scrollbar-thumb:hover{background:rgba(245,197,24,0.35);background-clip:content-box}
 </style>
 </head>
 <body>
 
-<!-- ===== الهيدر ===== -->
 <header id="siteHeader">
   <div class="container nav">
     <a href="#home" class="logo">
@@ -1468,7 +1334,6 @@ footer{
   </div>
 </header>
 
-<!-- ===== قسم الـ Hero ===== -->
 <section class="hero" id="home">
   <div class="container hero-grid">
     <div class="hero-content">
@@ -1484,13 +1349,13 @@ footer{
         مكتب باداؤود للهندسة والمقاولات — حلول معمارية مبتكرة تجمع بين الأصالة والحداثة، من الفكرة الأولى حتى تسليم المفتاح.
       </p>
       <div class="hero-actions">
-        <a href="#projects" class="btn btn-primary">استكشف مشاريعنا</a>
+        <a href="#projects" class="btn btn-primary"><span>استكشف مشاريعنا</span></a>
         <a href="#contact" class="btn btn-ghost">اطلب استشارة</a>
       </div>
       <div class="stats">
-        <div><b>120+</b><span>مشروع منجز</span></div>
-        <div><b>85+</b><span>عميل سعيد</span></div>
-        <div><b>15+</b><span>سنة خبرة</span></div>
+        <div><b>45+</b><span>مشروع منجز</span></div>
+        <div><b>38+</b><span>عميل سعيد</span></div>
+        <div><b>8+</b><span>سنة خبرة</span></div>
       </div>
     </div>
 
@@ -1504,14 +1369,13 @@ footer{
         <div class="visual-tags">
           <span>🏢 إداري</span>
           <span>📐 24 طابق</span>
-          <span>📍 صنعاء</span>
+          <span>📍 حضرموت</span>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ===== الخدمات ===== -->
 <section id="services">
   <div class="container">
     <div class="section-head reveal">
@@ -1527,7 +1391,6 @@ footer{
   </div>
 </section>
 
-<!-- ===== المنهجية ===== -->
 <section id="process">
   <div class="container">
     <div class="section-head reveal">
@@ -1536,31 +1399,14 @@ footer{
       <p>نحوّل الرؤية إلى نتيجة قابلة للتنفيذ عبر مراحل واضحة وشفافة.</p>
     </div>
     <div class="process-grid">
-      <article class="process-card reveal">
-        <span class="process-number">01</span>
-        <h3>الفهم والتحليل</h3>
-        <p>نبدأ بفهم احتياجاتك والموقع والميزانية قبل اتخاذ أي قرار تصميمي.</p>
-      </article>
-      <article class="process-card reveal">
-        <span class="process-number">02</span>
-        <h3>التصميم والتطوير</h3>
-        <p>نطوّر حلولًا معمارية تجمع الوظيفة والهوية والجمال في تصور واضح.</p>
-      </article>
-      <article class="process-card reveal">
-        <span class="process-number">03</span>
-        <h3>التنفيذ والإشراف</h3>
-        <p>نتابع التفاصيل والجودة والتنسيق بين التخصصات حتى يسير التنفيذ بثبات.</p>
-      </article>
-      <article class="process-card reveal">
-        <span class="process-number">04</span>
-        <h3>التسليم والمتابعة</h3>
-        <p>نسلّم مشروعًا متكاملًا ونبقى قريبين لضمان رضا العميل واستمرارية القيمة.</p>
-      </article>
+      <article class="process-card reveal"><span class="process-number">01</span><h3>الفهم والتحليل</h3><p>نبدأ بفهم احتياجاتك والموقع والميزانية قبل اتخاذ أي قرار تصميمي.</p></article>
+      <article class="process-card reveal"><span class="process-number">02</span><h3>التصميم والتطوير</h3><p>نطوّر حلولًا معمارية تجمع الوظيفة والهوية والجمال في تصور واضح.</p></article>
+      <article class="process-card reveal"><span class="process-number">03</span><h3>التنفيذ والإشراف</h3><p>نتابع التفاصيل والجودة والتنسيق بين التخصصات حتى يسير التنفيذ بثبات.</p></article>
+      <article class="process-card reveal"><span class="process-number">04</span><h3>التسليم والمتابعة</h3><p>نسلّم مشروعًا متكاملًا ونبقى قريبين لضمان رضا العميل واستمرارية القيمة.</p></article>
     </div>
   </div>
 </section>
 
-<!-- ===== المشاريع ===== -->
 <section id="projects">
   <div class="container">
     <div class="section-head reveal">
@@ -1584,11 +1430,10 @@ footer{
   </div>
 </section>
 
-<!-- ===== من نحن ===== -->
 <section id="about">
   <div class="container about-grid">
     <div class="about-text reveal">
-      <div class="kicker" style="display:inline-block;padding:.35rem .9rem;background:var(--surface);border:1px solid var(--border);border-radius:100px;font-size:.78rem;color:var(--brand-1);font-weight:600;letter-spacing:.5px;margin-bottom:1rem">من نحن</div>
+      <div class="kicker" style="display:inline-block;padding:.4rem 1rem;background:rgba(245,197,24,0.06);border:1px solid rgba(245,197,24,0.2);border-radius:100px;font-size:.75rem;color:var(--brand-1);font-weight:700;letter-spacing:1.5px;margin-bottom:1rem;text-transform:uppercase">من نحن</div>
       <h2>نبني <span class="gradient-text">الثقة</span> قبل المباني</h2>
       <p id="aboutText">
         مكتب باداؤود للهندسة والمقاولات — خبرة تمتد لسنوات في التصميم المعماري والإشراف الهندسي وتنفيذ المشاريع، نجمع بين الإبداع والدقة لنقدم فضاءات تلبي تطلعات عملائنا.
@@ -1596,31 +1441,14 @@ footer{
     </div>
 
     <div class="values-grid">
-      <div class="value-card reveal">
-        <div class="v-icon">◈</div>
-        <h3>رؤيتنا</h3>
-        <p>أن نكون مرجعاً في التصميم المعماري المستدام بالمنطقة.</p>
-      </div>
-      <div class="value-card reveal">
-        <div class="v-icon">◇</div>
-        <h3>رسالتنا</h3>
-        <p>تحويل طموح عملائنا إلى فضاءات عملية تفوق التوقعات.</p>
-      </div>
-      <div class="value-card reveal">
-        <div class="v-icon">✦</div>
-        <h3>قيمنا</h3>
-        <p>الإبداع، الدقة، الشفافية، والالتزام بالمواعيد.</p>
-      </div>
-      <div class="value-card reveal">
-        <div class="v-icon">☰</div>
-        <h3>منهجيتنا</h3>
-        <p>تحليل، تصميم مفاهيمي، تطوير، ثم إشراف كامل.</p>
-      </div>
+      <div class="value-card reveal"><div class="v-icon">◈</div><h3>رؤيتنا</h3><p>أن نكون مرجعاً في التصميم المعماري المستدام بالمنطقة.</p></div>
+      <div class="value-card reveal"><div class="v-icon">◇</div><h3>رسالتنا</h3><p>تحويل طموح عملائنا إلى فضاءات عملية تفوق التوقعات.</p></div>
+      <div class="value-card reveal"><div class="v-icon">✦</div><h3>قيمنا</h3><p>الإبداع، الدقة، الشفافية، والالتزام بالمواعيد.</p></div>
+      <div class="value-card reveal"><div class="v-icon">☰</div><h3>منهجيتنا</h3><p>تحليل، تصميم مفاهيمي، تطوير، ثم إشراف كامل.</p></div>
     </div>
   </div>
 </section>
 
-<!-- ===== التواصل ===== -->
 <section id="contact">
   <div class="container">
     <div class="section-head reveal">
@@ -1671,19 +1499,17 @@ footer{
           <label>رسالتك</label>
           <textarea name="msg" rows="5" placeholder="أخبرنا عن مشروعك..." required></textarea>
         </div>
-        <button class="btn btn-primary btn-block" type="submit">إرسال الرسالة</button>
+        <button class="btn btn-primary btn-block" type="submit"><span>إرسال الرسالة</span></button>
         <p id="formMsg" style="margin-top:.5rem;font-size:.9rem;text-align:center"></p>
       </form>
     </div>
   </div>
 </section>
 
-<!-- ===== صفحة تفاصيل المشروع ===== -->
 <section id="projectView">
   <div class="container project-detail" id="projectDetail"></div>
 </section>
 
-<!-- ===== الفوتر ===== -->
 <footer>
   <div class="container footer-content">
     <span>© <span id="year"></span> مكتب باداؤود للهندسة والمقاولات — جميع الحقوق محفوظة</span>
@@ -1691,29 +1517,23 @@ footer{
   </div>
 </footer>
 
-<!-- ===== معرض الصور ===== -->
 <div class="lightbox" id="lightbox">
   <img id="lightboxImg" alt="">
 </div>
 
-<!-- ===== زر العودة للأعلى ===== -->
 <div class="toTop" id="toTop" role="button" aria-label="أعلى">↑</div>
 
-<!-- ===== التنبيهات ===== -->
 <div id="toast"></div>
 
-<!-- ===== السكربتات ===== -->
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="assets/config.js"></script>
 <script src="assets/db.js"></script>
 
 <script>
-// ====== منطق الموقع — مكتب باداؤود ======
 (function () {
   const $ = (s) => document.querySelector(s);
   const $$ = (s) => document.querySelectorAll(s);
 
-  // ---------- Helpers ----------
   function toast(msg) {
     const t = $("#toast");
     if (!t) return;
@@ -1729,7 +1549,6 @@ footer{
     }[m]));
   }
 
-  // ---------- Theme ----------
   function applyTheme(theme) {
     document.documentElement.setAttribute("data-theme", theme);
     if (window.DB && DB.setTheme) DB.setTheme(theme);
@@ -1746,25 +1565,21 @@ footer{
     applyTheme(cur === "dark" ? "light" : "dark");
   });
 
-  // ---------- Header scroll ----------
   const header = $("#siteHeader");
   window.addEventListener("scroll", () => {
     header?.classList.toggle("scrolled", window.scrollY > 30);
     $("#toTop")?.classList.toggle("show", window.scrollY > 500);
   });
 
-  // ---------- Mobile menu ----------
   $("#menuBtn")?.addEventListener("click", () => $("#navLinks")?.classList.toggle("open"));
   $("#navLinks")?.addEventListener("click", (e) => {
     if (e.target.tagName === "A") $("#navLinks").classList.remove("open");
   });
 
-  // ---------- toTop ----------
   $("#toTop")?.addEventListener("click", () =>
     window.scrollTo({ top: 0, behavior: "smooth" })
   );
 
-  // ---------- Reveal ----------
   let io;
   function observeReveal() {
     if (!("IntersectionObserver" in window)) {
@@ -1784,12 +1599,10 @@ footer{
     $$(".reveal:not(.on)").forEach(el => io.observe(el));
   }
 
-  // ---------- State ----------
   let allProjects = [];
   let currentFilter = "all";
   let currentSearch = "";
 
-  // ---------- Load Settings ----------
   async function loadSettings() {
     try {
       const s = await DB.getSettings();
@@ -1824,7 +1637,6 @@ footer{
     }
   }
 
-  // ---------- Services ----------
   async function loadServices() {
     const box = $("#servicesGrid");
     let list = [];
@@ -1854,7 +1666,6 @@ footer{
     observeReveal();
   }
 
-  // ---------- Projects ----------
   async function loadProjects() {
     try {
       allProjects = await DB.getProjects();
@@ -1941,7 +1752,6 @@ footer{
     renderProjects();
   });
 
-  // ---------- Project Detail ----------
   async function openProject(slug) {
     const proj = (DB.getProjectBySlug)
       ? await DB.getProjectBySlug(slug)
@@ -1976,7 +1786,7 @@ footer{
       </div>
 
       ${gallery.length ? `
-        <h2 style="margin-top:2.5rem;font-size:1.5rem;font-weight:900;letter-spacing:-.5px;font-family:'Cairo',sans-serif">معرض الصور</h2>
+        <h2 style="margin-top:2.5rem;font-size:1.6rem;font-weight:900;letter-spacing:-.5px;font-family:'Cairo',sans-serif">معرض الصور</h2>
         <div class="gallery">
           ${gallery.map(url => `<img src="${escapeHtml(url)}" alt="" loading="lazy">`).join("")}
         </div>
@@ -2025,7 +1835,6 @@ footer{
   }
   window.addEventListener("hashchange", checkHashForProject);
 
-  // ---------- Contact Form ----------
   $("#contactForm")?.addEventListener("submit", async (e) => {
     e.preventDefault();
     const fd = new FormData(e.target);
@@ -2047,10 +1856,8 @@ footer{
     }
   });
 
-  // ---------- Year ----------
   $("#year").textContent = new Date().getFullYear();
 
-  // ---------- Init ----------
   (async () => {
     await loadSettings();
     await loadServices();
