@@ -8,32 +8,35 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
 <style>
+/* =========================================
+   المتغيرات والألوان (أسود وأصفر)
+   ========================================= */
 :root{
-  --bg:#08090d;
-  --bg-2:#0f1117;
-  --surface:rgba(255,255,255,0.04);
-  --surface-2:rgba(255,255,255,0.07);
-  --glass:rgba(255,255,255,0.05);
-  --glass-border:rgba(255,255,255,0.09);
-  --border:rgba(255,255,255,0.08);
-  --border-strong:rgba(255,255,255,0.14);
-  --txt:#f0f2f6;
-  --txt-2:#b8c0cc;
-  --muted:#7a8494;
-  --brand-1:#d9a900;
-  --brand-2:#f2cf63;
-  --brand-3:#fff7df;
-  --accent:#e7bd3f;
-  --glow:rgba(217,169,0,0.35);
-  --success:#10b981;
-  --danger:#ef4444;
-  --warn:#d9a900;
-  --radius:20px;
-  --radius-sm:12px;
-  --radius-lg:28px;
-  --shadow:0 20px 50px -20px rgba(0,0,0,.6);
-  --shadow-lg:0 40px 80px -30px rgba(139,92,246,.25);
-  color-scheme:dark;
+  --bg: #0a0a0a;
+  --bg-2: #141414;
+  --surface: rgba(255, 255, 255, 0.03);
+  --surface-2: rgba(255, 255, 255, 0.06);
+  --glass: rgba(255, 255, 255, 0.04);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --border: rgba(255, 255, 255, 0.07);
+  --border-strong: rgba(255, 255, 255, 0.12);
+  --txt: #f5f5f5;
+  --txt-2: #a3a3a3;
+  --muted: #737373;
+  --brand-1: #f5c518;
+  --brand-2: #e0b000;
+  --brand-3: #fff8e1;
+  --accent: #f5c518;
+  --glow: rgba(245, 197, 24, 0.25);
+  --success: #10b981;
+  --danger: #ef4444;
+  --warn: #f5c518;
+  --radius: 16px;
+  --radius-sm: 10px;
+  --radius-lg: 24px;
+  --shadow: 0 20px 50px -20px rgba(0,0,0,0.8);
+  --shadow-lg: 0 40px 80px -30px rgba(245, 197, 24, 0.15);
+  color-scheme: dark;
 }
 
 *{box-sizing:border-box;margin:0;padding:0}
@@ -55,14 +58,14 @@ body::before{
   content:"";
   position:fixed;inset:0;z-index:-1;pointer-events:none;
   background:
-    radial-gradient(circle at 15% 20%, rgba(99,102,241,.15), transparent 45%),
-    radial-gradient(circle at 85% 15%, rgba(139,92,246,.12), transparent 40%),
-    radial-gradient(circle at 75% 85%, rgba(6,182,212,.10), transparent 45%);
+    radial-gradient(circle at 15% 20%, rgba(245, 197, 24, 0.06), transparent 45%),
+    radial-gradient(circle at 85% 15%, rgba(245, 197, 24, 0.04), transparent 40%),
+    radial-gradient(circle at 75% 85%, rgba(245, 197, 24, 0.04), transparent 45%);
 }
 
 a{color:inherit;text-decoration:none}
 img{max-width:100%;display:block}
-button{font-family:inherit}
+button{font-family:inherit;cursor:pointer}
 
 .wrap{width:min(1200px,94%);margin:2rem auto}
 
@@ -106,7 +109,7 @@ button{font-family:inherit}
   background:linear-gradient(135deg,var(--brand-1),var(--brand-2));
   border-radius:18px;
   display:grid;place-items:center;
-  font-size:1.6rem;font-weight:900;color:#fff;
+  font-size:1.6rem;font-weight:900;color:#000;
   margin-bottom:1.5rem;
   box-shadow:0 12px 30px -8px var(--glow);
   font-family:'Cairo',sans-serif;
@@ -150,7 +153,7 @@ input,textarea,select{
 input:focus,textarea:focus,select:focus{
   outline:none;
   border-color:var(--brand-1);
-  box-shadow:0 0 0 4px color-mix(in srgb,var(--brand-1) 15%,transparent);
+  box-shadow:0 0 0 4px rgba(245, 197, 24, 0.15);
 }
 input::placeholder,textarea::placeholder{color:var(--muted)}
 select{cursor:pointer}
@@ -174,7 +177,7 @@ select option{background:var(--bg-2);color:var(--txt)}
 }
 .btn-primary{
   background:linear-gradient(135deg,var(--brand-1),var(--brand-2));
-  color:#fff;
+  color:#000;
   box-shadow:0 10px 25px -10px var(--glow);
 }
 .btn-primary:hover{transform:translateY(-2px);box-shadow:0 16px 35px -12px var(--glow)}
@@ -183,10 +186,10 @@ select option{background:var(--bg-2);color:var(--txt)}
   border:1px solid var(--border);
   color:var(--txt-2);
 }
-.btn-ghost:hover{background:var(--surface-2);border-color:var(--border-strong);color:var(--txt)}
+.btn-ghost:hover{background:var(--surface-2);border-color:var(--brand-1);color:var(--brand-1)}
 .btn-danger{
-  background:color-mix(in srgb,var(--danger) 15%,transparent);
-  border:1px solid color-mix(in srgb,var(--danger) 35%,transparent);
+  background:rgba(239, 68, 68, 0.15);
+  border:1px solid rgba(239, 68, 68, 0.35);
   color:#fca5a5;
   padding:.5rem 1rem;
   font-size:.82rem;
@@ -223,7 +226,7 @@ select option{background:var(--bg-2);color:var(--txt)}
   background:linear-gradient(135deg,var(--brand-1),var(--brand-2));
   border-radius:12px;
   display:grid;place-items:center;
-  color:#fff;font-weight:900;font-size:1.1rem;
+  color:#000;font-weight:900;font-size:1.1rem;
   box-shadow:0 8px 20px -6px var(--glow);
   font-family:'Cairo',sans-serif;
   flex-shrink:0;
@@ -287,9 +290,9 @@ select option{background:var(--bg-2);color:var(--txt)}
   display:grid;place-items:center;
   font-size:1.15rem;
   background:linear-gradient(135deg,
-    color-mix(in srgb,var(--brand-1) 15%,transparent),
-    color-mix(in srgb,var(--brand-2) 15%,transparent));
-  border:1px solid color-mix(in srgb,var(--brand-1) 25%,transparent);
+    rgba(245, 197, 24, 0.15),
+    rgba(245, 197, 24, 0.05));
+  border:1px solid rgba(245, 197, 24, 0.25);
   color:var(--accent);
   flex-shrink:0;
 }
@@ -300,6 +303,7 @@ select option{background:var(--bg-2);color:var(--txt)}
   font-family:'Cairo',sans-serif;
   letter-spacing:-.5px;
   line-height:1.1;
+  color:var(--brand-1);
 }
 .stat-card span{font-size:.8rem;color:var(--muted)}
 
@@ -332,10 +336,10 @@ select option{background:var(--bg-2);color:var(--txt)}
   align-items:center;
   gap:.4rem;
 }
-.tab:hover{color:var(--txt);background:var(--surface-2)}
+.tab:hover{color:var(--brand-1);background:var(--surface-2)}
 .tab.on{
   background:linear-gradient(135deg,var(--brand-1),var(--brand-2));
-  color:#fff;
+  color:#000;
   box-shadow:0 6px 20px -6px var(--glow);
 }
 
@@ -375,7 +379,7 @@ select option{background:var(--bg-2);color:var(--txt)}
 .pane-head p{color:var(--muted);font-size:.85rem;margin-top:.2rem}
 
 .overview-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem;margin-bottom:1.2rem}
-.overview-card{padding:1.35rem;background:linear-gradient(135deg,rgba(217,169,0,.11),rgba(255,255,255,.03));border:1px solid color-mix(in srgb,var(--brand-1) 24%,var(--border));border-radius:var(--radius-sm);min-width:0}
+.overview-card{padding:1.35rem;background:linear-gradient(135deg,rgba(245, 197, 24, 0.08),rgba(255,255,255,.02));border:1px solid rgba(245, 197, 24, 0.2);border-radius:var(--radius-sm);min-width:0}
 .overview-label{display:block;color:var(--muted);font-size:.78rem;margin-bottom:.35rem}
 .overview-card strong{display:block;font-family:'Cairo',sans-serif;font-size:1.15rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .overview-card small{display:block;color:var(--txt-2);font-size:.8rem;margin-top:.25rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
@@ -487,12 +491,12 @@ select option{background:var(--bg-2);color:var(--txt)}
   width:52px;height:52px;
   border-radius:10px;
   background:linear-gradient(135deg,
-    color-mix(in srgb,var(--brand-1) 15%,transparent),
-    color-mix(in srgb,var(--brand-2) 15%,transparent));
+    rgba(245, 197, 24, 0.15),
+    rgba(245, 197, 24, 0.05));
   display:grid;place-items:center;
   font-size:1.3rem;
   color:var(--accent);
-  border:1px solid color-mix(in srgb,var(--brand-1) 20%,transparent);
+  border:1px solid rgba(245, 197, 24, 0.2);
   overflow:hidden;
   flex-shrink:0;
 }
@@ -519,8 +523,8 @@ select option{background:var(--bg-2);color:var(--txt)}
   display:inline-block;
   font-size:.72rem;
   color:var(--accent);
-  background:color-mix(in srgb,var(--brand-1) 12%,transparent);
-  border:1px solid color-mix(in srgb,var(--brand-1) 25%,transparent);
+  background:rgba(245, 197, 24, 0.1);
+  border:1px solid rgba(245, 197, 24, 0.25);
   padding:.15rem .7rem;
   border-radius:100px;
   font-weight:600;
@@ -578,7 +582,7 @@ select option{background:var(--bg-2);color:var(--txt)}
   right:28px;
   padding:.9rem 1.6rem;
   background:linear-gradient(135deg,var(--brand-1),var(--brand-2));
-  color:#fff;
+  color:#000;
   border-radius:14px;
   font-weight:700;
   font-size:.9rem;
@@ -591,14 +595,14 @@ select option{background:var(--bg-2);color:var(--txt)}
   max-width:calc(100vw - 56px);
 }
 #toast.show{opacity:1;transform:translateY(0)}
-#toast.error{background:linear-gradient(135deg,#dc2626,#ef4444)}
+#toast.error{background:linear-gradient(135deg,#dc2626,#ef4444);color:#fff}
 
 /* ===== Spinner ===== */
 .spinner{
   display:inline-block;
   width:16px;height:16px;
-  border:2px solid rgba(255,255,255,.3);
-  border-top-color:#fff;
+  border:2px solid rgba(0,0,0,.2);
+  border-top-color:#000;
   border-radius:50%;
   animation:spin .7s linear infinite;
 }
@@ -798,7 +802,7 @@ select option{background:var(--bg-2);color:var(--txt)}
         </div>
         <div class="field">
           <label>اللون الأساسي</label>
-          <input id="ui_primaryColor" type="color" value="#6366f1" style="height:48px;cursor:pointer;padding:.3rem">
+          <input id="ui_primaryColor" type="color" value="#f5c518" style="height:48px;cursor:pointer;padding:.3rem">
         </div>
         <div class="field">
           <label>الوضع الافتراضي</label>
@@ -991,7 +995,7 @@ select option{background:var(--bg-2);color:var(--txt)}
   let services = [];
   let projects = [];
   let messages = [];
-  let uiData = { logo_url: "", primary_color: "#6366f1", default_theme: "dark" };
+  let uiData = { logo_url: "", primary_color: "#f5c518", default_theme: "dark" };
   let coverImageUrl = "";
   let galleryUrls = [];
 
@@ -1137,7 +1141,7 @@ select option{background:var(--bg-2);color:var(--txt)}
       if (DB.getUiSettings) {
         uiData = await DB.getUiSettings();
       }
-      $("#ui_primaryColor").value = uiData.primary_color || "#6366f1";
+      $("#ui_primaryColor").value = uiData.primary_color || "#f5c518";
       $("#ui_defaultTheme").value = uiData.default_theme || "dark";
 
       if (uiData.logo_url) {
