@@ -1,273 +1,383 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
+<!-- =============================================
+     BADAWOOD ENGINEERING — ADMIN DASHBOARD
+     Version : 3.0 (Extended Edition)
+     Theme   : Light Mode
+     ============================================= -->
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>لوحة التحكم — مكتب باداؤود</title>
+<meta name="theme-color" content="#f5c518">
+<meta name="robots" content="noindex, nofollow">
+<title>لوحة التحكم — مكتب باداؤود للهندسة</title>
+
+<!-- ===== Google Fonts ===== -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+
 <style>
-/* =========================================
-   FUTURISTIC ADMIN — BADAWOOD
-   ========================================= */
+/* =============================================
+   1. ROOT VARIABLES — LIGHT THEME
+   ============================================= */
 :root{
-  --bg:#050507;
-  --bg-2:#0c0c11;
-  --surface:rgba(255,255,255,0.025);
-  --surface-2:rgba(255,255,255,0.05);
-  --glass:rgba(255,255,255,0.04);
-  --glass-border:rgba(255,255,255,0.07);
-  --border:rgba(255,255,255,0.06);
-  --border-strong:rgba(255,255,255,0.12);
-  --txt:#f5f5f7;
-  --txt-2:#a1a1aa;
-  --muted:#71717a;
+  /* ---- Backgrounds ---- */
+  --bg:#f8f9fb;
+  --bg-2:#ffffff;
+  --bg-3:#f1f3f6;
+  --surface:#ffffff;
+  --surface-2:#f9fafb;
+  --surface-3:#f3f4f6;
+
+  /* ---- Borders ---- */
+  --border:#e5e7eb;
+  --border-strong:#d1d5db;
+  --border-light:#f3f4f6;
+
+  /* ---- Text ---- */
+  --txt:#0a0a0a;
+  --txt-2:#4b5563;
+  --txt-3:#6b7280;
+  --muted:#9ca3af;
+
+  /* ---- Brand (Yellow) ---- */
   --brand-1:#f5c518;
-  --brand-2:#ffd84d;
+  --brand-2:#e0b000;
   --brand-3:#fff8e1;
-  --accent:#f5c518;
+  --brand-4:#fffaeb;
+  --brand-dark:#7a5c00;
+
+  /* ---- Effects ---- */
   --glow:rgba(245,197,24,0.35);
-  --glow-soft:rgba(245,197,24,0.12);
-  --success:#10b981;
-  --danger:#ef4444;
-  --warn:#f5c518;
-  --radius:18px;
+  --glow-soft:rgba(245,197,24,0.15);
+  --glow-strong:rgba(245,197,24,0.5);
+
+  /* ---- States ---- */
+  --success:#059669;
+  --success-bg:#ecfdf5;
+  --danger:#dc2626;
+  --danger-bg:#fef2f2;
+  --warning:#d97706;
+  --warning-bg:#fffbeb;
+  --info:#2563eb;
+  --info-bg:#eff6ff;
+
+  /* ---- Radii ---- */
+  --radius-xs:6px;
   --radius-sm:12px;
+  --radius:18px;
   --radius-lg:26px;
-  --shadow:0 20px 50px -20px rgba(0,0,0,0.9);
-  --shadow-lg:0 40px 80px -30px rgba(245,197,24,0.15);
-  color-scheme:dark;
+  --radius-xl:36px;
+  --radius-full:9999px;
+
+  /* ---- Shadows ---- */
+  --shadow-xs:0 1px 2px rgba(0,0,0,0.04);
+  --shadow-sm:0 2px 8px -2px rgba(0,0,0,0.06);
+  --shadow:0 10px 30px -12px rgba(0,0,0,0.08);
+  --shadow-md:0 15px 40px -15px rgba(0,0,0,0.1);
+  --shadow-lg:0 30px 60px -30px rgba(0,0,0,0.15);
+  --shadow-xl:0 40px 80px -30px rgba(0,0,0,0.2);
+  --shadow-glow:0 0 40px -10px var(--glow);
+
+  /* ---- Transitions ---- */
+  --t-fast:0.15s cubic-bezier(0.4,0,0.2,1);
+  --t:0.3s cubic-bezier(0.4,0,0.2,1);
+  --t-slow:0.5s cubic-bezier(0.4,0,0.2,1);
+  --t-bounce:0.4s cubic-bezier(0.34,1.56,0.64,1);
+
+  /* ---- Layout ---- */
+  --sidebar-w:260px;
+  --header-h:64px;
+
+  color-scheme:light;
 }
 
-*{box-sizing:border-box;margin:0;padding:0}
-html{-webkit-font-smoothing:antialiased;scroll-behavior:smooth}
+/* =============================================
+   2. RESET & BASE
+   ============================================= */
+*,
+*::before,
+*::after{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+html{
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  text-rendering:optimizeLegibility;
+}
 
 body{
-  font-family:'Tajawal','Segoe UI',system-ui,sans-serif;
+  font-family:'Tajawal','Segoe UI',system-ui,-apple-system,sans-serif;
   background:var(--bg);
   color:var(--txt);
   line-height:1.7;
   direction:rtl;
-  min-height:100vh;
-  position:relative;
   overflow-x:hidden;
+  min-height:100vh;
+  font-size:15px;
 }
 
-/* ====== Animated Mesh Background ====== */
-body::before{
-  content:"";
-  position:fixed;inset:0;z-index:-2;pointer-events:none;
-  background:
-    radial-gradient(circle at 15% 20%, rgba(245,197,24,0.10), transparent 45%),
-    radial-gradient(circle at 85% 15%, rgba(245,197,24,0.06), transparent 40%),
-    radial-gradient(circle at 75% 85%, rgba(245,197,24,0.06), transparent 45%),
-    radial-gradient(circle at 20% 90%, rgba(255,216,77,0.05), transparent 45%);
-  animation:meshShift 20s ease-in-out infinite;
-}
-@keyframes meshShift{
-  0%,100%{transform:translate(0,0) scale(1)}
-  50%{transform:translate(-2%,2%) scale(1.05)}
+h1,h2,h3,h4{
+  font-family:'Cairo','Tajawal',sans-serif;
+  font-weight:900;
+  line-height:1.2;
+  letter-spacing:-0.3px;
+  color:var(--txt);
 }
 
-/* ====== Grid Pattern Overlay ====== */
-body::after{
-  content:"";
-  position:fixed;inset:0;z-index:-1;pointer-events:none;
-  background-image:
-    linear-gradient(rgba(245,197,24,0.025) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(245,197,24,0.025) 1px, transparent 1px);
-  background-size:60px 60px;
-  mask-image:radial-gradient(ellipse at center, black 40%, transparent 80%);
-  -webkit-mask-image:radial-gradient(ellipse at center, black 40%, transparent 80%);
-}
+h1{font-size:1.5rem}
+h2{font-size:1.2rem}
+h3{font-size:1rem}
 
-a{color:inherit;text-decoration:none}
+p{line-height:1.7}
+
+a{color:inherit;text-decoration:none;transition:var(--t)}
 img{max-width:100%;display:block}
-button{font-family:inherit;cursor:pointer}
+button{font-family:inherit;cursor:pointer;border:none;background:none}
 
-/* ====== Login Screen ====== */
+::selection{background:var(--brand-1);color:#000}
+
+::-webkit-scrollbar{width:10px;height:10px}
+::-webkit-scrollbar-track{background:var(--bg-3)}
+::-webkit-scrollbar-thumb{
+  background:var(--border-strong);
+  border-radius:var(--radius-full);
+  border:2px solid var(--bg-3);
+}
+::-webkit-scrollbar-thumb:hover{background:var(--brand-1)}
+
+/* =============================================
+   3. UTILITIES
+   ============================================= */
+.hidden{display:none!important}
+.text-center{text-align:center}
+
+/* =============================================
+   4. LOGIN SCREEN
+   ============================================= */
 .login-wrap{
   min-height:100vh;
   display:grid;
   place-items:center;
   padding:2rem;
-  position:relative;
+  background:
+    radial-gradient(circle at 15% 20%, rgba(245,197,24,0.1), transparent 45%),
+    radial-gradient(circle at 85% 85%, rgba(245,197,24,0.08), transparent 45%),
+    var(--bg);
 }
 
 .login-box{
-  width:min(440px,100%);
-  background:linear-gradient(145deg, rgba(20,20,25,0.9), rgba(10,10,14,0.95));
-  backdrop-filter:blur(24px) saturate(180%);
-  -webkit-backdrop-filter:blur(24px) saturate(180%);
-  border:1px solid var(--glass-border);
+  width:min(440px, 100%);
+  background:var(--surface);
+  border:1px solid var(--border);
   border-radius:var(--radius-lg);
   padding:2.75rem;
-  box-shadow:0 40px 80px -30px rgba(0,0,0,0.9), 0 0 0 1px rgba(245,197,24,0.05);
+  box-shadow:var(--shadow-lg);
   position:relative;
   overflow:hidden;
 }
+
 .login-box::before{
   content:"";
-  position:absolute;top:0;left:0;right:0;height:1px;
-  background:linear-gradient(90deg, transparent, var(--brand-1), transparent);
-  opacity:.6;
-}
-.login-box::after{
-  content:"";
-  position:absolute;inset:-2px;
-  border-radius:var(--radius-lg);
-  padding:1px;
-  background:linear-gradient(135deg, var(--brand-1), transparent 40%, transparent 60%, var(--brand-2));
-  -webkit-mask:linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-  -webkit-mask-composite:xor;
-  mask-composite:exclude;
-  opacity:.3;
-  pointer-events:none;
+  position:absolute;
+  top:0;
+  inset-inline-start:0;
+  width:100%;
+  height:3px;
+  background:linear-gradient(90deg, var(--brand-1), var(--brand-2));
 }
 
 .login-box .brand-mark{
-  width:64px;height:64px;
+  width:64px;
+  height:64px;
   background:linear-gradient(135deg, var(--brand-1), var(--brand-2));
-  border-radius:18px;
-  display:grid;place-items:center;
-  font-size:1.7rem;font-weight:900;color:#000;
+  border-radius:var(--radius);
+  display:grid;
+  place-items:center;
+  font-size:1.7rem;
+  font-weight:900;
+  color:#000;
   margin-bottom:1.5rem;
-  box-shadow:0 0 40px -5px var(--glow), 0 12px 30px -8px var(--glow);
-  font-family:'Cairo',sans-serif;
+  box-shadow:0 8px 25px -8px var(--glow);
   overflow:hidden;
+  position:relative;
 }
-.login-box .brand-mark img{width:100%;height:100%;object-fit:cover;border-radius:inherit}
+
+.login-box .brand-mark::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(135deg, transparent 40%, rgba(255,255,255,0.4));
+}
+
+.login-box .brand-mark img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
 
 .login-box h1{
-  font-size:1.6rem;
+  font-size:1.5rem;
   font-weight:900;
-  letter-spacing:-.5px;
-  margin-bottom:.4rem;
+  letter-spacing:-0.5px;
+  margin-bottom:0.4rem;
   font-family:'Cairo',sans-serif;
-  background:linear-gradient(135deg, #fff, var(--txt-2));
-  -webkit-background-clip:text;background-clip:text;
-  -webkit-text-fill-color:transparent;
 }
-.login-box .subtitle{color:var(--muted);font-size:.9rem;margin-bottom:2rem}
 
-/* ====== Inputs & Forms ====== */
+.login-box .subtitle{
+  color:var(--muted);
+  font-size:0.9rem;
+  margin-bottom:2rem;
+}
+
+/* =============================================
+   5. FORMS & INPUTS
+   ============================================= */
 .field{margin-bottom:1rem}
+
 .field label{
   display:block;
-  font-size:.8rem;
+  font-size:0.8rem;
   color:var(--txt-2);
-  font-weight:600;
-  margin-bottom:.5rem;
-  letter-spacing:.3px;
+  font-weight:700;
+  margin-bottom:0.5rem;
 }
-input,textarea,select{
+
+input,
+textarea,
+select{
   width:100%;
-  background:rgba(0,0,0,0.4);
+  background:var(--bg-2);
   border:1px solid var(--border);
   color:var(--txt);
-  padding:.85rem 1rem;
+  padding:0.85rem 1rem;
   border-radius:var(--radius-sm);
   font-family:inherit;
-  font-size:.95rem;
-  transition:.3s;
+  font-size:0.95rem;
+  transition:var(--t);
   resize:vertical;
 }
-input:hover,textarea:hover,select:hover{
+
+input:hover,
+textarea:hover,
+select:hover{
   border-color:var(--border-strong);
 }
-input:focus,textarea:focus,select:focus{
+
+input:focus,
+textarea:focus,
+select:focus{
   outline:none;
   border-color:var(--brand-1);
-  background:rgba(0,0,0,0.6);
-  box-shadow:0 0 0 4px var(--glow-soft), 0 0 20px -5px var(--glow);
+  background:var(--surface);
+  box-shadow:0 0 0 4px var(--glow-soft);
 }
-input::placeholder,textarea::placeholder{color:var(--muted)}
-select{cursor:pointer}
-select option{background:var(--bg-2);color:var(--txt)}
 
-/* ====== Buttons ====== */
+input::placeholder,
+textarea::placeholder{color:var(--muted)}
+
+select{cursor:pointer}
+select option{background:var(--surface);color:var(--txt)}
+
+input[type="color"]{
+  padding:0.3rem;
+  height:48px;
+  cursor:pointer;
+}
+
+/* =============================================
+   6. BUTTONS
+   ============================================= */
 .btn{
   display:inline-flex;
   align-items:center;
   justify-content:center;
-  gap:.5rem;
-  padding:.75rem 1.4rem;
+  gap:0.5rem;
+  padding:0.7rem 1.4rem;
   border-radius:var(--radius-sm);
   font-weight:700;
-  font-size:.88rem;
+  font-size:0.88rem;
+  font-family:inherit;
+  transition:var(--t);
   border:1px solid transparent;
   cursor:pointer;
-  transition:.3s cubic-bezier(.4,0,.2,1);
-  font-family:inherit;
   white-space:nowrap;
-  position:relative;
-  overflow:hidden;
-  letter-spacing:.2px;
+  letter-spacing:0.1px;
 }
+
 .btn-primary{
   background:linear-gradient(135deg, var(--brand-1), var(--brand-2));
   color:#000;
-  box-shadow:0 0 30px -8px var(--glow), 0 10px 25px -10px rgba(0,0,0,0.5);
+  box-shadow:0 8px 20px -8px var(--glow);
 }
-.btn-primary::before{
-  content:"";position:absolute;inset:0;
-  background:linear-gradient(135deg, var(--brand-2), var(--brand-1));
-  opacity:0;transition:.3s;
-}
-.btn-primary:hover::before{opacity:1}
-.btn-primary:hover{
+
+.btn-primary:hover:not(:disabled){
   transform:translateY(-2px);
-  box-shadow:0 0 40px -5px var(--glow), 0 16px 35px -12px rgba(0,0,0,0.6);
+  box-shadow:0 12px 30px -8px var(--glow);
 }
-.btn-primary span,.btn-primary *{position:relative;z-index:1}
+
+.btn-primary:disabled{
+  opacity:0.6;
+  cursor:not-allowed;
+}
 
 .btn-ghost{
-  background:rgba(255,255,255,0.03);
+  background:var(--surface);
   border:1px solid var(--border);
   color:var(--txt-2);
-  backdrop-filter:blur(10px);
 }
+
 .btn-ghost:hover{
-  background:rgba(245,197,24,0.08);
+  background:var(--brand-3);
   border-color:var(--brand-1);
-  color:var(--brand-1);
+  color:var(--brand-dark);
   transform:translateY(-2px);
-  box-shadow:0 0 20px -8px var(--glow);
 }
+
 .btn-danger{
-  background:rgba(239,68,68,0.1);
-  border:1px solid rgba(239,68,68,0.3);
-  color:#fca5a5;
-  padding:.5rem 1rem;
-  font-size:.8rem;
+  background:var(--danger-bg);
+  border:1px solid #fecaca;
+  color:var(--danger);
+  padding:0.5rem 1rem;
+  font-size:0.82rem;
 }
+
 .btn-danger:hover{
   background:var(--danger);
   color:#fff;
   border-color:var(--danger);
-  box-shadow:0 0 20px -5px rgba(239,68,68,0.5);
 }
-.btn-sm{padding:.5rem .9rem;font-size:.8rem}
-.btn-block{width:100%}
-.btn:focus-visible{outline:2px solid var(--brand-1);outline-offset:3px}
 
-/* ====== Dashboard Layout — SIDEBAR ====== */
+.btn-sm{padding:0.5rem 0.9rem;font-size:0.82rem}
+.btn-block{width:100%}
+
+.btn:focus-visible{
+  outline:2px solid var(--brand-1);
+  outline-offset:3px;
+}
+
+/* =============================================
+   7. DASHBOARD LAYOUT
+   ============================================= */
 .panel{display:none}
 
 .dashboard{
   display:grid;
-  grid-template-columns:260px 1fr;
+  grid-template-columns:var(--sidebar-w) 1fr;
   min-height:100vh;
 }
 
-/* ====== Sidebar ====== */
+/* =============================================
+   8. SIDEBAR
+   ============================================= */
 .sidebar{
-  background:linear-gradient(180deg, rgba(12,12,17,0.95), rgba(8,8,12,0.98));
-  backdrop-filter:blur(24px) saturate(180%);
-  -webkit-backdrop-filter:blur(24px) saturate(180%);
-  border-inline-end:1px solid var(--glass-border);
-  padding:1.75rem 1.25rem;
+  background:var(--surface);
+  border-inline-end:1px solid var(--border);
+  padding:1.5rem 1.25rem;
   position:sticky;
   top:0;
   height:100vh;
@@ -278,99 +388,127 @@ select option{background:var(--bg-2);color:var(--txt)}
 }
 
 .sidebar-brand{
-  display:flex;align-items:center;gap:.75rem;
+  display:flex;
+  align-items:center;
+  gap:0.75rem;
   padding-bottom:1.25rem;
   border-bottom:1px solid var(--border);
 }
+
 .sidebar-brand .logo-mini{
-  width:44px;height:44px;
+  width:44px;
+  height:44px;
   background:linear-gradient(135deg, var(--brand-1), var(--brand-2));
-  border-radius:12px;
-  display:grid;place-items:center;
-  color:#000;font-weight:900;font-size:1.15rem;
-  box-shadow:0 0 30px -8px var(--glow);
-  font-family:'Cairo',sans-serif;
-  flex-shrink:0;
+  border-radius:var(--radius-sm);
+  display:grid;
+  place-items:center;
+  color:#000;
+  font-weight:900;
+  font-size:1.15rem;
+  box-shadow:0 4px 15px -4px var(--glow);
   overflow:hidden;
+  flex-shrink:0;
+  position:relative;
 }
-.sidebar-brand .logo-mini img{width:100%;height:100%;object-fit:cover;border-radius:inherit}
+
+.sidebar-brand .logo-mini::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(135deg, transparent 40%, rgba(255,255,255,0.4));
+}
+
+.sidebar-brand .logo-mini img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
 .sidebar-brand .brand-text{min-width:0}
+
 .sidebar-brand h2{
-  font-size:.95rem;
+  font-size:0.95rem;
   font-weight:900;
   font-family:'Cairo',sans-serif;
-  letter-spacing:-.3px;
+  letter-spacing:-0.3px;
   white-space:nowrap;
   overflow:hidden;
   text-overflow:ellipsis;
 }
+
 .sidebar-brand .brand-sub{
-  font-size:.7rem;
+  font-size:0.7rem;
   color:var(--muted);
   white-space:nowrap;
   overflow:hidden;
   text-overflow:ellipsis;
 }
 
-/* Status Badge */
+/* ---- Status Badge ---- */
 .status-badge{
   display:inline-flex;
   align-items:center;
-  gap:.5rem;
-  padding:.45rem .8rem;
-  background:rgba(16,185,129,0.08);
-  border:1px solid rgba(16,185,129,0.2);
-  border-radius:100px;
-  font-size:.72rem;
-  color:var(--txt-2);
+  gap:0.5rem;
+  padding:0.45rem 0.8rem;
+  background:var(--success-bg);
+  border:1px solid #a7f3d0;
+  border-radius:var(--radius-full);
+  font-size:0.72rem;
+  color:var(--success);
   font-weight:600;
   width:fit-content;
 }
+
 .status-badge .dot{
-  width:6px;height:6px;border-radius:50%;
+  width:6px;
+  height:6px;
+  border-radius:50%;
   background:var(--success);
-  box-shadow:0 0 10px var(--success);
+  box-shadow:0 0 8px var(--success);
   animation:pulse 2s infinite;
 }
+
 @keyframes pulse{
   0%,100%{opacity:1;transform:scale(1)}
-  50%{opacity:.6;transform:scale(1.3)}
+  50%{opacity:0.6;transform:scale(1.3)}
 }
 
-/* Sidebar Nav */
+/* ---- Sidebar Nav ---- */
 .sidebar-nav{
   display:flex;
   flex-direction:column;
-  gap:.35rem;
+  gap:0.3rem;
   flex:1;
 }
+
 .nav-section-title{
-  font-size:.68rem;
+  font-size:0.68rem;
   color:var(--muted);
   font-weight:700;
   text-transform:uppercase;
   letter-spacing:1.5px;
-  padding:.75rem .9rem .35rem;
-  opacity:.7;
+  padding:0.75rem 0.9rem 0.35rem;
 }
+
 .tab{
   background:transparent;
   border:1px solid transparent;
   color:var(--txt-2);
-  padding:.75rem .9rem;
+  padding:0.75rem 0.9rem;
   border-radius:var(--radius-sm);
   cursor:pointer;
-  font-size:.88rem;
+  font-size:0.88rem;
   font-weight:600;
-  transition:.25s cubic-bezier(.4,0,.2,1);
+  transition:var(--t);
   font-family:inherit;
   display:flex;
   align-items:center;
-  gap:.75rem;
+  gap:0.75rem;
   text-align:start;
   position:relative;
   overflow:hidden;
 }
+
 .tab::before{
   content:"";
   position:absolute;
@@ -379,24 +517,29 @@ select option{background:var(--bg-2);color:var(--txt)}
   transform:translateY(-50%);
   width:3px;
   height:0;
-  background:linear-gradient(180deg, var(--brand-1), var(--brand-2));
+  background:var(--brand-1);
   border-radius:0 4px 4px 0;
-  transition:.3s;
-  box-shadow:0 0 12px var(--glow);
+  transition:var(--t);
 }
+
 .tab:hover{
-  color:var(--brand-1);
-  background:rgba(245,197,24,0.05);
-  border-color:rgba(245,197,24,0.1);
+  color:var(--brand-dark);
+  background:var(--brand-3);
+  border-color:var(--brand-1);
 }
+
 .tab:hover::before{height:60%}
+
 .tab.on{
   color:#000;
   background:linear-gradient(135deg, var(--brand-1), var(--brand-2));
   border-color:transparent;
-  box-shadow:0 0 25px -8px var(--glow), 0 8px 20px -8px rgba(0,0,0,0.5);
+  box-shadow:0 4px 15px -4px var(--glow);
+  font-weight:800;
 }
+
 .tab.on::before{display:none}
+
 .tab .tab-icon{
   font-size:1.05rem;
   width:20px;
@@ -404,24 +547,31 @@ select option{background:var(--bg-2);color:var(--txt)}
   flex-shrink:0;
 }
 
-/* Sidebar Footer */
+/* ---- Sidebar Footer ---- */
 .sidebar-footer{
   display:flex;
   flex-direction:column;
-  gap:.5rem;
+  gap:0.5rem;
   padding-top:1rem;
   border-top:1px solid var(--border);
 }
-.sidebar-footer .btn{width:100%;justify-content:center}
 
-/* ====== Main Content ====== */
+.sidebar-footer .btn{
+  width:100%;
+  justify-content:flex-start;
+}
+
+/* =============================================
+   9. MAIN CONTENT
+   ============================================= */
 .main{
   padding:2rem 2.5rem;
   min-width:0;
   overflow-x:hidden;
+  background:var(--bg);
 }
 
-/* Page Header */
+/* ---- Page Header ---- */
 .page-header{
   display:flex;
   justify-content:space-between;
@@ -430,109 +580,120 @@ select option{background:var(--bg-2);color:var(--txt)}
   flex-wrap:wrap;
   margin-bottom:2rem;
 }
+
 .page-header .page-title h1{
   font-size:1.75rem;
   font-weight:900;
   font-family:'Cairo',sans-serif;
-  letter-spacing:-.8px;
+  letter-spacing:-0.8px;
   line-height:1.2;
 }
+
 .page-header .page-title p{
   color:var(--muted);
-  font-size:.88rem;
-  margin-top:.2rem;
+  font-size:0.88rem;
+  margin-top:0.2rem;
 }
+
 .page-header .page-actions{
   display:flex;
-  gap:.5rem;
+  gap:0.5rem;
   flex-wrap:wrap;
 }
 
-/* ====== Stats Cards ====== */
+/* =============================================
+   10. STATS CARDS
+   ============================================= */
 .stats-row{
   display:grid;
   grid-template-columns:repeat(auto-fit, minmax(200px, 1fr));
   gap:1rem;
   margin-bottom:2rem;
 }
+
 .stat-card{
   padding:1.5rem;
-  background:linear-gradient(145deg, rgba(20,20,26,0.7), rgba(12,12,17,0.85));
-  backdrop-filter:blur(20px);
-  -webkit-backdrop-filter:blur(20px);
-  border:1px solid var(--glass-border);
+  background:var(--surface);
+  border:1px solid var(--border);
   border-radius:var(--radius);
   display:flex;
   flex-direction:column;
-  gap:.75rem;
-  transition:.35s cubic-bezier(.4,0,.2,1);
+  gap:0.75rem;
+  transition:var(--t);
   position:relative;
   overflow:hidden;
+  box-shadow:var(--shadow-xs);
 }
+
 .stat-card::before{
   content:"";
   position:absolute;
   top:0;
   inset-inline-start:0;
   width:100%;
-  height:1px;
-  background:linear-gradient(90deg, transparent, var(--brand-1), transparent);
-  opacity:.4;
+  height:3px;
+  background:linear-gradient(90deg, var(--brand-1), var(--brand-2));
+  transform:scaleX(0);
+  transform-origin:right;
+  transition:transform 0.4s cubic-bezier(0.4,0,0.2,1);
 }
-.stat-card::after{
-  content:"";
-  position:absolute;
-  top:-50%;
-  inset-inline-end:-30%;
-  width:150px;
-  height:150px;
-  background:radial-gradient(circle, var(--glow-soft), transparent 70%);
-  opacity:0;
-  transition:.4s;
-  pointer-events:none;
+
+.stat-card:hover::before{
+  transform:scaleX(1);
+  transform-origin:left;
 }
+
 .stat-card:hover{
-  border-color:rgba(245,197,24,0.25);
+  border-color:var(--brand-1);
   transform:translateY(-4px);
-  box-shadow:0 20px 40px -20px rgba(0,0,0,0.8), 0 0 30px -12px var(--glow);
+  box-shadow:var(--shadow-md), 0 0 30px -15px var(--glow);
 }
-.stat-card:hover::after{opacity:1}
 
 .stat-card .s-icon{
-  width:46px;height:46px;
-  border-radius:12px;
-  display:grid;place-items:center;
+  width:46px;
+  height:46px;
+  border-radius:var(--radius-sm);
+  display:grid;
+  place-items:center;
   font-size:1.2rem;
-  background:linear-gradient(135deg, rgba(245,197,24,0.15), rgba(245,197,24,0.04));
-  border:1px solid rgba(245,197,24,0.2);
-  color:var(--brand-1);
-  box-shadow:inset 0 1px 0 rgba(255,255,255,0.05);
+  background:var(--brand-3);
+  border:1px solid var(--brand-1);
+  color:var(--brand-dark);
   flex-shrink:0;
+  transition:var(--t-bounce);
 }
+
+.stat-card:hover .s-icon{
+  background:linear-gradient(135deg, var(--brand-1), var(--brand-2));
+  color:#000;
+  transform:scale(1.1) rotate(-6deg);
+}
+
 .stat-card b{
   font-size:2.2rem;
   font-weight:900;
   font-family:'Cairo',sans-serif;
   letter-spacing:-1.5px;
   line-height:1;
-  background:linear-gradient(135deg, #fff, var(--brand-2));
-  -webkit-background-clip:text;
-  background-clip:text;
-  -webkit-text-fill-color:transparent;
-}
-.stat-card span{
-  font-size:.8rem;
-  color:var(--muted);
-  font-weight:600;
-  letter-spacing:.3px;
+  color:var(--brand-2);
 }
 
-/* ====== Tab Panes ====== */
+.stat-card span{
+  font-size:0.8rem;
+  color:var(--muted);
+  font-weight:600;
+  letter-spacing:0.3px;
+}
+/* =============================================
+   11. TAB PANES
+   ============================================= */
 .tab-pane{
   display:none;
-  animation:fadeIn .4s cubic-bezier(.4,0,.2,1);
+  animation:fadeIn 0.4s cubic-bezier(0.4,0,0.2,1);
 }
+
 .tab-pane.on{display:block}
+
 @keyframes fadeIn{
   from{opacity:0;transform:translateY(15px)}
   to{opacity:1;transform:translateY(0)}
@@ -548,65 +709,85 @@ select option{background:var(--bg-2);color:var(--txt)}
   padding-bottom:1.2rem;
   border-bottom:1px solid var(--border);
 }
+
 .pane-head h2{
   font-size:1.25rem;
   font-weight:900;
-  letter-spacing:-.5px;
+  letter-spacing:-0.5px;
   font-family:'Cairo',sans-serif;
 }
-.pane-head p{color:var(--muted);font-size:.85rem;margin-top:.2rem}
 
-/* ====== Cards (Glass) ====== */
+.pane-head p{
+  color:var(--muted);
+  font-size:0.85rem;
+  margin-top:0.2rem;
+}
+
+/* =============================================
+   12. CARDS
+   ============================================= */
 .card{
-  background:linear-gradient(145deg, rgba(20,20,26,0.6), rgba(12,12,17,0.8));
-  backdrop-filter:blur(20px) saturate(180%);
-  -webkit-backdrop-filter:blur(20px) saturate(180%);
-  border:1px solid var(--glass-border);
+  background:var(--surface);
+  border:1px solid var(--border);
   border-radius:var(--radius);
   padding:1.75rem;
   position:relative;
   overflow:hidden;
+  box-shadow:var(--shadow-xs);
+  transition:var(--t);
 }
+
 .card::before{
   content:"";
   position:absolute;
   top:0;
   inset-inline-start:0;
   width:100%;
-  height:1px;
-  background:linear-gradient(90deg, transparent, var(--brand-1), transparent);
-  opacity:.3;
+  height:3px;
+  background:linear-gradient(90deg, var(--brand-1), var(--brand-2));
 }
 
+.card:hover{
+  box-shadow:var(--shadow-sm);
+}
+
+/* =============================================
+   13. OVERVIEW GRID
+   ============================================= */
 .overview-grid{
   display:grid;
   grid-template-columns:repeat(auto-fit, minmax(240px, 1fr));
   gap:1rem;
   margin-bottom:1.5rem;
 }
+
 .overview-card{
   padding:1.5rem;
-  background:linear-gradient(145deg, rgba(245,197,24,0.06), rgba(20,20,26,0.6));
-  border:1px solid rgba(245,197,24,0.15);
+  background:var(--brand-3);
+  border:1px solid var(--brand-1);
   border-radius:var(--radius-sm);
   min-width:0;
-  transition:.3s;
+  transition:var(--t);
   position:relative;
   overflow:hidden;
 }
+
 .overview-card:hover{
-  border-color:rgba(245,197,24,0.3);
-  box-shadow:0 0 30px -12px var(--glow);
+  border-color:var(--brand-2);
+  transform:translateY(-2px);
+  box-shadow:0 10px 25px -12px var(--glow);
 }
+
 .overview-label{
   display:block;
-  color:var(--muted);
-  font-size:.75rem;
-  margin-bottom:.5rem;
-  font-weight:600;
-  letter-spacing:.5px;
+  color:var(--brand-dark);
+  font-size:0.75rem;
+  margin-bottom:0.5rem;
+  font-weight:700;
+  letter-spacing:0.5px;
   text-transform:uppercase;
 }
+
 .overview-card strong{
   display:block;
   font-family:'Cairo',sans-serif;
@@ -615,31 +796,42 @@ select option{background:var(--bg-2);color:var(--txt)}
   white-space:nowrap;
   overflow:hidden;
   text-overflow:ellipsis;
-  color:var(--brand-1);
+  color:var(--txt);
 }
+
 .overview-card small{
   display:block;
   color:var(--txt-2);
-  font-size:.8rem;
-  margin-top:.3rem;
+  font-size:0.8rem;
+  margin-top:0.3rem;
   white-space:nowrap;
   overflow:hidden;
   text-overflow:ellipsis;
 }
 
-.quick-actions{display:flex;gap:.6rem;flex-wrap:wrap}
-.message-tools{margin:-.4rem 0 1rem}
+.quick-actions{
+  display:flex;
+  gap:0.6rem;
+  flex-wrap:wrap;
+}
+
+.message-tools{margin:-0.4rem 0 1rem}
 .message-tools input{max-width:520px}
 
-/* ====== Form Grid ====== */
+/* =============================================
+   14. FORM GRID
+   ============================================= */
 .form-grid{
   display:grid;
-  grid-template-columns:repeat(2,1fr);
+  grid-template-columns:repeat(2, 1fr);
   gap:0 1rem;
 }
+
 .form-grid .full{grid-column:1/-1}
 
-/* ====== Upload ====== */
+/* =============================================
+   15. UPLOAD BOX
+   ============================================= */
 .upload-box{
   position:relative;
   border:2px dashed var(--border-strong);
@@ -647,109 +839,139 @@ select option{background:var(--bg-2);color:var(--txt)}
   padding:1.5rem;
   text-align:center;
   cursor:pointer;
-  transition:.3s;
-  background:rgba(0,0,0,0.3);
+  transition:var(--t);
+  background:var(--bg-2);
   margin-bottom:1rem;
 }
+
 .upload-box:hover{
   border-color:var(--brand-1);
-  background:rgba(245,197,24,0.04);
+  background:var(--brand-4);
   box-shadow:0 0 30px -12px var(--glow);
 }
+
 .upload-box input[type="file"]{
-  position:absolute;inset:0;opacity:0;cursor:pointer;
-  width:100%;height:100%;
-  padding:0;margin:0;
+  position:absolute;
+  inset:0;
+  opacity:0;
+  cursor:pointer;
+  width:100%;
+  height:100%;
+  padding:0;
+  margin:0;
 }
+
 .upload-box .upload-icon{
   font-size:1.8rem;
-  color:var(--brand-1);
-  margin-bottom:.5rem;
-  filter:drop-shadow(0 0 12px var(--glow));
+  color:var(--brand-2);
+  margin-bottom:0.5rem;
 }
+
 .upload-box .upload-text{
-  font-size:.85rem;
+  font-size:0.85rem;
   color:var(--txt-2);
   font-weight:600;
 }
+
 .upload-box .upload-hint{
-  font-size:.75rem;
+  font-size:0.75rem;
   color:var(--muted);
-  margin-top:.3rem;
+  margin-top:0.3rem;
 }
+
+/* ---- Preview ---- */
 .upload-preview{
   display:grid;
-  grid-template-columns:repeat(auto-fill,minmax(90px,1fr));
-  gap:.6rem;
-  margin-top:.8rem;
+  grid-template-columns:repeat(auto-fill, minmax(90px, 1fr));
+  gap:0.6rem;
+  margin-top:0.8rem;
 }
+
 .upload-preview .thumb{
   position:relative;
   aspect-ratio:1;
-  border-radius:10px;
+  border-radius:var(--radius-sm);
   overflow:hidden;
   border:1px solid var(--border);
-  background:var(--surface);
-  transition:.3s;
+  background:var(--bg-3);
+  transition:var(--t);
 }
+
 .upload-preview .thumb:hover{
   border-color:var(--brand-1);
   box-shadow:0 0 20px -8px var(--glow);
 }
-.upload-preview .thumb img{width:100%;height:100%;object-fit:cover}
+
+.upload-preview .thumb img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
 .upload-preview .thumb .remove{
   position:absolute;
-  top:4px;inset-inline-end:4px;
-  width:22px;height:22px;
+  top:4px;
+  inset-inline-end:4px;
+  width:22px;
+  height:22px;
   border-radius:50%;
-  background:rgba(239,68,68,.95);
+  background:rgba(220,38,38,0.95);
   color:#fff;
   border:none;
   cursor:pointer;
-  font-size:.75rem;
-  display:grid;place-items:center;
+  font-size:0.75rem;
+  display:grid;
+  place-items:center;
   font-weight:900;
   line-height:1;
-  transition:.2s;
+  transition:var(--t);
 }
+
 .upload-preview .thumb .remove:hover{
   background:var(--danger);
   transform:scale(1.15);
-  box-shadow:0 0 12px rgba(239,68,68,.6);
+  box-shadow:0 0 12px rgba(220,38,38,0.5);
 }
 
-/* ====== List Items ====== */
+/* =============================================
+   16. ROW ITEMS
+   ============================================= */
 .row-item{
   display:flex;
   align-items:center;
   justify-content:space-between;
   gap:1rem;
   padding:1rem 1.2rem;
-  background:rgba(255,255,255,0.02);
+  background:var(--surface);
   border:1px solid var(--border);
   border-radius:var(--radius-sm);
-  margin-bottom:.6rem;
+  margin-bottom:0.6rem;
   flex-wrap:wrap;
-  transition:.3s;
+  transition:var(--t);
   position:relative;
   overflow:hidden;
+  box-shadow:var(--shadow-xs);
 }
+
 .row-item::before{
   content:"";
   position:absolute;
   inset-inline-start:0;
   top:0;
-  width:2px;
+  width:3px;
   height:100%;
-  background:linear-gradient(180deg, var(--brand-1), transparent);
+  background:linear-gradient(180deg, var(--brand-1), var(--brand-2));
   opacity:0;
-  transition:.3s;
+  transition:var(--t);
 }
+
 .row-item:hover{
-  border-color:rgba(245,197,24,0.2);
-  background:rgba(245,197,24,0.03);
+  border-color:var(--brand-1);
+  background:var(--brand-4);
   transform:translateX(-3px);
+  box-shadow:var(--shadow-sm);
 }
+
 .row-item:hover::before{opacity:1}
 
 .row-item .info{
@@ -759,165 +981,236 @@ select option{background:var(--bg-2);color:var(--txt)}
   flex:1;
   min-width:0;
 }
+
 .row-item .thumb-sm{
-  width:52px;height:52px;
-  border-radius:12px;
-  background:linear-gradient(135deg, rgba(245,197,24,0.15), rgba(245,197,24,0.04));
-  display:grid;place-items:center;
+  width:52px;
+  height:52px;
+  border-radius:var(--radius-sm);
+  background:var(--brand-3);
+  display:grid;
+  place-items:center;
   font-size:1.3rem;
-  color:var(--brand-1);
-  border:1px solid rgba(245,197,24,0.2);
+  color:var(--brand-dark);
+  border:1px solid var(--brand-1);
   overflow:hidden;
   flex-shrink:0;
 }
-.row-item .thumb-sm img{width:100%;height:100%;object-fit:cover}
-.row-item .text{min-width:0;flex:1}
+
+.row-item .thumb-sm img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.row-item .text{
+  min-width:0;
+  flex:1;
+}
+
 .row-item .text b{
   display:block;
   font-weight:800;
-  font-size:.95rem;
-  margin-bottom:.15rem;
+  font-size:0.95rem;
+  margin-bottom:0.15rem;
   overflow:hidden;
   text-overflow:ellipsis;
   white-space:nowrap;
+  color:var(--txt);
 }
+
 .row-item .text .desc{
   color:var(--muted);
-  font-size:.82rem;
+  font-size:0.82rem;
   overflow:hidden;
   text-overflow:ellipsis;
   white-space:nowrap;
 }
-.row-item .actions{display:flex;gap:.4rem;flex-wrap:wrap}
+
+.row-item .actions{
+  display:flex;
+  gap:0.4rem;
+  flex-wrap:wrap;
+}
+
+/* ---- Tag ---- */
 .tag{
   display:inline-block;
-  font-size:.7rem;
-  color:var(--brand-1);
-  background:rgba(245,197,24,0.08);
-  border:1px solid rgba(245,197,24,0.2);
-  padding:.15rem .7rem;
-  border-radius:100px;
+  font-size:0.7rem;
+  color:var(--brand-dark);
+  background:var(--brand-3);
+  border:1px solid var(--brand-1);
+  padding:0.15rem 0.7rem;
+  border-radius:var(--radius-full);
   font-weight:700;
-  margin-bottom:.3rem;
-  letter-spacing:.5px;
+  margin-bottom:0.3rem;
+  letter-spacing:0.5px;
   text-transform:uppercase;
 }
 
-/* ====== Message Card ====== */
+/* =============================================
+   17. MESSAGE CARD
+   ============================================= */
 .msg-card{
   padding:1.25rem;
-  background:rgba(255,255,255,0.02);
+  background:var(--surface);
   border:1px solid var(--border);
   border-radius:var(--radius-sm);
-  margin-bottom:.7rem;
-  transition:.3s;
+  margin-bottom:0.7rem;
+  transition:var(--t);
   position:relative;
+  box-shadow:var(--shadow-xs);
 }
+
 .msg-card:hover{
-  border-color:rgba(245,197,24,0.2);
-  background:rgba(245,197,24,0.02);
+  border-color:var(--brand-1);
+  background:var(--brand-4);
+  box-shadow:var(--shadow-sm);
 }
+
 .msg-card .msg-head{
   display:flex;
   justify-content:space-between;
   align-items:flex-start;
   gap:1rem;
   flex-wrap:wrap;
-  margin-bottom:.7rem;
+  margin-bottom:0.7rem;
 }
-.msg-card .msg-head b{font-weight:800;font-size:.95rem}
+
+.msg-card .msg-head b{
+  font-weight:800;
+  font-size:0.95rem;
+  color:var(--txt);
+}
+
 .msg-card .msg-head .email{
-  color:var(--brand-1);
-  font-size:.82rem;
-  font-weight:600;
+  color:var(--brand-dark);
+  font-size:0.82rem;
+  font-weight:700;
   direction:ltr;
   display:inline-block;
 }
+
 .msg-card .msg-head .date{
-  font-size:.72rem;
+  font-size:0.72rem;
   color:var(--muted);
 }
-.msg-card .msg-body{color:var(--txt-2);font-size:.9rem;line-height:1.7}
 
-/* ====== Empty State ====== */
+.msg-card .msg-body{
+  color:var(--txt-2);
+  font-size:0.9rem;
+  line-height:1.7;
+}
+
+/* =============================================
+   18. EMPTY STATE
+   ============================================= */
 .empty{
   text-align:center;
   padding:3.5rem 1rem;
   color:var(--muted);
 }
+
 .empty .empty-icon{
   font-size:3rem;
-  opacity:.25;
+  opacity:0.3;
   margin-bottom:1rem;
-  filter:drop-shadow(0 0 20px var(--glow));
+  color:var(--brand-2);
 }
 
-/* ====== Toast ====== */
+/* =============================================
+   19. TOAST NOTIFICATION
+   ============================================= */
 #toast{
   position:fixed;
   bottom:28px;
   inset-inline-end:28px;
-  padding:.9rem 1.6rem;
+  padding:0.9rem 1.6rem;
   background:linear-gradient(135deg, var(--brand-1), var(--brand-2));
   color:#000;
-  border-radius:14px;
+  border-radius:var(--radius-sm);
   font-weight:700;
-  font-size:.9rem;
+  font-size:0.9rem;
   opacity:0;
   transform:translateY(20px);
-  transition:.35s cubic-bezier(.4,0,.2,1);
+  transition:var(--t);
   z-index:9999;
   pointer-events:none;
-  box-shadow:0 20px 40px -12px var(--glow), 0 0 30px -10px var(--glow);
+  box-shadow:0 15px 40px -10px var(--glow);
   max-width:calc(100vw - 56px);
 }
-#toast.show{opacity:1;transform:translateY(0)}
-#toast.error{
-  background:linear-gradient(135deg,#dc2626,#ef4444);
-  color:#fff;
-  box-shadow:0 20px 40px -12px rgba(239,68,68,.5);
+
+#toast.show{
+  opacity:1;
+  transform:translateY(0);
 }
 
-/* ====== Spinner ====== */
+#toast.error{
+  background:linear-gradient(135deg, #dc2626, #ef4444);
+  color:#fff;
+  box-shadow:0 15px 40px -10px rgba(220,38,38,0.5);
+}
+
+/* =============================================
+   20. SPINNER
+   ============================================= */
 .spinner{
   display:inline-block;
-  width:16px;height:16px;
-  border:2px solid rgba(0,0,0,.2);
+  width:16px;
+  height:16px;
+  border:2px solid rgba(0,0,0,0.2);
   border-top-color:#000;
   border-radius:50%;
-  animation:spin .7s linear infinite;
+  animation:spin 0.7s linear infinite;
 }
-@keyframes spin{to{transform:rotate(360deg)}}
 
-/* ====== Mobile Nav Toggle ====== */
+@keyframes spin{
+  to{transform:rotate(360deg)}
+}
+
+/* =============================================
+   21. MOBILE TOGGLE
+   ============================================= */
 .mobile-toggle{
   display:none;
   position:fixed;
   top:1rem;
   inset-inline-start:1rem;
   z-index:200;
-  width:44px;height:44px;
-  border-radius:12px;
+  width:44px;
+  height:44px;
+  border-radius:var(--radius-sm);
   background:linear-gradient(135deg, var(--brand-1), var(--brand-2));
   color:#000;
   border:none;
   font-size:1.3rem;
-  box-shadow:0 0 25px -8px var(--glow);
+  box-shadow:0 4px 15px -4px var(--glow);
   align-items:center;
   justify-content:center;
+  cursor:pointer;
+  transition:var(--t);
 }
 
-/* =========================================
-   RESPONSIVE
-   ========================================= */
+.mobile-toggle:hover{
+  transform:translateY(-2px);
+  box-shadow:0 8px 25px -4px var(--glow);
+}
+
+/* =============================================
+   22. RESPONSIVE — TABLET
+   ============================================= */
 @media (max-width:1024px){
   .dashboard{grid-template-columns:220px 1fr}
   .main{padding:1.75rem}
+  .stat-card b{font-size:1.9rem}
 }
 
+/* =============================================
+   23. RESPONSIVE — MOBILE
+   ============================================= */
 @media (max-width:900px){
   .dashboard{grid-template-columns:1fr}
   .mobile-toggle{display:flex}
+
   .sidebar{
     position:fixed;
     top:0;
@@ -925,67 +1218,104 @@ select option{background:var(--bg-2);color:var(--txt)}
     width:280px;
     z-index:150;
     transform:translateX(110%);
-    transition:.35s cubic-bezier(.4,0,.2,1);
-    box-shadow:20px 0 60px -20px rgba(0,0,0,0.9);
+    transition:transform 0.35s cubic-bezier(0.4,0,0.2,1);
+    box-shadow:20px 0 60px -20px rgba(0,0,0,0.25);
   }
+
   .sidebar.open{transform:translateX(0)}
+
   .main{padding:5rem 1.25rem 2rem}
+
   .form-grid{grid-template-columns:1fr}
-  .stats-row{grid-template-columns:repeat(2,1fr)}
+
+  .stats-row{grid-template-columns:repeat(2, 1fr)}
+
   .page-header .page-title h1{font-size:1.4rem}
 }
 
+/* =============================================
+   24. RESPONSIVE — SMALL MOBILE
+   ============================================= */
 @media (max-width:600px){
   .main{padding:5rem 1rem 1.5rem}
-  .stats-row{grid-template-columns:1fr;gap:.75rem}
+
+  .stats-row{grid-template-columns:1fr;gap:0.75rem}
+
   .stat-card{padding:1.25rem}
   .stat-card b{font-size:1.8rem}
+
   .row-item .actions{width:100%}
   .row-item .actions .btn{flex:1}
-  #toast{inset-inline:16px;bottom:16px;text-align:center}
+
+  #toast{
+    inset-inline:16px;
+    bottom:16px;
+    text-align:center;
+  }
+
   .login-box{padding:2rem 1.5rem}
+
   .overview-grid{grid-template-columns:1fr}
-  .quick-actions .btn{flex:1;min-width:140px}
+
+  .quick-actions .btn{
+    flex:1;
+    min-width:140px;
+  }
+
   .card{padding:1.25rem}
 }
 
-/* Scrollbar */
-::-webkit-scrollbar{width:10px;height:10px}
-::-webkit-scrollbar-track{background:transparent}
-::-webkit-scrollbar-thumb{
-  background:rgba(245,197,24,0.15);
-  border-radius:100px;
-  border:2px solid transparent;
-  background-clip:content-box;
-}
-::-webkit-scrollbar-thumb:hover{background:rgba(245,197,24,0.35);background-clip:content-box}
 </style>
 </head>
 <body>
 
-<!-- ===== Mobile Toggle ===== -->
-<button class="mobile-toggle" id="mobileToggle" aria-label="القائمة">☰</button>
+<!-- =============================================
+     MOBILE TOGGLE
+     ============================================= -->
+<button class="mobile-toggle" id="mobileToggle" aria-label="فتح القائمة">☰</button>
 
-<!-- ===== Login ===== -->
+
+<!-- =============================================
+     LOGIN SCREEN
+     ============================================= -->
 <div class="login-wrap" id="loginBox">
   <div class="login-box">
-    <div class="brand-mark"><img src="assets/images/logo-mark.png" alt="شعار مكتب باداؤود"></div>
+
+    <div class="brand-mark">
+      <img src="assets/images/logo-mark.png" alt="شعار مكتب باداؤود">
+    </div>
+
     <h1>لوحة تحكم باداؤود</h1>
     <p class="subtitle">سجّل دخولك لإدارة الموقع</p>
 
-    <form id="loginForm">
+    <form id="loginForm" novalidate>
       <div class="field">
-        <label>البريد الإلكتروني</label>
-        <input type="text" id="email" placeholder="admin@example.com" required autocomplete="username">
+        <label for="email">البريد الإلكتروني</label>
+        <input
+          type="text"
+          id="email"
+          placeholder="admin@example.com"
+          required
+          autocomplete="username"
+        >
       </div>
+
       <div class="field">
-        <label>كلمة المرور</label>
-        <input type="password" id="pw" placeholder="••••••••" required autocomplete="current-password">
+        <label for="pw">كلمة المرور</label>
+        <input
+          type="password"
+          id="pw"
+          placeholder="••••••••"
+          required
+          autocomplete="current-password"
+        >
       </div>
+
       <button type="submit" class="btn btn-primary btn-block" id="loginBtn">
-        <span>دخول</span>
+        دخول
       </button>
-      <p id="loginErr" style="color:#fca5a5;margin-top:.8rem;font-size:.85rem;text-align:center"></p>
+
+      <p id="loginErr" style="color:#dc2626;margin-top:.8rem;font-size:.85rem;text-align:center"></p>
     </form>
 
     <p style="margin-top:1.5rem;font-size:.8rem;line-height:1.6;text-align:center;color:var(--muted)">
@@ -993,19 +1323,26 @@ select option{background:var(--bg-2);color:var(--txt)}
     </p>
 
     <p style="margin-top:1rem;text-align:center">
-      <a href="index.html" style="font-size:.85rem;color:var(--muted);transition:.2s" onmouseover="this.style.color='var(--brand-1)'" onmouseout="this.style.color='var(--muted)'">← العودة للموقع</a>
+      <a href="index.html" style="font-size:.85rem;color:var(--muted);transition:.2s">← العودة للموقع</a>
     </p>
+
   </div>
 </div>
 
-<!-- ===== Dashboard ===== -->
+
+<!-- =============================================
+     DASHBOARD PANEL
+     ============================================= -->
 <div class="panel" id="panel">
   <div class="dashboard">
 
-    <!-- ===== Sidebar ===== -->
+    <!-- ===== SIDEBAR ===== -->
     <aside class="sidebar" id="sidebar">
+
       <div class="sidebar-brand">
-        <div class="logo-mini"><img src="assets/images/logo-mark.png" alt="شعار"></div>
+        <div class="logo-mini">
+          <img src="assets/images/logo-mark.png" alt="شعار">
+        </div>
         <div class="brand-text">
           <h2>لوحة التحكم</h2>
           <div class="brand-sub">مكتب باداؤود</div>
@@ -1019,11 +1356,31 @@ select option{background:var(--bg-2);color:var(--txt)}
 
       <nav class="sidebar-nav">
         <div class="nav-section-title">القائمة الرئيسية</div>
-        <button class="tab on" data-tab="tabOverview"><span class="tab-icon">▦</span><span>نظرة عامة</span></button>
-        <button class="tab" data-tab="tabProjects"><span class="tab-icon">⌂</span><span>المشاريع</span></button>
-        <button class="tab" data-tab="tabServices"><span class="tab-icon">◈</span><span>الخدمات</span></button>
-        <button class="tab" data-tab="tabMessages"><span class="tab-icon">✉</span><span>الرسائل</span></button>
-        <button class="tab" data-tab="tabSettings"><span class="tab-icon">⚙</span><span>الإعدادات</span></button>
+
+        <button class="tab on" data-tab="tabOverview">
+          <span class="tab-icon">▦</span>
+          <span>نظرة عامة</span>
+        </button>
+
+        <button class="tab" data-tab="tabProjects">
+          <span class="tab-icon">⌂</span>
+          <span>المشاريع</span>
+        </button>
+
+        <button class="tab" data-tab="tabServices">
+          <span class="tab-icon">◈</span>
+          <span>الخدمات</span>
+        </button>
+
+        <button class="tab" data-tab="tabMessages">
+          <span class="tab-icon">✉</span>
+          <span>الرسائل</span>
+        </button>
+
+        <button class="tab" data-tab="tabSettings">
+          <span class="tab-icon">⚙</span>
+          <span>الإعدادات</span>
+        </button>
       </nav>
 
       <div class="sidebar-footer">
@@ -1031,39 +1388,46 @@ select option{background:var(--bg-2);color:var(--txt)}
         <a href="index.html" class="btn btn-ghost btn-sm" target="_blank">🌐 عرض الموقع</a>
         <button class="btn btn-ghost btn-sm" id="logout">🚪 تسجيل الخروج</button>
       </div>
+
     </aside>
 
-    <!-- ===== Main ===== -->
+    <!-- ===== MAIN CONTENT ===== -->
     <main class="main">
 
-      <!-- Page Header -->
+      <!-- ---- Page Header ---- -->
       <div class="page-header">
         <div class="page-title">
           <h1 id="pageTitle">نظرة عامة</h1>
           <p id="pageSubtitle">ملخص سريع لأهم محتوى الموقع والنشاط الأخير</p>
         </div>
+
         <div class="page-actions">
-          <a href="index.html#contact" target="_blank" class="btn btn-primary">+ معاينة نموذج التواصل</a>
+          <a href="index.html#contact" target="_blank" class="btn btn-primary">
+            + معاينة نموذج التواصل
+          </a>
         </div>
       </div>
 
-      <!-- Stats -->
+      <!-- ---- Stats Row ---- -->
       <div class="stats-row">
         <div class="stat-card">
           <div class="s-icon">◈</div>
           <b id="statServices">0</b>
           <span>خدمة</span>
         </div>
+
         <div class="stat-card">
           <div class="s-icon">⌂</div>
           <b id="statProjects">0</b>
           <span>مشروع</span>
         </div>
+
         <div class="stat-card">
           <div class="s-icon">✉</div>
           <b id="statMessages">0</b>
           <span>رسالة</span>
         </div>
+
         <div class="stat-card">
           <div class="s-icon">◐</div>
           <b id="statNew">0</b>
@@ -1071,7 +1435,9 @@ select option{background:var(--bg-2);color:var(--txt)}
         </div>
       </div>
 
-      <!-- Overview -->
+      <!-- =============================================
+           TAB: OVERVIEW
+           ============================================= -->
       <div class="tab-pane on" id="tabOverview">
         <div class="card">
           <div class="pane-head">
@@ -1080,18 +1446,21 @@ select option{background:var(--bg-2);color:var(--txt)}
               <p>ملخص سريع لأهم محتوى الموقع والنشاط الأخير</p>
             </div>
           </div>
+
           <div class="overview-grid">
             <div class="overview-card">
               <span class="overview-label">آخر مشروع</span>
               <strong id="overviewProject">—</strong>
               <small id="overviewProjectMeta">لا توجد مشاريع بعد</small>
             </div>
+
             <div class="overview-card">
               <span class="overview-label">آخر رسالة</span>
               <strong id="overviewMessage">—</strong>
               <small id="overviewMessageMeta">لا توجد رسائل بعد</small>
             </div>
           </div>
+
           <div class="quick-actions">
             <button class="btn btn-ghost" data-open-tab="tabProjects">+ إضافة مشروع</button>
             <button class="btn btn-ghost" data-open-tab="tabServices">+ إضافة خدمة</button>
@@ -1100,8 +1469,12 @@ select option{background:var(--bg-2);color:var(--txt)}
         </div>
       </div>
 
-      <!-- Settings -->
+      <!-- =============================================
+           TAB: SETTINGS
+           ============================================= -->
       <div class="tab-pane" id="tabSettings">
+
+        <!-- ---- Settings Form ---- -->
         <div class="card">
           <div class="pane-head">
             <div>
@@ -1117,22 +1490,27 @@ select option{background:var(--bg-2);color:var(--txt)}
                 <label>اسم المكتب</label>
                 <input id="s_officeName" placeholder="مكتب باداؤود للهندسة والمقاولات">
               </div>
+
               <div class="field full">
                 <label>الشعار النصي (Tagline)</label>
                 <input id="s_tagline" placeholder="نصمم فضاءً يُلهم الحياة">
               </div>
+
               <div class="field">
                 <label>الهاتف</label>
                 <input id="s_phone" placeholder="+967 ...">
               </div>
+
               <div class="field">
                 <label>البريد الإلكتروني</label>
                 <input id="s_email" type="email" placeholder="info@example.com">
               </div>
+
               <div class="field full">
                 <label>العنوان</label>
-                <input id="s_address" placeholder="صنعاء — اليمن">
+                <input id="s_address" placeholder="حضرموت — اليمن">
               </div>
+
               <div class="field full">
                 <label>نبذة عن المكتب</label>
                 <textarea id="s_about" rows="4" placeholder="وصف مختصر..."></textarea>
@@ -1141,6 +1519,7 @@ select option{background:var(--bg-2);color:var(--txt)}
           </form>
         </div>
 
+        <!-- ---- UI Settings ---- -->
         <div class="card" style="margin-top:1.5rem">
           <div class="pane-head">
             <div>
@@ -1162,23 +1541,28 @@ select option{background:var(--bg-2);color:var(--txt)}
                 </div>
                 <div class="upload-preview" id="logoPreview"></div>
               </div>
+
               <div class="field">
                 <label>اللون الأساسي</label>
-                <input id="ui_primaryColor" type="color" value="#f5c518" style="height:48px;cursor:pointer;padding:.3rem">
+                <input id="ui_primaryColor" type="color" value="#f5c518">
               </div>
+
               <div class="field">
                 <label>الوضع الافتراضي</label>
                 <select id="ui_defaultTheme">
-                  <option value="dark">داكن 🌙</option>
                   <option value="light">فاتح ☀️</option>
+                  <option value="dark">داكن 🌙</option>
                 </select>
               </div>
             </div>
           </form>
         </div>
+
       </div>
 
-      <!-- Services -->
+      <!-- =============================================
+           TAB: SERVICES
+           ============================================= -->
       <div class="tab-pane" id="tabServices">
         <div class="card">
           <div class="pane-head">
@@ -1190,20 +1574,24 @@ select option{background:var(--bg-2);color:var(--txt)}
 
           <form id="serviceForm">
             <input type="hidden" id="sv_idx">
+
             <div class="form-grid">
               <div class="field">
                 <label>الأيقونة (رمز)</label>
                 <input id="sv_icon" placeholder="✎" required maxlength="4">
               </div>
+
               <div class="field">
                 <label>العنوان</label>
                 <input id="sv_title" placeholder="التصميم المعماري" required>
               </div>
+
               <div class="field full">
                 <label>الوصف</label>
                 <textarea id="sv_desc" rows="2" placeholder="وصف مختصر للخدمة..." required></textarea>
               </div>
             </div>
+
             <div style="display:flex;gap:.5rem">
               <button type="submit" class="btn btn-primary">💾 حفظ الخدمة</button>
               <button type="button" class="btn btn-ghost" id="sv_reset" style="display:none">إلغاء التعديل</button>
@@ -1214,7 +1602,9 @@ select option{background:var(--bg-2);color:var(--txt)}
         <div id="servicesList" style="margin-top:1.5rem"></div>
       </div>
 
-      <!-- Projects -->
+      <!-- =============================================
+           TAB: PROJECTS
+           ============================================= -->
       <div class="tab-pane" id="tabProjects">
         <div class="card">
           <div class="pane-head">
@@ -1232,6 +1622,7 @@ select option{background:var(--bg-2);color:var(--txt)}
                 <label>اسم المشروع *</label>
                 <input id="p_title" required placeholder="برج الأفق">
               </div>
+
               <div class="field">
                 <label>التصنيف *</label>
                 <select id="p_cat" required>
@@ -1242,30 +1633,37 @@ select option{background:var(--bg-2);color:var(--txt)}
                   <option>ضيافة</option>
                 </select>
               </div>
+
               <div class="field">
                 <label>الأيقونة (اختياري)</label>
                 <input id="p_icon" placeholder="⌂" maxlength="4">
               </div>
+
               <div class="field">
                 <label>الموقع</label>
-                <input id="p_location" placeholder="صنعاء — اليمن">
+                <input id="p_location" placeholder="حضرموت — اليمن">
               </div>
+
               <div class="field">
                 <label>السنة</label>
                 <input id="p_year" placeholder="2025">
               </div>
+
               <div class="field">
                 <label>المساحة</label>
                 <input id="p_area" placeholder="450 م²">
               </div>
+
               <div class="field full">
                 <label>العميل</label>
                 <input id="p_client" placeholder="اسم العميل">
               </div>
+
               <div class="field full">
                 <label>الوصف المختصر *</label>
                 <textarea id="p_desc" rows="2" required placeholder="وصف يظهر في البطاقة..."></textarea>
               </div>
+
               <div class="field full">
                 <label>الوصف التفصيلي (صفحة المشروع)</label>
                 <textarea id="p_content" rows="5" placeholder="تفاصيل كاملة عن المشروع..."></textarea>
@@ -1304,7 +1702,9 @@ select option{background:var(--bg-2);color:var(--txt)}
         <div id="projectsList" style="margin-top:1.5rem"></div>
       </div>
 
-      <!-- Messages -->
+      <!-- =============================================
+           TAB: MESSAGES
+           ============================================= -->
       <div class="tab-pane" id="tabMessages">
         <div class="card">
           <div class="pane-head">
@@ -1314,9 +1714,16 @@ select option{background:var(--bg-2);color:var(--txt)}
             </div>
             <button class="btn btn-danger" id="clearMsgs">🗑 حذف الكل</button>
           </div>
+
           <div class="message-tools">
-            <input id="messageSearch" type="search" placeholder="ابحث بالاسم أو البريد أو نص الرسالة..." aria-label="البحث في الرسائل">
+            <input
+              id="messageSearch"
+              type="search"
+              placeholder="ابحث بالاسم أو البريد أو نص الرسالة..."
+              aria-label="البحث في الرسائل"
+            >
           </div>
+
           <div id="messagesList"></div>
         </div>
       </div>
@@ -1325,53 +1732,97 @@ select option{background:var(--bg-2);color:var(--txt)}
   </div>
 </div>
 
-<div id="toast"></div>
 
+<!-- =============================================
+     TOAST
+     ============================================= -->
+<div id="toast" role="status" aria-live="polite"></div>
+
+<!-- =============================================
+     SCRIPTS
+     ============================================= -->
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="assets/config.js"></script>
 <script src="assets/db.js"></script>
 
 <script>
-// ====== لوحة التحكم — مكتب باداؤود ======
+/* =============================================
+   BADAWOOD ADMIN — MAIN JAVASCRIPT
+   Version : 3.0 (Extended Edition)
+   ============================================= */
 (function () {
-  const $ = (s) => document.querySelector(s);
-  const $$ = (s) => document.querySelectorAll(s);
+  "use strict";
 
-  // ---------- Toast ----------
-  function toast(msg, isError) {
+  /* =========================================
+     SECTION 1 — HELPERS
+     ========================================= */
+  const $ = (s, ctx = document) => ctx.querySelector(s);
+  const $$ = (s, ctx = document) => Array.from(ctx.querySelectorAll(s));
+
+  // ---- Toast ----
+  function toast(msg, isError = false) {
     const t = $("#toast");
+    if (!t) return;
     t.textContent = msg;
     t.classList.toggle("error", !!isError);
     t.classList.add("show");
     clearTimeout(t._tid);
-    t._tid = setTimeout(() => t.classList.remove("show"), 2500);
+    t._tid = setTimeout(() => t.classList.remove("show"), 2800);
   }
 
+  // ---- Escape HTML ----
   function escapeHtml(str) {
     return String(str ?? "").replace(/[&<>"']/g, (m) => ({
-      "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#39;"
     }[m]));
   }
 
+  // ---- Format Date ----
   function formatDate(iso) {
     if (!iso) return "";
     try {
       return new Date(iso).toLocaleString("ar-EG", {
-        year:"numeric", month:"short", day:"numeric",
-        hour:"2-digit", minute:"2-digit"
+        year: "numeric",
+        month: "short",
+        day: "numeric",
+        hour: "2-digit",
+        minute: "2-digit"
       });
-    } catch { return iso; }
+    } catch {
+      return iso;
+    }
   }
 
-  // ---------- State ----------
+  // ---- Debounce ----
+  function debounce(fn, wait = 200) {
+    let t;
+    return function (...args) {
+      clearTimeout(t);
+      t = setTimeout(() => fn.apply(this, args), wait);
+    };
+  }
+
+  /* =========================================
+     SECTION 2 — STATE
+     ========================================= */
   let services = [];
   let projects = [];
   let messages = [];
-  let uiData = { logo_url: "", primary_color: "#f5c518", default_theme: "dark" };
+  let uiData = {
+    logo_url: "",
+    primary_color: "#f5c518",
+    default_theme: "light"
+  };
   let coverImageUrl = "";
   let galleryUrls = [];
 
-  // ---------- Page Titles ----------
+  /* =========================================
+     SECTION 3 — PAGE TITLES
+     ========================================= */
   const PAGE_TITLES = {
     tabOverview: { title: "نظرة عامة", sub: "ملخص سريع لأهم محتوى الموقع والنشاط الأخير" },
     tabProjects: { title: "المشاريع", sub: "إدارة مشاريع المكتب بالكامل" },
@@ -1380,10 +1831,13 @@ select option{background:var(--bg-2);color:var(--txt)}
     tabSettings: { title: "الإعدادات", sub: "إعدادات الموقع والمظهر" }
   };
 
-  // ---------- Mobile Toggle ----------
+  /* =========================================
+     SECTION 4 — MOBILE SIDEBAR
+     ========================================= */
   $("#mobileToggle")?.addEventListener("click", () => {
     $("#sidebar")?.classList.toggle("open");
   });
+
   document.addEventListener("click", (e) => {
     const sidebar = $("#sidebar");
     const toggle = $("#mobileToggle");
@@ -1395,17 +1849,23 @@ select option{background:var(--bg-2);color:var(--txt)}
     }
   });
 
-  // ============================================
-  // AUTH
-  // ============================================
+  /* =========================================
+     SECTION 5 — AUTH
+     ========================================= */
   async function checkAuth() {
     const ok = await DB.isLogged();
+
     if (ok) {
       $("#loginBox").style.display = "none";
       $("#panel").style.display = "block";
-      $("#dbBadge").innerHTML = DB.isLocal
-        ? `<span class="dot" style="background:var(--warn);box-shadow:0 0 10px var(--warn)"></span><span>وضع محلي (LocalStorage)</span>`
-        : `<span class="dot"></span><span>متصل بـ Supabase</span>`;
+
+      const dbBadge = $("#dbBadge");
+      if (dbBadge) {
+        dbBadge.innerHTML = DB.isLocal
+          ? `<span class="dot" style="background:#d97706;box-shadow:0 0 8px #d97706"></span><span>وضع محلي (LocalStorage)</span>`
+          : `<span class="dot"></span><span>متصل بـ Supabase</span>`;
+      }
+
       loadAll();
     } else {
       $("#loginBox").style.display = "grid";
@@ -1413,48 +1873,72 @@ select option{background:var(--bg-2);color:var(--txt)}
     }
   }
 
-  $("#loginForm").addEventListener("submit", async (e) => {
+  // ---- Login Form ----
+  $("#loginForm")?.addEventListener("submit", async (e) => {
     e.preventDefault();
     const btn = $("#loginBtn");
     const email = $("#email").value.trim();
     const pw = $("#pw").value;
-    $("#loginErr").textContent = "";
-    btn.disabled = true;
-    btn.innerHTML = '<span class="spinner"></span> جارٍ الدخول...';
+    const errEl = $("#loginErr");
+
+    if (errEl) errEl.textContent = "";
+
+    if (!email || !pw) {
+      if (errEl) errEl.textContent = "❌ يرجى ملء جميع الحقول";
+      return;
+    }
+
+    if (btn) {
+      btn.disabled = true;
+      btn.innerHTML = '<span class="spinner"></span> جارٍ الدخول...';
+    }
 
     try {
       const ok = await DB.login(email, pw);
-      if (ok) { toast("✅ تم الدخول بنجاح"); checkAuth(); }
-      else { $("#loginErr").textContent = "❌ بيانات الدخول غير صحيحة"; }
+      if (ok) {
+        toast("✅ تم الدخول بنجاح");
+        checkAuth();
+      } else {
+        if (errEl) errEl.textContent = "❌ بيانات الدخول غير صحيحة";
+      }
     } catch (err) {
-      $("#loginErr").textContent = "❌ خطأ في الاتصال";
+      console.error(err);
+      if (errEl) errEl.textContent = "❌ خطأ في الاتصال";
     } finally {
-      btn.disabled = false;
-      btn.innerHTML = "<span>دخول</span>";
+      if (btn) {
+        btn.disabled = false;
+        btn.textContent = "دخول";
+      }
     }
   });
 
-  $("#logout").addEventListener("click", async () => {
+  // ---- Logout ----
+  $("#logout")?.addEventListener("click", async () => {
+    if (!confirm("هل تريد تسجيل الخروج؟")) return;
     await DB.logout();
     toast("تم الخروج");
     checkAuth();
   });
 
-  // ============================================
-  // TABS
-  // ============================================
+  /* =========================================
+     SECTION 6 — TABS
+     ========================================= */
   $$(".tab").forEach((tab) => {
     tab.addEventListener("click", () => {
       $$(".tab").forEach((t) => t.classList.remove("on"));
       $$(".tab-pane").forEach((p) => p.classList.remove("on"));
+
       tab.classList.add("on");
-      $("#" + tab.dataset.tab).classList.add("on");
+      const paneId = tab.dataset.tab;
+      $("#" + paneId)?.classList.add("on");
 
       // Update page title
-      const meta = PAGE_TITLES[tab.dataset.tab];
+      const meta = PAGE_TITLES[paneId];
       if (meta) {
-        $("#pageTitle").textContent = meta.title;
-        $("#pageSubtitle").textContent = meta.sub;
+        const titleEl = $("#pageTitle");
+        const subEl = $("#pageSubtitle");
+        if (titleEl) titleEl.textContent = meta.title;
+        if (subEl) subEl.textContent = meta.sub;
       }
 
       // Close mobile sidebar
@@ -1465,6 +1949,8 @@ select option{background:var(--bg-2);color:var(--txt)}
       window.scrollTo({ top: 0, behavior: "smooth" });
     });
   });
+
+  // ---- Open Tab Buttons ----
   $$("[data-open-tab]").forEach((button) => {
     button.addEventListener("click", () => {
       const tab = $(`.tab[data-tab="${button.dataset.openTab}"]`);
@@ -1472,136 +1958,198 @@ select option{background:var(--bg-2);color:var(--txt)}
     });
   });
 
-  // ============================================
-  // LOAD ALL
-  // ============================================
+  /* =========================================
+     SECTION 7 — LOAD ALL
+     ========================================= */
   async function loadAll() {
-    await Promise.all([
+    await Promise.allSettled([
       loadSettings(),
       loadUiSettings(),
       loadServices(),
       loadProjects(),
       loadMessages()
     ]);
+
     updateStats();
     loadOverview();
   }
 
   function updateStats() {
-    $("#statServices").textContent = services.length;
-    $("#statProjects").textContent = projects.length;
-    $("#statMessages").textContent = messages.length;
+    const statServices = $("#statServices");
+    const statProjects = $("#statProjects");
+    const statMessages = $("#statMessages");
+    const statNew = $("#statNew");
+
+    if (statServices) statServices.textContent = services.length;
+    if (statProjects) statProjects.textContent = projects.length;
+    if (statMessages) statMessages.textContent = messages.length;
 
     const today = new Date().toDateString();
-    const newToday = messages.filter(m => {
-      try { return new Date(m.created_at).toDateString() === today; }
-      catch { return false; }
+    const newToday = messages.filter((m) => {
+      try {
+        return new Date(m.created_at).toDateString() === today;
+      } catch {
+        return false;
+      }
     }).length;
-    $("#statNew").textContent = newToday;
+
+    if (statNew) statNew.textContent = newToday;
   }
 
   function loadOverview() {
     const project = projects[0];
     const message = messages[0];
-    $("#overviewProject").textContent = project?.title || "—";
-    $("#overviewProjectMeta").textContent = project
-      ? `${project.cat || "مشروع"}${project.location ? " · " + project.location : ""}`
-      : "لا توجد مشاريع بعد";
-    $("#overviewMessage").textContent = message?.name || "—";
-    $("#overviewMessageMeta").textContent = message
-      ? `${message.email || "بدون بريد"} · ${formatDate(message.created_at)}`
-      : "لا توجد رسائل بعد";
+
+    const projEl = $("#overviewProject");
+    const projMetaEl = $("#overviewProjectMeta");
+    const msgEl = $("#overviewMessage");
+    const msgMetaEl = $("#overviewMessageMeta");
+
+    if (projEl) projEl.textContent = project?.title || "—";
+    if (projMetaEl) {
+      projMetaEl.textContent = project
+        ? `${project.cat || "مشروع"}${project.location ? " · " + project.location : ""}`
+        : "لا توجد مشاريع بعد";
+    }
+
+    if (msgEl) msgEl.textContent = message?.name || "—";
+    if (msgMetaEl) {
+      msgMetaEl.textContent = message
+        ? `${message.email || "بدون بريد"} · ${formatDate(message.created_at)}`
+        : "لا توجد رسائل بعد";
+    }
   }
 
-  // ============================================
-  // SETTINGS
-  // ============================================
+  /* =========================================
+     SECTION 8 — SETTINGS
+     ========================================= */
   async function loadSettings() {
     try {
-      const s = await DB.getSettings();
-      $("#s_officeName").value = s.officeName || "";
-      $("#s_tagline").value    = s.tagline || "";
-      $("#s_phone").value      = s.phone || "";
-      $("#s_email").value      = s.email || "";
-      $("#s_address").value    = s.address || "";
-      $("#s_about").value      = s.about || "";
-    } catch (e) { console.warn(e); }
+      const s = (await DB.getSettings()) || {};
+
+      const setVal = (id, val) => {
+        const el = $(id);
+        if (el) el.value = val || "";
+      };
+
+      setVal("#s_officeName", s.officeName);
+      setVal("#s_tagline", s.tagline);
+      setVal("#s_phone", s.phone);
+      setVal("#s_email", s.email);
+      setVal("#s_address", s.address);
+      setVal("#s_about", s.about);
+    } catch (err) {
+      console.warn("Settings load error:", err);
+    }
   }
 
-  $("#settingsForm").addEventListener("submit", async (e) => {
+  $("#settingsForm")?.addEventListener("submit", async (e) => {
     e.preventDefault();
+
     const obj = {
-      officeName: $("#s_officeName").value,
-      tagline:    $("#s_tagline").value,
-      phone:      $("#s_phone").value,
-      email:      $("#s_email").value,
-      address:    $("#s_address").value,
-      about:      $("#s_about").value
+      officeName: $("#s_officeName")?.value || "",
+      tagline: $("#s_tagline")?.value || "",
+      phone: $("#s_phone")?.value || "",
+      email: $("#s_email")?.value || "",
+      address: $("#s_address")?.value || "",
+      about: $("#s_about")?.value || ""
     };
+
     const ok = await DB.saveSettings(obj);
     toast(ok ? "💾 تم حفظ الإعدادات" : "❌ فشل الحفظ", !ok);
   });
 
-  // ============================================
-  // UI SETTINGS
-  // ============================================
+  /* =========================================
+     SECTION 9 — UI SETTINGS
+     ========================================= */
   async function loadUiSettings() {
     try {
       if (DB.getUiSettings) {
-        uiData = await DB.getUiSettings();
+        uiData = (await DB.getUiSettings()) || uiData;
       }
-      $("#ui_primaryColor").value = uiData.primary_color || "#f5c518";
-      $("#ui_defaultTheme").value = uiData.default_theme || "dark";
+
+      const colorEl = $("#ui_primaryColor");
+      const themeEl = $("#ui_defaultTheme");
+
+      if (colorEl) colorEl.value = uiData.primary_color || "#f5c518";
+      if (themeEl) themeEl.value = uiData.default_theme || "light";
 
       if (uiData.logo_url) {
-        $("#logoPreview").innerHTML = `
-          <div class="thumb">
-            <img src="${escapeHtml(uiData.logo_url)}" alt="logo">
-            <button type="button" class="remove" data-type="logo">×</button>
-          </div>`;
-        bindRemoveButtons();
+        const logoPreview = $("#logoPreview");
+        if (logoPreview) {
+          logoPreview.innerHTML = `
+            <div class="thumb">
+              <img src="${escapeHtml(uiData.logo_url)}" alt="logo">
+              <button type="button" class="remove" data-type="logo">×</button>
+            </div>`;
+          bindRemoveButtons();
+        }
       }
-    } catch (e) { console.warn(e); }
+    } catch (err) {
+      console.warn("UI settings load error:", err);
+    }
   }
 
-  $("#uiLogoFile").addEventListener("change", async (e) => {
-    const file = e.target.files[0];
+  // ---- Logo Upload ----
+  $("#uiLogoFile")?.addEventListener("change", async (e) => {
+    const file = e.target.files?.[0];
     if (!file) return;
-    if (file.size > 2 * 1024 * 1024) { toast("حجم الصورة كبير (الحد 2MB)", true); return; }
+
+    if (file.size > 2 * 1024 * 1024) {
+      toast("حجم الصورة كبير (الحد 2MB)", true);
+      return;
+    }
+
     toast("⏳ جارٍ رفع الشعار...");
     const url = await DB.uploadImage(file, "logo");
-    if (!url) { toast("❌ فشل الرفع", true); return; }
+
+    if (!url) {
+      toast("❌ فشل الرفع", true);
+      return;
+    }
+
     uiData.logo_url = url;
-    $("#logoPreview").innerHTML = `
-      <div class="thumb">
-        <img src="${escapeHtml(url)}" alt="logo">
-        <button type="button" class="remove" data-type="logo">×</button>
-      </div>`;
-    bindRemoveButtons();
+    const logoPreview = $("#logoPreview");
+    if (logoPreview) {
+      logoPreview.innerHTML = `
+        <div class="thumb">
+          <img src="${escapeHtml(url)}" alt="logo">
+          <button type="button" class="remove" data-type="logo">×</button>
+        </div>`;
+      bindRemoveButtons();
+    }
+
     toast("✅ تم الرفع — لا تنسَ الحفظ");
   });
 
-  $("#uiForm").addEventListener("submit", async (e) => {
+  $("#uiForm")?.addEventListener("submit", async (e) => {
     e.preventDefault();
+
     const obj = {
       ...uiData,
       logo_url: uiData.logo_url || "",
-      primary_color: $("#ui_primaryColor").value,
-      default_theme: $("#ui_defaultTheme").value
+      primary_color: $("#ui_primaryColor")?.value || "#f5c518",
+      default_theme: $("#ui_defaultTheme")?.value || "light"
     };
+
     const ok = DB.saveUiSettings ? await DB.saveUiSettings(obj) : true;
     toast(ok ? "💾 تم حفظ المظهر" : "❌ فشل الحفظ", !ok);
   });
 
-  // ============================================
-  // SERVICES
-  // ============================================
+  /* =========================================
+     SECTION 10 — SERVICES
+     ========================================= */
   async function loadServices() {
     try {
-      services = await DB.getServices();
-    } catch (e) { services = []; }
+      services = (await DB.getServices()) || [];
+    } catch (err) {
+      console.warn(err);
+      services = [];
+    }
 
     const box = $("#servicesList");
+    if (!box) return;
+
     if (!services.length) {
       box.innerHTML = `
         <div class="empty">
@@ -1633,12 +2181,21 @@ select option{background:var(--bg-2);color:var(--txt)}
 
   window.editService = (i) => {
     const s = services[i];
-    $("#sv_idx").value = i;
-    $("#sv_icon").value = s.icon || "";
-    $("#sv_title").value = s.title || "";
-    $("#sv_desc").value = s.description || s.desc || "";
-    $("#sv_reset").style.display = "inline-flex";
-    $(".tab[data-tab='tabServices']").click();
+    if (!s) return;
+
+    const idxEl = $("#sv_idx");
+    const iconEl = $("#sv_icon");
+    const titleEl = $("#sv_title");
+    const descEl = $("#sv_desc");
+    const resetEl = $("#sv_reset");
+
+    if (idxEl) idxEl.value = i;
+    if (iconEl) iconEl.value = s.icon || "";
+    if (titleEl) titleEl.value = s.title || "";
+    if (descEl) descEl.value = s.description || s.desc || "";
+    if (resetEl) resetEl.style.display = "inline-flex";
+
+    $(`.tab[data-tab='tabServices']`)?.click();
   };
 
   window.delService = async (i) => {
@@ -1648,17 +2205,23 @@ select option{background:var(--bg-2);color:var(--txt)}
     loadServices();
   };
 
-  $("#serviceForm").addEventListener("submit", async (e) => {
+  $("#serviceForm")?.addEventListener("submit", async (e) => {
     e.preventDefault();
+
     const item = {
-      icon: $("#sv_icon").value.trim(),
-      title: $("#sv_title").value.trim(),
-      description: $("#sv_desc").value.trim()
+      icon: $("#sv_icon")?.value.trim() || "",
+      title: $("#sv_title")?.value.trim() || "",
+      description: $("#sv_desc")?.value.trim() || ""
     };
-    const idx = parseInt($("#sv_idx").value || "-1");
-    if (idx >= 0 && services[idx] && services[idx].id) item.id = services[idx].id;
+
+    const idx = parseInt($("#sv_idx")?.value || "-1");
+
+    if (idx >= 0 && services[idx]?.id) {
+      item.id = services[idx].id;
+    }
 
     const ok = await DB.saveService(item, idx);
+
     if (ok) {
       toast("💾 تم الحفظ");
       resetServiceForm();
@@ -1668,23 +2231,30 @@ select option{background:var(--bg-2);color:var(--txt)}
     }
   });
 
-  $("#sv_reset").addEventListener("click", resetServiceForm);
+  $("#sv_reset")?.addEventListener("click", resetServiceForm);
 
   function resetServiceForm() {
-    $("#serviceForm").reset();
-    $("#sv_idx").value = "";
-    $("#sv_reset").style.display = "none";
+    $("#serviceForm")?.reset();
+    const idxEl = $("#sv_idx");
+    const resetEl = $("#sv_reset");
+    if (idxEl) idxEl.value = "";
+    if (resetEl) resetEl.style.display = "none";
   }
 
-  // ============================================
-  // PROJECTS
-  // ============================================
+  /* =========================================
+     SECTION 11 — PROJECTS
+     ========================================= */
   async function loadProjects() {
     try {
-      projects = await DB.getProjects();
-    } catch (e) { projects = []; }
+      projects = (await DB.getProjects()) || [];
+    } catch (err) {
+      console.warn(err);
+      projects = [];
+    }
 
     const box = $("#projectsList");
+    if (!box) return;
+
     if (!projects.length) {
       box.innerHTML = `
         <div class="empty">
@@ -1721,24 +2291,34 @@ select option{background:var(--bg-2);color:var(--txt)}
 
   window.editProject = (i) => {
     const p = projects[i];
-    $("#p_idx").value = i;
-    $("#p_title").value = p.title || "";
-    $("#p_cat").value = p.cat || "سكني";
-    $("#p_icon").value = p.icon || "";
-    $("#p_location").value = p.location || "";
-    $("#p_year").value = p.year || "";
-    $("#p_area").value = p.area || "";
-    $("#p_client").value = p.client || "";
-    $("#p_desc").value = p.description || p.desc || "";
-    $("#p_content").value = p.content || "";
+    if (!p) return;
+
+    const setVal = (id, val) => {
+      const el = $(id);
+      if (el) el.value = val || "";
+    };
+
+    setVal("#p_idx", i);
+    setVal("#p_title", p.title);
+    setVal("#p_cat", p.cat || "سكني");
+    setVal("#p_icon", p.icon);
+    setVal("#p_location", p.location);
+    setVal("#p_year", p.year);
+    setVal("#p_area", p.area);
+    setVal("#p_client", p.client);
+    setVal("#p_desc", p.description || p.desc);
+    setVal("#p_content", p.content);
 
     coverImageUrl = p.cover_image || "";
     galleryUrls = Array.isArray(p.gallery) ? [...p.gallery] : [];
 
     renderCoverPreview();
     renderGalleryPreview();
-    $("#p_reset").style.display = "inline-flex";
-    $(".tab[data-tab='tabProjects']").click();
+
+    const resetEl = $("#p_reset");
+    if (resetEl) resetEl.style.display = "inline-flex";
+
+    $(`.tab[data-tab='tabProjects']`)?.click();
   };
 
   window.delProject = async (i) => {
@@ -1748,28 +2328,30 @@ select option{background:var(--bg-2);color:var(--txt)}
     loadProjects();
   };
 
-  $("#projectForm").addEventListener("submit", async (e) => {
+  $("#projectForm")?.addEventListener("submit", async (e) => {
     e.preventDefault();
 
     const item = {
-      title: $("#p_title").value.trim(),
-      cat: $("#p_cat").value,
-      icon: $("#p_icon").value.trim() || "⌂",
-      location: $("#p_location").value.trim(),
-      year: $("#p_year").value.trim(),
-      area: $("#p_area").value.trim(),
-      client: $("#p_client").value.trim(),
-      description: $("#p_desc").value.trim(),
-      content: $("#p_content").value.trim(),
+      title: $("#p_title")?.value.trim() || "",
+      cat: $("#p_cat")?.value || "سكني",
+      icon: $("#p_icon")?.value.trim() || "⌂",
+      location: $("#p_location")?.value.trim() || "",
+      year: $("#p_year")?.value.trim() || "",
+      area: $("#p_area")?.value.trim() || "",
+      client: $("#p_client")?.value.trim() || "",
+      description: $("#p_desc")?.value.trim() || "",
+      content: $("#p_content")?.value.trim() || "",
       cover_image: coverImageUrl,
       gallery: galleryUrls
     };
 
-    const idx = parseInt($("#p_idx").value || "-1");
-    if (idx >= 0 && projects[idx] && projects[idx].id) item.id = projects[idx].id;
-    if (idx >= 0 && projects[idx] && projects[idx].slug) item.slug = projects[idx].slug;
+    const idx = parseInt($("#p_idx")?.value || "-1");
+
+    if (idx >= 0 && projects[idx]?.id) item.id = projects[idx].id;
+    if (idx >= 0 && projects[idx]?.slug) item.slug = projects[idx].slug;
 
     const ok = await DB.saveProject(item, idx);
+
     if (ok) {
       toast("💾 تم حفظ المشروع");
       resetProjectForm();
@@ -1779,25 +2361,40 @@ select option{background:var(--bg-2);color:var(--txt)}
     }
   });
 
-  $("#p_reset").addEventListener("click", resetProjectForm);
+  $("#p_reset")?.addEventListener("click", resetProjectForm);
 
   function resetProjectForm() {
-    $("#projectForm").reset();
-    $("#p_idx").value = "";
+    $("#projectForm")?.reset();
+    const idxEl = $("#p_idx");
+    const resetEl = $("#p_reset");
+    if (idxEl) idxEl.value = "";
     coverImageUrl = "";
     galleryUrls = [];
-    $("#coverPreview").innerHTML = "";
-    $("#galleryPreview").innerHTML = "";
-    $("#p_reset").style.display = "none";
+    const cp = $("#coverPreview");
+    const gp = $("#galleryPreview");
+    if (cp) cp.innerHTML = "";
+    if (gp) gp.innerHTML = "";
+    if (resetEl) resetEl.style.display = "none";
   }
 
-  $("#pCoverFile").addEventListener("change", async (e) => {
-    const file = e.target.files[0];
+  /* ---- Cover Upload ---- */
+  $("#pCoverFile")?.addEventListener("change", async (e) => {
+    const file = e.target.files?.[0];
     if (!file) return;
-    if (file.size > 3 * 1024 * 1024) { toast("حجم الصورة كبير (الحد 3MB)", true); return; }
+
+    if (file.size > 3 * 1024 * 1024) {
+      toast("حجم الصورة كبير (الحد 3MB)", true);
+      return;
+    }
+
     toast("⏳ جارٍ الرفع...");
     const url = await DB.uploadImage(file, "projects");
-    if (!url) { toast("❌ فشل الرفع", true); return; }
+
+    if (!url) {
+      toast("❌ فشل الرفع", true);
+      return;
+    }
+
     coverImageUrl = url;
     renderCoverPreview();
     toast("✅ تم رفع الغلاف");
@@ -1805,24 +2402,38 @@ select option{background:var(--bg-2);color:var(--txt)}
 
   function renderCoverPreview() {
     const box = $("#coverPreview");
-    if (!coverImageUrl) { box.innerHTML = ""; return; }
+    if (!box) return;
+
+    if (!coverImageUrl) {
+      box.innerHTML = "";
+      return;
+    }
+
     box.innerHTML = `
       <div class="thumb">
         <img src="${escapeHtml(coverImageUrl)}" alt="">
         <button type="button" class="remove" data-type="cover">×</button>
       </div>`;
+
     bindRemoveButtons();
   }
 
-  $("#pGalleryFiles").addEventListener("change", async (e) => {
-    const files = Array.from(e.target.files);
+  /* ---- Gallery Upload ---- */
+  $("#pGalleryFiles")?.addEventListener("change", async (e) => {
+    const files = Array.from(e.target.files || []);
     if (!files.length) return;
+
     toast(`⏳ جارٍ رفع ${files.length} صورة...`);
+
     for (const file of files) {
-      if (file.size > 3 * 1024 * 1024) { toast(`تخطي: ${file.name} (كبير)`, true); continue; }
+      if (file.size > 3 * 1024 * 1024) {
+        toast(`تخطي: ${file.name} (كبير)`, true);
+        continue;
+      }
       const url = await DB.uploadImage(file, "gallery");
       if (url) galleryUrls.push(url);
     }
+
     renderGalleryPreview();
     e.target.value = "";
     toast(`✅ تم رفع ${galleryUrls.length} صورة`);
@@ -1830,44 +2441,99 @@ select option{background:var(--bg-2);color:var(--txt)}
 
   function renderGalleryPreview() {
     const box = $("#galleryPreview");
-    if (!galleryUrls.length) { box.innerHTML = ""; return; }
+    if (!box) return;
+
+    if (!galleryUrls.length) {
+      box.innerHTML = "";
+      return;
+    }
+
+    box.innerHTML = `
+      <div class="thumb">
+        <img src="${escapeHtml(coverImageUrl)}" alt="">
+        <button type="button" class="remove" data-type="cover">×</button>
+      </div>`;
+
+    bindRemoveButtons();
+  }
+
+  /* ---- Gallery Upload ---- */
+  $("#pGalleryFiles")?.addEventListener("change", async (e) => {
+    const files = Array.from(e.target.files || []);
+    if (!files.length) return;
+
+    toast(`⏳ جارٍ رفع ${files.length} صورة...`);
+
+    for (const file of files) {
+      if (file.size > 3 * 1024 * 1024) {
+        toast(`تخطي: ${file.name} (كبير)`, true);
+        continue;
+      }
+      const url = await DB.uploadImage(file, "gallery");
+      if (url) galleryUrls.push(url);
+    }
+
+    renderGalleryPreview();
+    e.target.value = "";
+    toast(`✅ تم رفع ${galleryUrls.length} صورة`);
+  });
+
+  function renderGalleryPreview() {
+    const box = $("#galleryPreview");
+    if (!box) return;
+
+    if (!galleryUrls.length) {
+      box.innerHTML = "";
+      return;
+    }
+
     box.innerHTML = galleryUrls.map((url, i) => `
       <div class="thumb">
         <img src="${escapeHtml(url)}" alt="">
         <button type="button" class="remove" data-type="gallery" data-index="${i}">×</button>
       </div>
     `).join("");
+
     bindRemoveButtons();
   }
 
+  /* ---- Remove Buttons ---- */
   function bindRemoveButtons() {
-    $$(".upload-preview .remove").forEach(btn => {
-      btn.onclick = async () => {
+    $$(".upload-preview .remove").forEach((btn) => {
+      btn.onclick = () => {
         const type = btn.dataset.type;
+
         if (type === "logo") {
           uiData.logo_url = "";
-          $("#logoPreview").innerHTML = "";
+          const el = $("#logoPreview");
+          if (el) el.innerHTML = "";
         } else if (type === "cover") {
           coverImageUrl = "";
-          $("#coverPreview").innerHTML = "";
+          const el = $("#coverPreview");
+          if (el) el.innerHTML = "";
         } else if (type === "gallery") {
-          const i = parseInt(btn.dataset.index);
-          galleryUrls.splice(i, 1);
+          const i = parseInt(btn.dataset.index || "-1");
+          if (i >= 0) galleryUrls.splice(i, 1);
           renderGalleryPreview();
         }
       };
     });
   }
 
-  // ============================================
-  // MESSAGES
-  // ============================================
+  /* =========================================
+     SECTION 12 — MESSAGES
+     ========================================= */
   async function loadMessages() {
     try {
-      messages = await DB.getMessages();
-    } catch (e) { messages = []; }
+      messages = (await DB.getMessages()) || [];
+    } catch (err) {
+      console.warn(err);
+      messages = [];
+    }
 
     const box = $("#messagesList");
+    if (!box) return;
+
     if (!messages.length) {
       box.innerHTML = `
         <div class="empty">
@@ -1879,14 +2545,24 @@ select option{background:var(--bg-2);color:var(--txt)}
     }
 
     const query = $("#messageSearch")?.value.trim().toLowerCase() || "";
-    const visible = messages.filter(m => !query || [m.name, m.email, m.phone, m.message]
-      .some(value => String(value || "").toLowerCase().includes(query)));
+
+    const visible = messages.filter((m) =>
+      !query ||
+      [m.name, m.email, m.phone, m.message]
+        .some((val) => String(val || "").toLowerCase().includes(query))
+    );
+
     if (!visible.length) {
-      box.innerHTML = `<div class="empty"><div class="empty-icon">⌕</div><p>لا توجد رسائل مطابقة.</p></div>`;
+      box.innerHTML = `
+        <div class="empty">
+          <div class="empty-icon">⌕</div>
+          <p>لا توجد رسائل مطابقة.</p>
+        </div>`;
       updateStats();
       return;
     }
-    box.innerHTML = visible.map((m, index) => `
+
+    box.innerHTML = visible.map((m) => `
       <div class="msg-card">
         <div class="msg-head">
           <div>
@@ -1896,19 +2572,27 @@ select option{background:var(--bg-2);color:var(--txt)}
           </div>
           <div style="display:flex;align-items:center;gap:.6rem;flex-wrap:wrap">
             <span class="date">${formatDate(m.created_at)}</span>
-            <button class="btn btn-danger btn-sm" data-delete-message="${m.id ?? ""}" data-message-index="${messages.indexOf(m)}">حذف</button>
+            <button class="btn btn-danger btn-sm"
+                    data-delete-message="${m.id ?? ""}"
+                    data-message-index="${messages.indexOf(m)}">حذف</button>
           </div>
         </div>
         <div class="msg-body">${escapeHtml(m.message || "")}</div>
       </div>
     `).join("");
 
-    $$("[data-delete-message]").forEach(button => {
+    // Bind delete buttons
+    $$("[data-delete-message]").forEach((button) => {
       button.addEventListener("click", async () => {
         if (!confirm("حذف هذه الرسالة؟ لا يمكن التراجع.")) return;
+
         const index = Number(button.dataset.messageIndex);
-        const ok = await DB.deleteMessage({ id: button.dataset.deleteMessage || null, index });
-        toast(ok ? "🗑 تم حذف الرسالة" : "❌ فشل حذف الرسالة", !ok);
+        const ok = await DB.deleteMessage({
+          id: button.dataset.deleteMessage || null,
+          index
+        });
+
+        toast(ok ? "🗑 تم حذف الرسالة" : "❌ فشل الحذف", !ok);
         if (ok) loadMessages();
       });
     });
@@ -1916,37 +2600,79 @@ select option{background:var(--bg-2);color:var(--txt)}
     updateStats();
   }
 
-  $("#clearMsgs").addEventListener("click", async () => {
+  // ---- Clear All Messages ----
+  $("#clearMsgs")?.addEventListener("click", async () => {
     if (!confirm("حذف كل الرسائل؟ لا يمكن التراجع.")) return;
     const ok = await DB.clearMessages();
     toast(ok ? "🗑 تم حذف الكل" : "❌ فشل الحذف", !ok);
     loadMessages();
   });
-  $("#messageSearch")?.addEventListener("input", loadMessages);
 
-  // ============================================
-  // EXPORT
-  // ============================================
-  $("#exportBtn").addEventListener("click", async () => {
-    const data = {
-      exportedAt: new Date().toISOString(),
-      settings: await DB.getSettings(),
-      services: await DB.getServices(),
-      projects: await DB.getProjects(),
-      messages: await DB.getMessages()
-    };
-    const blob = new Blob([JSON.stringify(data, null, 2)], { type: "application/json" });
-    const a = document.createElement("a");
-    a.href = URL.createObjectURL(blob);
-    a.download = `badawood-backup-${Date.now()}.json`;
-    a.click();
-    toast("⬇ تم التصدير");
+  // ---- Search Messages (debounced) ----
+  $("#messageSearch")?.addEventListener(
+    "input",
+    debounce(loadMessages, 250)
+  );
+
+  /* =========================================
+     SECTION 13 — EXPORT
+     ========================================= */
+  $("#exportBtn")?.addEventListener("click", async () => {
+    try {
+      const data = {
+        exportedAt: new Date().toISOString(),
+        settings: await DB.getSettings(),
+        services: await DB.getServices(),
+        projects: await DB.getProjects(),
+        messages: await DB.getMessages()
+      };
+
+      const blob = new Blob([JSON.stringify(data, null, 2)], {
+        type: "application/json"
+      });
+
+      const a = document.createElement("a");
+      a.href = URL.createObjectURL(blob);
+      a.download = `badawood-backup-${Date.now()}.json`;
+      a.click();
+
+      toast("⬇ تم تصدير البيانات");
+    } catch (err) {
+      console.error(err);
+      toast("❌ فشل التصدير", true);
+    }
   });
 
-  // ============================================
-  // INIT
-  // ============================================
+  /* =========================================
+     SECTION 14 — KEYBOARD SHORTCUTS
+     ========================================= */
+  document.addEventListener("keydown", (e) => {
+    // Ctrl/Cmd + S → Save current form
+    if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === "s") {
+      e.preventDefault();
+      const activePane = $(".tab-pane.on");
+      if (activePane) {
+        const form = activePane.querySelector("form");
+        if (form) form.requestSubmit?.();
+      }
+    }
+
+    // Escape → close sidebar
+    if (e.key === "Escape") {
+      $("#sidebar")?.classList.remove("open");
+    }
+  });
+
+  /* =========================================
+     SECTION 15 — INIT
+     ========================================= */
+  console.log(
+    "%c🏛️ Badawood Admin Dashboard — v3.0",
+    "color:#f5c518;font-weight:bold;font-size:14px"
+  );
+
   checkAuth();
+
 })();
 </script>
 </body>
