@@ -1,47 +1,125 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
+<!-- =============================================
+     BADAWOOD ENGINEERING — MAIN WEBSITE
+     Version : 3.0 (Extended Edition)
+     Theme   : Light Mode
+     Author  : Badawood Team
+     ============================================= -->
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>مكتب باداؤود للهندسة والمقاولات</title>
-<meta name="description" content="مكتب باداؤود للهندسة والمقاولات — تصميم معماري عصري وإشراف هندسي.">
+<meta name="theme-color" content="#f5c518">
+<meta name="description" content="مكتب باداؤود للهندسة والمقاولات — تصميم معماري عصري وإشراف هندسي في حضرموت.">
+<meta name="keywords" content="مكتب هندسي, تصميم معماري, حضرموت, اليمن, مقاولات, إشراف هندسي">
+<meta property="og:title" content="مكتب باداؤود للهندسة والمقاولات">
+<meta property="og:description" content="حلول معمارية مبتكرة من الفكرة الأولى حتى تسليم المفتاح.">
+<meta property="og:type" content="website">
+
+<title>مكتب باداؤود للهندسة والمقاولات | تصميم معماري وإشراف هندسي</title>
+
+<!-- ===== Google Fonts ===== -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+
 <style>
-/* =========================================
-   BADAWOOD — LIGHT THEME (Modern)
-   ========================================= */
+/* =============================================
+   1. ROOT VARIABLES — LIGHT THEME
+   ============================================= */
 :root{
+  /* ---- Backgrounds ---- */
   --bg:#ffffff;
   --bg-2:#f8f9fb;
+  --bg-3:#f1f3f6;
   --surface:#ffffff;
-  --surface-2:#f1f3f6;
+  --surface-2:#f9fafb;
+  --surface-3:#f3f4f6;
+
+  /* ---- Borders ---- */
   --border:#e5e7eb;
   --border-strong:#d1d5db;
+  --border-light:#f3f4f6;
+
+  /* ---- Text ---- */
   --txt:#0a0a0a;
   --txt-2:#4b5563;
-  --muted:#6b7280;
+  --txt-3:#6b7280;
+  --muted:#9ca3af;
+
+  /* ---- Brand (Yellow) ---- */
   --brand-1:#f5c518;
   --brand-2:#e0b000;
   --brand-3:#fff8e1;
+  --brand-4:#fffaeb;
+  --brand-dark:#7a5c00;
+
+  /* ---- Effects ---- */
   --glow:rgba(245,197,24,0.35);
   --glow-soft:rgba(245,197,24,0.15);
+  --glow-strong:rgba(245,197,24,0.5);
+
+  /* ---- States ---- */
   --success:#059669;
+  --success-bg:#ecfdf5;
   --danger:#dc2626;
-  --radius:18px;
+  --danger-bg:#fef2f2;
+  --warning:#d97706;
+  --warning-bg:#fffbeb;
+  --info:#2563eb;
+  --info-bg:#eff6ff;
+
+  /* ---- Radii ---- */
+  --radius-xs:6px;
   --radius-sm:12px;
+  --radius:18px;
   --radius-lg:26px;
+  --radius-xl:36px;
+  --radius-full:9999px;
+
+  /* ---- Shadows ---- */
+  --shadow-xs:0 1px 2px rgba(0,0,0,0.04);
+  --shadow-sm:0 2px 8px -2px rgba(0,0,0,0.06);
   --shadow:0 10px 30px -12px rgba(0,0,0,0.08);
+  --shadow-md:0 15px 40px -15px rgba(0,0,0,0.1);
   --shadow-lg:0 30px 60px -30px rgba(0,0,0,0.15);
+  --shadow-xl:0 40px 80px -30px rgba(0,0,0,0.2);
+  --shadow-glow:0 0 40px -10px var(--glow);
+
+  /* ---- Transitions ---- */
+  --t-fast:0.15s cubic-bezier(0.4,0,0.2,1);
+  --t:0.3s cubic-bezier(0.4,0,0.2,1);
+  --t-slow:0.5s cubic-bezier(0.4,0,0.2,1);
+  --t-bounce:0.4s cubic-bezier(0.34,1.56,0.64,1);
+
+  /* ---- Layout ---- */
+  --container:1200px;
+  --header-h:72px;
+
   color-scheme:light;
 }
 
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
+/* =============================================
+   2. RESET & BASE
+   ============================================= */
+*,
+*::before,
+*::after{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+html{
+  scroll-behavior:smooth;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  text-rendering:optimizeLegibility;
+  scroll-padding-top:var(--header-h);
+}
 
 body{
-  font-family:'Tajawal','Segoe UI',system-ui,sans-serif;
+  font-family:'Tajawal','Segoe UI',system-ui,-apple-system,sans-serif;
   background:var(--bg);
   color:var(--txt);
   line-height:1.7;
@@ -49,119 +127,262 @@ body{
   overflow-x:hidden;
   position:relative;
   min-height:100vh;
+  font-size:16px;
+  font-weight:400;
 }
 
-a{color:inherit;text-decoration:none}
-img{max-width:100%;display:block}
-button{font-family:inherit;cursor:pointer}
+/* ---- Typography Base ---- */
+h1,h2,h3,h4,h5,h6{
+  font-family:'Cairo','Tajawal',sans-serif;
+  font-weight:900;
+  line-height:1.2;
+  letter-spacing:-0.5px;
+  color:var(--txt);
+}
 
+h1{font-size:clamp(2rem,5vw,3.5rem)}
+h2{font-size:clamp(1.6rem,3.5vw,2.4rem)}
+h3{font-size:1.15rem}
+h4{font-size:1rem}
+
+p{line-height:1.8}
+
+a{
+  color:inherit;
+  text-decoration:none;
+  transition:var(--t);
+}
+
+img{
+  max-width:100%;
+  height:auto;
+  display:block;
+}
+
+button{
+  font-family:inherit;
+  cursor:pointer;
+  border:none;
+  background:none;
+}
+
+/* ---- Selection ---- */
+::selection{
+  background:var(--brand-1);
+  color:#000;
+}
+::-moz-selection{
+  background:var(--brand-1);
+  color:#000;
+}
+
+/* ---- Scrollbar ---- */
+::-webkit-scrollbar{width:10px;height:10px}
+::-webkit-scrollbar-track{background:var(--bg-2)}
+::-webkit-scrollbar-thumb{
+  background:var(--border-strong);
+  border-radius:var(--radius-full);
+  border:2px solid var(--bg-2);
+}
+::-webkit-scrollbar-thumb:hover{background:var(--brand-1)}
+
+/* =============================================
+   3. UTILITY CLASSES
+   ============================================= */
 .container{
   width:100%;
-  max-width:1200px;
+  max-width:var(--container);
   margin:0 auto;
   padding:0 1.5rem;
 }
 
-/* ===== Header ===== */
+.text-center{text-align:center}
+.text-start{text-align:start}
+.text-end{text-align:end}
+
+.flex{display:flex}
+.flex-col{flex-direction:column}
+.items-center{align-items:center}
+.justify-center{justify-content:center}
+.justify-between{justify-content:space-between}
+.gap-1{gap:0.5rem}
+.gap-2{gap:1rem}
+.gap-3{gap:1.5rem}
+.gap-4{gap:2rem}
+
+.hidden{display:none}
+.block{display:block}
+
+.gradient-text{
+  background:linear-gradient(135deg, var(--brand-1), var(--brand-2));
+  -webkit-background-clip:text;
+  background-clip:text;
+  -webkit-text-fill-color:transparent;
+  color:transparent;
+}
+
+/* =============================================
+   4. BACKGROUND DECORATIONS
+   ============================================= */
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  z-index:-2;
+  pointer-events:none;
+  background:
+    radial-gradient(circle at 15% 20%, rgba(245,197,24,0.08), transparent 45%),
+    radial-gradient(circle at 85% 15%, rgba(245,197,24,0.05), transparent 40%),
+    radial-gradient(circle at 75% 85%, rgba(245,197,24,0.05), transparent 45%),
+    radial-gradient(circle at 20% 90%, rgba(245,197,24,0.04), transparent 45%);
+}
+
+body::after{
+  content:"";
+  position:fixed;
+  inset:0;
+  z-index:-1;
+  pointer-events:none;
+  opacity:0.4;
+  background-image:
+    linear-gradient(rgba(245,197,24,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(245,197,24,0.03) 1px, transparent 1px);
+  background-size:60px 60px;
+  mask-image:radial-gradient(ellipse at center, black 30%, transparent 75%);
+  -webkit-mask-image:radial-gradient(ellipse at center, black 30%, transparent 75%);
+}
+
+/* =============================================
+   5. HEADER (Fixed Top)
+   ============================================= */
 header{
   position:fixed;
-  top:0;left:0;right:0;
+  top:0;
+  left:0;
+  right:0;
   z-index:100;
-  background:rgba(255,255,255,0.9);
+  background:rgba(255,255,255,0.85);
   backdrop-filter:blur(20px) saturate(180%);
   -webkit-backdrop-filter:blur(20px) saturate(180%);
   border-bottom:1px solid var(--border);
-  transition:.35s ease;
+  transition:var(--t);
 }
+
 header.scrolled{
   background:rgba(255,255,255,0.98);
-  box-shadow:0 4px 20px -8px rgba(0,0,0,0.08);
+  box-shadow:var(--shadow-sm);
+  border-bottom-color:var(--border-strong);
 }
 
 .nav{
   display:flex;
   align-items:center;
   justify-content:space-between;
-  height:72px;
+  height:var(--header-h);
   gap:1rem;
 }
 
+/* ---- Logo ---- */
 .logo{
   display:flex;
   align-items:center;
-  gap:.75rem;
+  gap:0.75rem;
   font-weight:800;
   font-size:1rem;
   flex-shrink:0;
 }
+
 .logo .mark{
-  width:42px;height:42px;
+  width:42px;
+  height:42px;
   background:linear-gradient(135deg, var(--brand-1), var(--brand-2));
-  display:grid;place-items:center;
+  display:grid;
+  place-items:center;
   color:#000;
-  font-size:1.2rem;font-weight:900;
-  border-radius:12px;
+  font-size:1.2rem;
+  font-weight:900;
+  border-radius:var(--radius-sm);
   box-shadow:0 4px 15px -4px var(--glow);
   overflow:hidden;
   flex-shrink:0;
+  transition:var(--t);
+  position:relative;
 }
-.logo .mark img{width:100%;height:100%;object-fit:cover}
+
+.logo .mark::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(135deg, transparent 40%, rgba(255,255,255,0.4));
+  pointer-events:none;
+}
+
+.logo .mark img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.logo:hover .mark{
+  transform:rotate(-6deg) scale(1.05);
+  box-shadow:0 8px 25px -4px var(--glow);
+}
+
 .logo span:last-child{
   white-space:nowrap;
   overflow:hidden;
   text-overflow:ellipsis;
+  max-width:280px;
 }
 
-.nav-links{
+/* ---- Nav Actions ---- */
+.nav-actions{
   display:flex;
-  gap:.25rem;
-  font-size:.9rem;
-  list-style:none;
-}
-.nav-links a{
-  color:var(--txt-2);
-  padding:.5rem .9rem;
-  border-radius:8px;
-  transition:.25s;
-  font-weight:500;
-  white-space:nowrap;
-}
-.nav-links a:hover{
-  color:#000;
-  background:var(--brand-3);
+  gap:0.5rem;
+  align-items:center;
+  flex-shrink:0;
 }
 
-.nav-actions{display:flex;gap:.5rem;align-items:center;flex-shrink:0}
-
-/* Menu Button (always visible) */
+/* ---- Menu Button ---- */
 .menu-btn{
   display:grid;
+  place-items:center;
   background:var(--surface-2);
   border:1px solid var(--border);
   color:var(--txt);
-  width:42px;height:42px;
-  border-radius:12px;
+  width:42px;
+  height:42px;
+  border-radius:var(--radius-sm);
   cursor:pointer;
   font-size:1.2rem;
-  place-items:center;
-  transition:.25s;
+  transition:var(--t);
+  position:relative;
 }
+
 .menu-btn:hover{
   background:var(--brand-3);
   border-color:var(--brand-1);
+  color:var(--brand-dark);
+  transform:translateY(-1px);
 }
 
-/* ===== Drawer (Modern Sidebar Menu) ===== */
+.menu-btn:active{transform:scale(0.96)}
+
+/* =============================================
+   6. DRAWER (Modern Side Menu)
+   ============================================= */
 .drawer-overlay{
   position:fixed;
   inset:0;
-  background:rgba(0,0,0,0.4);
-  backdrop-filter:blur(4px);
+  background:rgba(0,0,0,0.45);
+  backdrop-filter:blur(6px);
+  -webkit-backdrop-filter:blur(6px);
   z-index:200;
   opacity:0;
   pointer-events:none;
-  transition:.35s;
+  transition:var(--t);
 }
+
 .drawer-overlay.open{
   opacity:1;
   pointer-events:auto;
@@ -171,17 +392,19 @@ header.scrolled{
   position:fixed;
   top:0;
   right:0;
-  width:min(320px, 85vw);
+  width:min(340px, 88vw);
   height:100vh;
-  background:#fff;
+  height:100dvh;
+  background:var(--surface);
   z-index:210;
-  transform:translateX(100%);
-  transition:.4s cubic-bezier(.4,0,.2,1);
+  transform:translateX(105%);
+  transition:transform 0.4s cubic-bezier(0.4,0,0.2,1);
   display:flex;
   flex-direction:column;
-  box-shadow:-20px 0 60px -20px rgba(0,0,0,0.2);
+  box-shadow:-20px 0 60px -20px rgba(0,0,0,0.25);
   overflow-y:auto;
 }
+
 .drawer.open{transform:translateX(0)}
 
 .drawer-header{
@@ -190,118 +413,192 @@ header.scrolled{
   justify-content:space-between;
   padding:1.25rem 1.5rem;
   border-bottom:1px solid var(--border);
+  flex-shrink:0;
 }
-.drawer-header .logo{
-  gap:.6rem;
-  font-size:.95rem;
-}
-.drawer-header .logo .mark{
-  width:36px;height:36px;
-  font-size:1rem;
-  border-radius:10px;
-}
+
+.drawer-header .logo{gap:0.6rem;font-size:0.95rem}
+.drawer-header .logo .mark{width:36px;height:36px;font-size:1rem}
+
 .drawer-close{
   background:var(--surface-2);
   border:1px solid var(--border);
   color:var(--txt);
-  width:38px;height:38px;
-  border-radius:10px;
+  width:38px;
+  height:38px;
+  border-radius:var(--radius-sm);
   cursor:pointer;
   font-size:1.1rem;
   display:grid;
   place-items:center;
-  transition:.25s;
+  transition:var(--t);
 }
+
 .drawer-close:hover{
   background:var(--brand-3);
   border-color:var(--brand-1);
+  color:var(--brand-dark);
+  transform:rotate(90deg);
 }
 
 .drawer-nav{
   display:flex;
   flex-direction:column;
   padding:1rem;
-  gap:.25rem;
+  gap:0.25rem;
   flex:1;
 }
+
 .drawer-nav a{
   display:flex;
   align-items:center;
-  gap:.75rem;
-  padding:.9rem 1rem;
-  border-radius:12px;
+  gap:0.75rem;
+  padding:0.9rem 1rem;
+  border-radius:var(--radius-sm);
   color:var(--txt-2);
   font-weight:600;
-  font-size:.95rem;
-  transition:.25s;
+  font-size:0.95rem;
+  transition:var(--t);
+  position:relative;
+  overflow:hidden;
 }
+
+.drawer-nav a::before{
+  content:"";
+  position:absolute;
+  inset-inline-start:0;
+  top:50%;
+  transform:translateY(-50%);
+  width:3px;
+  height:0;
+  background:var(--brand-1);
+  border-radius:0 4px 4px 0;
+  transition:var(--t);
+}
+
 .drawer-nav a:hover{
   background:var(--brand-3);
-  color:#000;
+  color:var(--brand-dark);
   transform:translateX(-4px);
 }
+
+.drawer-nav a:hover::before{height:60%}
+
 .drawer-nav a .nav-icon{
   font-size:1.1rem;
   width:24px;
   text-align:center;
   color:var(--brand-2);
+  flex-shrink:0;
 }
 
 .drawer-footer{
   padding:1.25rem 1.5rem;
   border-top:1px solid var(--border);
   background:var(--bg-2);
-}
-.drawer-footer .btn{
-  width:100%;
-  justify-content:center;
+  flex-shrink:0;
 }
 
-/* ===== Buttons ===== */
+.drawer-footer .btn{width:100%;justify-content:center}
+
+/* =============================================
+   7. BUTTONS
+   ============================================= */
 .btn{
   display:inline-flex;
   align-items:center;
   justify-content:center;
-  gap:.5rem;
-  padding:.8rem 1.6rem;
-  border-radius:12px;
+  gap:0.5rem;
+  padding:0.8rem 1.6rem;
+  border-radius:var(--radius-sm);
   font-weight:700;
-  font-size:.92rem;
-  transition:.3s cubic-bezier(.4,0,.2,1);
+  font-size:0.92rem;
+  font-family:inherit;
+  transition:var(--t);
   border:1px solid transparent;
   cursor:pointer;
-  font-family:inherit;
   white-space:nowrap;
+  position:relative;
+  overflow:hidden;
+  letter-spacing:0.1px;
 }
+
 .btn-primary{
   background:linear-gradient(135deg, var(--brand-1), var(--brand-2));
   color:#000;
   box-shadow:0 8px 20px -8px var(--glow);
 }
+
+.btn-primary::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(135deg, var(--brand-2), var(--brand-1));
+  opacity:0;
+  transition:var(--t);
+}
+
+.btn-primary:hover::before{opacity:1}
+
+.btn-primary > *{position:relative;z-index:1}
+
 .btn-primary:hover{
   transform:translateY(-2px);
   box-shadow:0 12px 30px -8px var(--glow);
 }
+
+.btn-primary:active{transform:translateY(0)}
+
 .btn-ghost{
-  background:#fff;
+  background:var(--surface);
   border:1px solid var(--border);
   color:var(--txt-2);
 }
+
 .btn-ghost:hover{
   background:var(--brand-3);
   border-color:var(--brand-1);
+  color:var(--brand-dark);
+  transform:translateY(-2px);
+}
+
+.btn-outline{
+  background:transparent;
+  border:1.5px solid var(--brand-1);
+  color:var(--brand-dark);
+}
+
+.btn-outline:hover{
+  background:var(--brand-1);
   color:#000;
   transform:translateY(-2px);
 }
-.btn-block{width:100%}
 
-/* ===== Hero ===== */
+.btn-block{width:100%}
+.btn-sm{padding:0.55rem 1.1rem;font-size:0.85rem}
+.btn-lg{padding:1rem 2rem;font-size:1rem}
+
+.btn:focus-visible{
+  outline:2px solid var(--brand-1);
+  outline-offset:3px;
+}
+
+.btn:disabled{
+  opacity:0.6;
+  cursor:not-allowed;
+  transform:none!important;
+}
+
+/* =============================================
+   8. HERO SECTION
+   ============================================= */
 .hero{
   min-height:100vh;
   display:flex;
   align-items:center;
-  padding:130px 0 60px;
-  background:linear-gradient(180deg, #fff 0%, #fafbfc 100%);
+  padding:calc(var(--header-h) + 60px) 0 60px;
+  background:linear-gradient(180deg, var(--bg) 0%, var(--bg-2) 100%);
+  position:relative;
+  overflow:hidden;
 }
 
 .hero-grid{
@@ -312,50 +609,69 @@ header.scrolled{
   width:100%;
 }
 
-.hero-content{display:flex;flex-direction:column;gap:1.5rem}
+.hero-content{
+  display:flex;
+  flex-direction:column;
+  gap:1.5rem;
+  min-width:0;
+}
 
+/* ---- Hero Badge ---- */
 .hero-badge{
   display:inline-flex;
   align-items:center;
-  gap:.6rem;
-  padding:.45rem 1.1rem;
+  gap:0.6rem;
+  padding:0.45rem 1.1rem;
   background:var(--brand-3);
   border:1px solid var(--brand-1);
-  border-radius:100px;
-  font-size:.8rem;
-  color:#7a5c00;
+  border-radius:var(--radius-full);
+  font-size:0.8rem;
+  color:var(--brand-dark);
   font-weight:700;
   width:fit-content;
+  position:relative;
 }
+
 .hero-badge .dot{
-  width:6px;height:6px;
+  width:6px;
+  height:6px;
   border-radius:50%;
   background:var(--brand-1);
   box-shadow:0 0 8px var(--brand-1);
   animation:pulse 2s infinite;
 }
+
 @keyframes pulse{
   0%,100%{opacity:1;transform:scale(1)}
-  50%{opacity:.6;transform:scale(1.3)}
+  50%{opacity:0.6;transform:scale(1.3)}
 }
 
+/* ---- Hero Title ---- */
 .hero h1{
   font-size:clamp(2.2rem, 5vw, 3.8rem);
-  line-height:1.2;
+  line-height:1.15;
   font-weight:900;
   letter-spacing:-1px;
-  font-family:'Cairo', sans-serif;
-  color:#0a0a0a;
+  color:var(--txt);
   margin:0;
 }
+
 .hero h1 .gradient-text{
-  background:linear-gradient(135deg, var(--brand-1), var(--brand-2));
+  background:linear-gradient(135deg, var(--brand-1), var(--brand-2), var(--brand-1));
   -webkit-background-clip:text;
   background-clip:text;
   -webkit-text-fill-color:transparent;
+  background-size:200% auto;
+  animation:gradientMove 4s ease infinite;
   display:inline-block;
 }
 
+@keyframes gradientMove{
+  0%,100%{background-position:0% center}
+  50%{background-position:100% center}
+}
+
+/* ---- Hero Paragraph ---- */
 .hero p{
   color:var(--txt-2);
   font-size:1.05rem;
@@ -364,8 +680,15 @@ header.scrolled{
   margin:0;
 }
 
-.hero-actions{display:flex;gap:1rem;flex-wrap:wrap;margin-top:.5rem}
+/* ---- Hero Actions ---- */
+.hero-actions{
+  display:flex;
+  gap:1rem;
+  flex-wrap:wrap;
+  margin-top:0.5rem;
+}
 
+/* ---- Stats ---- */
 .stats{
   display:flex;
   gap:2.5rem;
@@ -374,256 +697,367 @@ header.scrolled{
   padding-top:2rem;
   border-top:1px solid var(--border);
 }
-.stats > div{display:flex;flex-direction:column;min-width:0}
+
+.stats > div{
+  display:flex;
+  flex-direction:column;
+  min-width:0;
+}
+
 .stats b{
   font-size:2rem;
   font-weight:900;
-  font-family:'Cairo', sans-serif;
+  font-family:'Cairo',sans-serif;
   letter-spacing:-1.5px;
   line-height:1.1;
   color:var(--brand-2);
 }
+
 .stats span{
-  font-size:.82rem;
+  font-size:0.82rem;
   color:var(--muted);
-  margin-top:.2rem;
+  margin-top:0.2rem;
   font-weight:600;
 }
 
+/* ---- Hero Visual ---- */
 .hero-visual{
   position:relative;
   border-radius:var(--radius-lg);
   overflow:hidden;
   border:1px solid var(--border);
-  background:#fff;
+  background:var(--surface);
   padding:2rem;
   display:flex;
   flex-direction:column;
   gap:1.5rem;
   box-shadow:var(--shadow-lg);
   min-height:420px;
+  transition:var(--t-slow);
 }
+
+.hero-visual:hover{
+  transform:translateY(-6px);
+  box-shadow:var(--shadow-xl), 0 0 60px -20px var(--glow);
+  border-color:var(--brand-1);
+}
+
 .hero-visual .visual-media{
   position:absolute;
   inset:0;
   height:60%;
-  background:linear-gradient(160deg, var(--brand-3), #fff);
+  background:linear-gradient(160deg, var(--brand-3), var(--surface));
   pointer-events:none;
   z-index:0;
+  overflow:hidden;
 }
+
 .hero-visual .visual-media img{
-  width:100%;height:100%;
+  width:100%;
+  height:100%;
   object-fit:cover;
-  opacity:.95;
+  opacity:0.95;
+  transition:var(--t-slow);
 }
+
+.hero-visual:hover .visual-media img{
+  transform:scale(1.05);
+}
+
 .hero-visual .visual-media::after{
   content:"";
   position:absolute;
   inset:0;
-  background:linear-gradient(to bottom, transparent 30%, #fff 95%);
+  background:linear-gradient(to bottom, transparent 30%, var(--surface) 95%);
 }
+
 .hero-visual .visual-icon{
-  width:60px;height:60px;
+  width:60px;
+  height:60px;
   background:linear-gradient(135deg, var(--brand-1), var(--brand-2));
-  border-radius:16px;
-  display:grid;place-items:center;
+  border-radius:var(--radius);
+  display:grid;
+  place-items:center;
   font-size:1.7rem;
   color:#000;
   box-shadow:0 8px 25px -8px var(--glow);
   position:relative;
   z-index:1;
   flex-shrink:0;
+  transition:var(--t-bounce);
 }
+
+.hero-visual:hover .visual-icon{
+  transform:rotate(-8deg) scale(1.08);
+}
+
 .hero-visual .visual-content{
   position:relative;
   z-index:1;
   display:flex;
   flex-direction:column;
-  gap:.5rem;
+  gap:0.5rem;
   margin-top:auto;
 }
+
 .hero-visual .visual-cat{
-  font-size:.75rem;
-  color:#7a5c00;
+  font-size:0.75rem;
+  color:var(--brand-dark);
   font-weight:700;
   letter-spacing:1.5px;
   text-transform:uppercase;
 }
+
 .hero-visual h3{
   font-size:1.5rem;
   font-weight:900;
-  font-family:'Cairo', sans-serif;
-  letter-spacing:-.5px;
-  color:#0a0a0a;
+  font-family:'Cairo',sans-serif;
+  letter-spacing:-0.5px;
+  color:var(--txt);
   margin:0;
 }
+
 .hero-visual p{
   color:var(--txt-2);
-  font-size:.9rem;
+  font-size:0.9rem;
   line-height:1.7;
   margin:0;
 }
+
 .hero-visual .visual-tags{
   display:flex;
-  gap:.5rem;
+  gap:0.5rem;
   flex-wrap:wrap;
-  margin-top:.5rem;
-}
-.hero-visual .visual-tags span{
-  padding:.3rem .8rem;
-  background:var(--brand-3);
-  border:1px solid var(--brand-1);
-  border-radius:100px;
-  font-size:.72rem;
-  color:#7a5c00;
-  font-weight:600;
+  margin-top:0.5rem;
 }
 
-/* ===== Sections ===== */
-section{padding:90px 0;position:relative}
+.hero-visual .visual-tags span{
+  padding:0.3rem 0.8rem;
+  background:var(--brand-3);
+  border:1px solid var(--brand-1);
+  border-radius:var(--radius-full);
+  font-size:0.72rem;
+  color:var(--brand-dark);
+  font-weight:600;
+  transition:var(--t);
+}
+
+.hero-visual .visual-tags span:hover{
+  background:var(--brand-1);
+  color:#000;
+}
+/* =============================================
+   9. SECTIONS — GENERAL
+   ============================================= */
+section{
+  padding:90px 0;
+  position:relative;
+}
 
 .section-head{
   text-align:center;
   max-width:680px;
   margin:0 auto 3.5rem;
 }
+
 .section-head .kicker{
   display:inline-block;
-  padding:.4rem 1rem;
+  padding:0.4rem 1rem;
   background:var(--brand-3);
   border:1px solid var(--brand-1);
-  border-radius:100px;
-  font-size:.75rem;
-  color:#7a5c00;
+  border-radius:var(--radius-full);
+  font-size:0.75rem;
+  color:var(--brand-dark);
   font-weight:700;
   letter-spacing:1.5px;
   margin-bottom:1rem;
   text-transform:uppercase;
 }
+
 .section-head h2{
   font-size:clamp(1.8rem, 3.5vw, 2.6rem);
   font-weight:900;
   letter-spacing:-1px;
-  margin-bottom:.8rem;
-  font-family:'Cairo', sans-serif;
+  margin-bottom:0.8rem;
+  font-family:'Cairo',sans-serif;
   line-height:1.2;
-  color:#0a0a0a;
+  color:var(--txt);
 }
+
 .section-head h2 .gradient-text{
   background:linear-gradient(135deg, var(--brand-1), var(--brand-2));
   -webkit-background-clip:text;
   background-clip:text;
   -webkit-text-fill-color:transparent;
 }
+
 .section-head p{
   color:var(--muted);
   font-size:1rem;
   line-height:1.7;
 }
 
-/* ===== Services ===== */
+/* =============================================
+   10. SERVICES SECTION
+   ============================================= */
 .services-grid{
   display:grid;
   grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));
   gap:1.25rem;
 }
+
 .service-card{
   position:relative;
   padding:2rem;
-  background:#fff;
+  background:var(--surface);
   border:1px solid var(--border);
   border-radius:var(--radius);
-  transition:.4s cubic-bezier(.4,0,.2,1);
+  transition:var(--t);
   display:flex;
   flex-direction:column;
   gap:1rem;
-  box-shadow:0 4px 15px -8px rgba(0,0,0,0.05);
+  box-shadow:var(--shadow-xs);
+  overflow:hidden;
 }
+
+.service-card::before{
+  content:"";
+  position:absolute;
+  top:0;
+  inset-inline-start:0;
+  width:100%;
+  height:3px;
+  background:linear-gradient(90deg, var(--brand-1), var(--brand-2));
+  transform:scaleX(0);
+  transform-origin:right;
+  transition:transform 0.4s cubic-bezier(0.4,0,0.2,1);
+}
+
+.service-card:hover::before{
+  transform:scaleX(1);
+  transform-origin:left;
+}
+
 .service-card:hover{
   border-color:var(--brand-1);
   transform:translateY(-6px);
-  box-shadow:0 20px 40px -20px rgba(0,0,0,0.15), 0 0 30px -15px var(--glow);
+  box-shadow:var(--shadow-md), 0 0 30px -15px var(--glow);
 }
+
 .service-card .icon-wrap{
-  width:56px;height:56px;
-  border-radius:14px;
+  width:56px;
+  height:56px;
+  border-radius:var(--radius);
   background:var(--brand-3);
   border:1px solid var(--brand-1);
-  display:grid;place-items:center;
+  display:grid;
+  place-items:center;
   font-size:1.5rem;
-  color:#7a5c00;
+  color:var(--brand-dark);
   flex-shrink:0;
-  transition:.4s;
+  transition:var(--t-bounce);
 }
+
 .service-card:hover .icon-wrap{
   background:linear-gradient(135deg, var(--brand-1), var(--brand-2));
   color:#000;
   border-color:transparent;
-  transform:scale(1.08) rotate(-4deg);
+  transform:scale(1.1) rotate(-6deg);
+  box-shadow:0 8px 20px -6px var(--glow);
 }
+
 .service-card h3{
   font-size:1.1rem;
   font-weight:800;
-  letter-spacing:-.3px;
+  letter-spacing:-0.3px;
   margin:0;
-  color:#0a0a0a;
+  color:var(--txt);
 }
+
 .service-card p{
   color:var(--txt-2);
-  font-size:.92rem;
+  font-size:0.92rem;
   line-height:1.7;
   margin:0;
 }
 
-/* ===== Process ===== */
+/* =============================================
+   11. PROCESS SECTION
+   ============================================= */
 .process-grid{
   display:grid;
   grid-template-columns:repeat(auto-fit, minmax(240px, 1fr));
   gap:1rem;
 }
+
 .process-card{
   padding:1.75rem;
-  background:#fff;
+  background:var(--surface);
   border:1px solid var(--border);
   border-radius:var(--radius);
   position:relative;
   overflow:hidden;
-  transition:.3s;
-  box-shadow:0 4px 15px -8px rgba(0,0,0,0.05);
+  transition:var(--t);
+  box-shadow:var(--shadow-xs);
 }
+
 .process-card::before{
   content:"";
   position:absolute;
-  top:0;right:0;
-  width:100%;height:3px;
+  top:0;
+  inset-inline-start:0;
+  width:100%;
+  height:3px;
   background:linear-gradient(90deg, var(--brand-1), var(--brand-2));
 }
+
+.process-card::after{
+  content:"";
+  position:absolute;
+  bottom:-40px;
+  inset-inline-end:-40px;
+  width:120px;
+  height:120px;
+  background:radial-gradient(circle, var(--glow-soft), transparent 70%);
+  opacity:0;
+  transition:var(--t-slow);
+  pointer-events:none;
+}
+
+.process-card:hover::after{opacity:1}
+
 .process-card:hover{
   border-color:var(--brand-1);
   transform:translateY(-4px);
-  box-shadow:0 20px 40px -20px rgba(0,0,0,0.15);
+  box-shadow:var(--shadow-md);
 }
+
 .process-number{
-  font-family:'Cairo', sans-serif;
+  font-family:'Cairo',sans-serif;
   font-size:2rem;
   font-weight:900;
   color:var(--brand-2);
   line-height:1;
+  letter-spacing:-1px;
 }
+
 .process-card h3{
   font-size:1rem;
-  margin:.75rem 0 .4rem;
+  margin:0.75rem 0 0.4rem;
   font-weight:800;
-  color:#0a0a0a;
+  color:var(--txt);
 }
+
 .process-card p{
   color:var(--txt-2);
-  font-size:.88rem;
+  font-size:0.88rem;
   line-height:1.7;
   margin:0;
 }
 
-/* ===== Projects ===== */
+/* =============================================
+   12. PROJECTS SECTION
+   ============================================= */
 .toolbar{
   display:flex;
   justify-content:space-between;
@@ -632,59 +1066,68 @@ section{padding:90px 0;position:relative}
   flex-wrap:wrap;
   margin-bottom:2rem;
 }
+
 .filters{
   display:flex;
-  gap:.4rem;
+  gap:0.4rem;
   flex-wrap:wrap;
-  padding:.4rem;
-  background:#fff;
+  padding:0.4rem;
+  background:var(--surface);
   border:1px solid var(--border);
-  border-radius:100px;
+  border-radius:var(--radius-full);
+  box-shadow:var(--shadow-xs);
 }
+
 .filter{
   background:transparent;
   border:none;
   color:var(--txt-2);
-  padding:.5rem 1.1rem;
-  border-radius:100px;
+  padding:0.5rem 1.1rem;
+  border-radius:var(--radius-full);
   cursor:pointer;
-  font-size:.87rem;
+  font-size:0.87rem;
   font-weight:600;
-  transition:.25s;
+  transition:var(--t);
   font-family:inherit;
   white-space:nowrap;
 }
+
 .filter:hover{
-  color:#7a5c00;
+  color:var(--brand-dark);
   background:var(--brand-3);
 }
+
 .filter.on{
   background:linear-gradient(135deg, var(--brand-1), var(--brand-2));
   color:#000;
   box-shadow:0 4px 15px -4px var(--glow);
 }
+
 .search-box{
   position:relative;
   flex:1;
   max-width:340px;
   min-width:200px;
 }
+
 .search-box input{
   width:100%;
-  background:#fff;
+  background:var(--surface);
   border:1px solid var(--border);
   color:var(--txt);
-  padding:.7rem 1rem;
-  border-radius:100px;
+  padding:0.7rem 1rem;
+  border-radius:var(--radius-full);
   font-family:inherit;
-  font-size:.9rem;
-  transition:.25s;
+  font-size:0.9rem;
+  transition:var(--t);
 }
+
 .search-box input:focus{
   outline:none;
   border-color:var(--brand-1);
   box-shadow:0 0 0 4px var(--glow-soft);
 }
+
 .search-box input::placeholder{color:var(--muted)}
 
 .projects-grid{
@@ -692,68 +1135,90 @@ section{padding:90px 0;position:relative}
   grid-template-columns:repeat(auto-fit, minmax(300px, 1fr));
   gap:1.5rem;
 }
+
 .project-card{
   position:relative;
   border-radius:var(--radius);
   overflow:hidden;
-  background:#fff;
+  background:var(--surface);
   border:1px solid var(--border);
   cursor:pointer;
-  transition:.4s cubic-bezier(.4,0,.2,1);
+  transition:var(--t);
   display:flex;
   flex-direction:column;
-  box-shadow:0 4px 15px -8px rgba(0,0,0,0.05);
+  box-shadow:var(--shadow-xs);
 }
+
 .project-card:hover{
   transform:translateY(-8px);
   border-color:var(--brand-1);
-  box-shadow:0 30px 60px -30px rgba(0,0,0,0.2), 0 0 40px -20px var(--glow);
+  box-shadow:var(--shadow-lg), 0 0 40px -20px var(--glow);
 }
+
 .project-card .thumb{
   aspect-ratio:16/11;
   background:var(--brand-3);
   display:grid;
   place-items:center;
   font-size:2.5rem;
-  color:#7a5c00;
+  color:var(--brand-dark);
   overflow:hidden;
   position:relative;
 }
-.project-card .thumb img{
-  width:100%;height:100%;
-  object-fit:cover;
-  transition:.6s cubic-bezier(.4,0,.2,1);
+
+.project-card .thumb::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(to top, rgba(0,0,0,0.15), transparent 50%);
+  opacity:0;
+  transition:var(--t);
+  pointer-events:none;
 }
-.project-card:hover .thumb img{transform:scale(1.06)}
+
+.project-card:hover .thumb::after{opacity:1}
+
+.project-card .thumb img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  transition:transform 0.6s cubic-bezier(0.4,0,0.2,1);
+}
+
+.project-card:hover .thumb img{transform:scale(1.08)}
+
 .project-card .body{
   padding:1.5rem;
   display:flex;
   flex-direction:column;
-  gap:.5rem;
+  gap:0.5rem;
 }
+
 .project-card .cat{
   display:inline-block;
-  font-size:.7rem;
-  color:#7a5c00;
+  font-size:0.7rem;
+  color:var(--brand-dark);
   background:var(--brand-3);
   border:1px solid var(--brand-1);
-  padding:.25rem .75rem;
-  border-radius:100px;
+  padding:0.25rem 0.75rem;
+  border-radius:var(--radius-full);
   font-weight:700;
   width:fit-content;
-  letter-spacing:.5px;
+  letter-spacing:0.5px;
   text-transform:uppercase;
 }
+
 .project-card h3{
   font-size:1.1rem;
   font-weight:800;
-  letter-spacing:-.3px;
+  letter-spacing:-0.3px;
   margin:0;
-  color:#0a0a0a;
+  color:var(--txt);
 }
+
 .project-card p{
   color:var(--txt-2);
-  font-size:.9rem;
+  font-size:0.9rem;
   display:-webkit-box;
   -webkit-line-clamp:2;
   -webkit-box-orient:vertical;
@@ -761,129 +1226,182 @@ section{padding:90px 0;position:relative}
   margin:0;
 }
 
-/* ===== About ===== */
+/* =============================================
+   13. ABOUT SECTION
+   ============================================= */
 .about-grid{
   display:grid;
   grid-template-columns:1fr 1.15fr;
   gap:4rem;
   align-items:center;
 }
+
 .about-text h2{
   font-size:clamp(1.8rem, 3.5vw, 2.4rem);
   font-weight:900;
   letter-spacing:-1px;
   margin-bottom:1rem;
-  font-family:'Cairo', sans-serif;
+  font-family:'Cairo',sans-serif;
   line-height:1.2;
-  color:#0a0a0a;
+  color:var(--txt);
 }
+
 .about-text h2 .gradient-text{
   background:linear-gradient(135deg, var(--brand-1), var(--brand-2));
   -webkit-background-clip:text;
   background-clip:text;
   -webkit-text-fill-color:transparent;
 }
+
 .about-text p{
   color:var(--txt-2);
   line-height:1.9;
   font-size:1rem;
   margin:0;
 }
+
 .values-grid{
   display:grid;
   grid-template-columns:repeat(2, 1fr);
   gap:1rem;
 }
+
 .value-card{
   padding:1.5rem;
-  background:#fff;
+  background:var(--surface);
   border:1px solid var(--border);
   border-radius:var(--radius);
-  transition:.35s;
-  box-shadow:0 4px 15px -8px rgba(0,0,0,0.05);
+  transition:var(--t);
+  box-shadow:var(--shadow-xs);
+  position:relative;
+  overflow:hidden;
 }
+
+.value-card::before{
+  content:"";
+  position:absolute;
+  top:0;
+  inset-inline-start:0;
+  width:3px;
+  height:0;
+  background:var(--brand-1);
+  transition:height 0.4s cubic-bezier(0.4,0,0.2,1);
+}
+
+.value-card:hover::before{height:100%}
+
 .value-card:hover{
   border-color:var(--brand-1);
   transform:translateY(-4px);
-  box-shadow:0 20px 40px -20px rgba(0,0,0,0.15);
+  box-shadow:var(--shadow-md);
 }
+
 .value-card .v-icon{
-  width:44px;height:44px;
-  border-radius:12px;
+  width:44px;
+  height:44px;
+  border-radius:var(--radius-sm);
   background:var(--brand-3);
-  display:grid;place-items:center;
+  display:grid;
+  place-items:center;
   font-size:1.1rem;
-  color:#7a5c00;
-  margin-bottom:.75rem;
+  color:var(--brand-dark);
+  margin-bottom:0.75rem;
   border:1px solid var(--brand-1);
+  transition:var(--t-bounce);
 }
+
+.value-card:hover .v-icon{
+  background:linear-gradient(135deg, var(--brand-1), var(--brand-2));
+  color:#000;
+  transform:scale(1.1) rotate(-8deg);
+}
+
 .value-card h3{
   font-size:1rem;
   font-weight:800;
-  margin-bottom:.4rem;
-  color:#0a0a0a;
+  margin-bottom:0.4rem;
+  color:var(--txt);
 }
+
 .value-card p{
   color:var(--txt-2);
-  font-size:.87rem;
+  font-size:0.87rem;
   line-height:1.7;
   margin:0;
 }
 
-/* ===== Contact ===== */
+/* =============================================
+   14. CONTACT SECTION
+   ============================================= */
 .contact-grid{
   display:grid;
   grid-template-columns:1fr 1.15fr;
   gap:3rem;
   align-items:start;
 }
+
 .contact-info{
   display:flex;
   flex-direction:column;
-  gap:.75rem;
+  gap:0.75rem;
 }
+
 .contact-info .info-item{
   display:flex;
   gap:1rem;
   align-items:flex-start;
   padding:1.2rem;
-  background:#fff;
+  background:var(--surface);
   border:1px solid var(--border);
   border-radius:var(--radius-sm);
-  transition:.3s;
-  box-shadow:0 4px 15px -8px rgba(0,0,0,0.05);
+  transition:var(--t);
+  box-shadow:var(--shadow-xs);
 }
+
 .contact-info .info-item:hover{
   border-color:var(--brand-1);
   transform:translateX(-4px);
-  box-shadow:0 10px 30px -15px rgba(0,0,0,0.15);
+  box-shadow:var(--shadow-md);
 }
+
 .contact-info .info-icon{
-  width:44px;height:44px;
+  width:44px;
+  height:44px;
   flex-shrink:0;
-  border-radius:12px;
+  border-radius:var(--radius-sm);
   background:var(--brand-3);
-  display:grid;place-items:center;
+  display:grid;
+  place-items:center;
   font-size:1.05rem;
-  color:#7a5c00;
+  color:var(--brand-dark);
   border:1px solid var(--brand-1);
+  transition:var(--t-bounce);
 }
+
+.contact-info .info-item:hover .info-icon{
+  background:linear-gradient(135deg, var(--brand-1), var(--brand-2));
+  color:#000;
+  transform:scale(1.1);
+}
+
 .contact-info .info-label{
-  font-size:.75rem;
+  font-size:0.75rem;
   color:var(--muted);
   font-weight:700;
   text-transform:uppercase;
-  letter-spacing:.8px;
+  letter-spacing:0.8px;
 }
+
 .contact-info .info-value{
   font-weight:700;
-  color:#0a0a0a;
-  margin-top:.15rem;
-  font-size:.95rem;
+  color:var(--txt);
+  margin-top:0.15rem;
+  font-size:0.95rem;
 }
+
 .contact-form{
   padding:2rem;
-  background:#fff;
+  background:var(--surface);
   border:1px solid var(--border);
   border-radius:var(--radius);
   display:flex;
@@ -891,46 +1409,54 @@ section{padding:90px 0;position:relative}
   gap:1rem;
   box-shadow:var(--shadow);
 }
+
 .form-group{
   display:flex;
   flex-direction:column;
-  gap:.4rem;
+  gap:0.4rem;
 }
+
 .form-group label{
-  font-size:.8rem;
+  font-size:0.8rem;
   color:var(--txt-2);
   font-weight:700;
 }
+
 .form-group input,
 .form-group textarea{
   width:100%;
   background:var(--bg-2);
   border:1px solid var(--border);
   color:var(--txt);
-  padding:.85rem 1rem;
+  padding:0.85rem 1rem;
   border-radius:var(--radius-sm);
   font-family:inherit;
-  font-size:.95rem;
-  transition:.25s;
+  font-size:0.95rem;
+  transition:var(--t);
   resize:vertical;
 }
+
 .form-group input:focus,
 .form-group textarea:focus{
   outline:none;
   border-color:var(--brand-1);
-  background:#fff;
+  background:var(--surface);
   box-shadow:0 0 0 4px var(--glow-soft);
 }
+
 .form-group input::placeholder,
 .form-group textarea::placeholder{color:var(--muted)}
 
-/* ===== Footer ===== */
+/* =============================================
+   15. FOOTER
+   ============================================= */
 footer{
   padding:3rem 0 2rem;
   border-top:1px solid var(--border);
   margin-top:3rem;
   background:var(--bg-2);
 }
+
 .footer-content{
   display:flex;
   justify-content:space-between;
@@ -938,64 +1464,78 @@ footer{
   gap:1.5rem;
   flex-wrap:wrap;
   color:var(--muted);
-  font-size:.88rem;
-}
-.footer-content a{
-  color:var(--txt-2);
-  transition:.25s;
-  padding:.5rem 1rem;
-  border-radius:10px;
-  background:#fff;
-  border:1px solid var(--border);
-  font-size:.82rem;
-  font-weight:700;
-}
-.footer-content a:hover{
-  color:#7a5c00;
-  border-color:var(--brand-1);
-  background:var(--brand-3);
+  font-size:0.88rem;
 }
 
-/* ===== Toast ===== */
+.footer-content a{
+  color:var(--txt-2);
+  transition:var(--t);
+  padding:0.5rem 1rem;
+  border-radius:var(--radius-sm);
+  background:var(--surface);
+  border:1px solid var(--border);
+  font-size:0.82rem;
+  font-weight:700;
+}
+
+.footer-content a:hover{
+  color:var(--brand-dark);
+  border-color:var(--brand-1);
+  background:var(--brand-3);
+  transform:translateY(-2px);
+}
+
+/* =============================================
+   16. TOAST NOTIFICATION
+   ============================================= */
 #toast{
   position:fixed;
   bottom:28px;
   left:28px;
-  padding:.9rem 1.6rem;
+  padding:0.9rem 1.6rem;
   background:linear-gradient(135deg, var(--brand-1), var(--brand-2));
   color:#000;
-  border-radius:14px;
+  border-radius:var(--radius-sm);
   font-weight:700;
-  font-size:.9rem;
+  font-size:0.9rem;
   opacity:0;
   transform:translateY(20px);
-  transition:.35s cubic-bezier(.4,0,.2,1);
+  transition:var(--t);
   z-index:300;
   pointer-events:none;
   box-shadow:0 15px 40px -10px var(--glow);
   max-width:calc(100vw - 56px);
 }
-#toast.show{opacity:1;transform:translateY(0)}
 
-/* ===== toTop ===== */
+#toast.show{
+  opacity:1;
+  transform:translateY(0);
+}
+
+/* =============================================
+   17. BACK TO TOP BUTTON
+   ============================================= */
 .toTop{
   position:fixed;
   bottom:28px;
   right:28px;
-  width:48px;height:48px;
-  background:#fff;
+  width:48px;
+  height:48px;
+  background:var(--surface);
   border:1px solid var(--border);
   color:var(--txt);
-  border-radius:12px;
+  border-radius:var(--radius-sm);
   cursor:pointer;
-  display:grid;place-items:center;
+  display:grid;
+  place-items:center;
   opacity:0;
   pointer-events:none;
-  transition:.35s cubic-bezier(.4,0,.2,1);
+  transition:var(--t);
   z-index:90;
   font-size:1.15rem;
   box-shadow:var(--shadow);
 }
+
 .toTop:hover{
   background:linear-gradient(135deg, var(--brand-1), var(--brand-2));
   color:#000;
@@ -1003,41 +1543,69 @@ footer{
   transform:translateY(-4px);
   box-shadow:0 10px 25px -8px var(--glow);
 }
-.toTop.show{opacity:1;pointer-events:auto}
 
-/* ===== Reveal ===== */
+.toTop.show{
+  opacity:1;
+  pointer-events:auto;
+}
+
+/* =============================================
+   18. REVEAL ANIMATION
+   ============================================= */
 .reveal{
   opacity:0;
   transform:translateY(30px);
-  transition:.9s cubic-bezier(.4,0,.2,1);
+  transition:opacity 0.9s cubic-bezier(0.4,0,0.2,1), transform 0.9s cubic-bezier(0.4,0,0.2,1);
 }
-.reveal.on{opacity:1;transform:translateY(0)}
 
-/* ===== Project Detail ===== */
-#projectView{display:none;padding:130px 0 60px}
-.project-detail{max-width:980px;margin:0 auto}
+.reveal.on{
+  opacity:1;
+  transform:translateY(0);
+}
+
+/* ---- Delays ---- */
+.reveal.delay-1{transition-delay:0.1s}
+.reveal.delay-2{transition-delay:0.2s}
+.reveal.delay-3{transition-delay:0.3s}
+.reveal.delay-4{transition-delay:0.4s}
+
+/* =============================================
+   19. PROJECT DETAIL VIEW
+   ============================================= */
+#projectView{
+  display:none;
+  padding:calc(var(--header-h) + 60px) 0 60px;
+}
+
+.project-detail{
+  max-width:980px;
+  margin:0 auto;
+}
+
 .back-btn{
   display:inline-flex;
   align-items:center;
-  gap:.5rem;
-  padding:.6rem 1.2rem;
-  background:#fff;
+  gap:0.5rem;
+  padding:0.6rem 1.2rem;
+  background:var(--surface);
   border:1px solid var(--border);
   color:var(--txt);
-  border-radius:100px;
+  border-radius:var(--radius-full);
   cursor:pointer;
   font-family:inherit;
-  font-size:.88rem;
+  font-size:0.88rem;
   font-weight:700;
   margin-bottom:2rem;
-  transition:.25s;
+  transition:var(--t);
 }
+
 .back-btn:hover{
   background:var(--brand-3);
   border-color:var(--brand-1);
-  color:#7a5c00;
+  color:var(--brand-dark);
   transform:translateX(4px);
 }
+
 .project-hero{
   position:relative;
   height:55vh;
@@ -1049,10 +1617,16 @@ footer{
   display:grid;
   place-items:center;
   font-size:5rem;
-  color:#7a5c00;
+  color:var(--brand-dark);
   box-shadow:var(--shadow-lg);
 }
-.project-hero img{width:100%;height:100%;object-fit:cover}
+
+.project-hero img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
 .project-hero .overlay{
   position:absolute;
   inset:0;
@@ -1063,33 +1637,37 @@ footer{
   padding:2.5rem;
   color:#fff;
 }
+
 .project-hero h1{
   font-size:clamp(1.8rem, 4vw, 2.8rem);
   color:#fff;
   font-weight:900;
   letter-spacing:-1px;
-  font-family:'Cairo', sans-serif;
-  margin:.75rem 0 0;
+  font-family:'Cairo',sans-serif;
+  margin:0.75rem 0 0;
 }
+
 .project-meta{
   display:flex;
   gap:1rem;
   flex-wrap:wrap;
   margin-top:1rem;
-  font-size:.9rem;
+  font-size:0.9rem;
 }
+
 .project-meta span{
   display:flex;
   align-items:center;
-  gap:.4rem;
-  padding:.4rem .9rem;
-  background:rgba(245,197,24,0.2);
+  gap:0.4rem;
+  padding:0.4rem 0.9rem;
+  background:rgba(245,197,24,0.25);
   border:1px solid rgba(245,197,24,0.5);
-  border-radius:100px;
+  border-radius:var(--radius-full);
   backdrop-filter:blur(10px);
   color:#fff;
   font-weight:600;
 }
+
 .project-content{
   font-size:1.05rem;
   line-height:1.9;
@@ -1097,12 +1675,14 @@ footer{
   margin:2rem 0;
   white-space:pre-wrap;
 }
+
 .gallery{
   display:grid;
   grid-template-columns:repeat(auto-fit, minmax(200px, 1fr));
   gap:1rem;
   margin-top:2rem;
 }
+
 .gallery img{
   width:100%;
   height:220px;
@@ -1110,61 +1690,84 @@ footer{
   border-radius:var(--radius);
   border:1px solid var(--border);
   cursor:pointer;
-  transition:.4s cubic-bezier(.4,0,.2,1);
+  transition:var(--t);
 }
+
 .gallery img:hover{
   transform:scale(1.03);
   border-color:var(--brand-1);
   box-shadow:0 20px 40px -15px var(--glow);
 }
 
-/* ===== Lightbox ===== */
+/* =============================================
+   20. LIGHTBOX
+   ============================================= */
 .lightbox{
-  position:fixed;inset:0;
-  background:rgba(0,0,0,0.9);
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,0.92);
   backdrop-filter:blur(20px);
+  -webkit-backdrop-filter:blur(20px);
   z-index:400;
-  display:none;place-items:center;
-  padding:2rem;cursor:zoom-out;
+  display:none;
+  place-items:center;
+  padding:2rem;
+  cursor:zoom-out;
 }
+
 .lightbox.on{display:grid}
+
 .lightbox img{
-  max-width:92vw;max-height:92vh;
+  max-width:92vw;
+  max-height:92vh;
   object-fit:contain;
   border-radius:var(--radius-sm);
   box-shadow:0 40px 80px -20px rgba(0,0,0,0.8);
 }
 
-/* =========================================
-   RESPONSIVE
-   ========================================= */
+/* =============================================
+   21. RESPONSIVE — TABLET
+   ============================================= */
 @media (max-width:1024px){
   .hero-grid{grid-template-columns:1fr;gap:3rem}
   .hero-visual{max-width:520px;margin:0 auto;min-height:380px}
-  .about-grid,.contact-grid{grid-template-columns:1fr;gap:2.5rem}
+  .about-grid,
+  .contact-grid{grid-template-columns:1fr;gap:2.5rem}
 }
+
+/* =============================================
+   22. RESPONSIVE — MOBILE
+   ============================================= */
 @media (max-width:768px){
   .container{padding:0 1rem}
   .nav{height:64px}
-  .logo span:last-child{max-width:160px;font-size:.85rem}
-  .nav-links{display:none}
 
-  .hero{min-height:auto;padding:100px 0 40px}
-  .hero-grid{gap:2rem}
+  .logo span:last-child{max-width:160px;font-size:0.85rem}
+  .logo .mark{width:38px;height:38px;font-size:1.05rem}
+
+  .hero{
+    min-height:auto;
+    padding:calc(var(--header-h) + 40px) 0 40px;
+  }
+
   .hero h1{font-size:clamp(1.7rem, 7vw, 2.3rem);line-height:1.3}
   .hero p{font-size:1rem}
-  .hero-actions{flex-direction:column;gap:.75rem}
+
+  .hero-actions{flex-direction:column;gap:0.75rem}
   .hero-actions .btn{width:100%}
+
   .stats{
     display:grid;
     grid-template-columns:repeat(3, 1fr);
-    gap:.75rem;
+    gap:0.75rem;
     margin-top:1rem;
     padding-top:1.5rem;
   }
+
   .stats > div{text-align:center}
   .stats b{font-size:1.3rem}
-  .stats span{font-size:.7rem}
+  .stats span{font-size:0.7rem}
+
   .hero-visual{padding:1.5rem;min-height:340px}
   .hero-visual h3{font-size:1.3rem}
 
@@ -1172,15 +1775,19 @@ footer{
   .section-head{margin-bottom:2.5rem}
   .section-head h2{font-size:1.6rem}
 
-  .services-grid,.projects-grid{grid-template-columns:1fr}
+  .services-grid,
+  .projects-grid{grid-template-columns:1fr}
 
   .toolbar{flex-direction:column;align-items:stretch}
+
   .filters{
     overflow-x:auto;
     flex-wrap:nowrap;
     justify-content:flex-start;
     scrollbar-width:none;
+    -webkit-overflow-scrolling:touch;
   }
+
   .filters::-webkit-scrollbar{display:none}
   .filter{flex:0 0 auto}
   .search-box{max-width:none;min-width:0}
@@ -1198,44 +1805,58 @@ footer{
   .gallery{grid-template-columns:repeat(auto-fit, minmax(150px, 1fr))}
   .gallery img{height:160px}
 }
+
+/* =============================================
+   23. RESPONSIVE — SMALL MOBILE
+   ============================================= */
 @media (max-width:400px){
-  .logo span:last-child{max-width:130px;font-size:.8rem}
+  .logo span:last-child{max-width:130px;font-size:0.8rem}
   .hero h1{font-size:1.6rem}
   .stats b{font-size:1.1rem}
-  .stats span{font-size:.65rem}
-  .btn{padding:.7rem 1.2rem;font-size:.85rem}
+  .stats span{font-size:0.65rem}
+  .btn{padding:0.7rem 1.2rem;font-size:0.85rem}
 }
 </style>
 </head>
 <body>
 
-<!-- ===== Header ===== -->
+<!-- =============================================
+     HEADER — Fixed Top Bar
+     ============================================= -->
 <header id="siteHeader">
   <div class="container nav">
-    <a href="#home" class="logo">
+    <a href="#home" class="logo" aria-label="الرئيسية">
       <span class="mark" id="logoMark">
         <img src="assets/images/logo-mark.png" alt="شعار مكتب باداؤود">
       </span>
       <span id="officeName">مكتب باداؤود للهندسة والمقاولات</span>
     </a>
+
     <div class="nav-actions">
-      <button class="menu-btn" id="menuBtn" aria-label="القائمة">☰</button>
+      <button class="menu-btn" id="menuBtn" aria-label="فتح القائمة" aria-expanded="false" aria-controls="drawer">
+        ☰
+      </button>
     </div>
   </div>
 </header>
 
-<!-- ===== Drawer Menu ===== -->
-<div class="drawer-overlay" id="drawerOverlay"></div>
-<aside class="drawer" id="drawer">
+
+<!-- =============================================
+     DRAWER — Modern Side Menu
+     ============================================= -->
+<div class="drawer-overlay" id="drawerOverlay" aria-hidden="true"></div>
+
+<aside class="drawer" id="drawer" aria-hidden="true" aria-label="القائمة الرئيسية">
   <div class="drawer-header">
-    <a href="#home" class="logo">
+    <a href="#home" class="logo" aria-label="الرئيسية">
       <span class="mark">
         <img src="assets/images/logo-mark.png" alt="شعار">
       </span>
       <span>القائمة</span>
     </a>
-    <button class="drawer-close" id="drawerClose" aria-label="إغلاق">✕</button>
+    <button class="drawer-close" id="drawerClose" aria-label="إغلاق القائمة">✕</button>
   </div>
+
   <nav class="drawer-nav" id="drawerNav">
     <a href="#home"><span class="nav-icon">⌂</span> الرئيسية</a>
     <a href="#services"><span class="nav-icon">◈</span> خدماتنا</a>
@@ -1244,30 +1865,39 @@ footer{
     <a href="#about"><span class="nav-icon">✦</span> من نحن</a>
     <a href="#contact"><span class="nav-icon">✉</span> تواصل</a>
   </nav>
+
   <div class="drawer-footer">
     <a href="#contact" class="btn btn-primary">اطلب استشارة</a>
   </div>
 </aside>
 
-<!-- ===== Hero ===== -->
+
+<!-- =============================================
+     HERO SECTION
+     ============================================= -->
 <section class="hero" id="home">
   <div class="container hero-grid">
+
     <div class="hero-content">
       <div class="hero-badge">
         <span class="dot"></span>
         <span>متاحون لمشاريع 2026</span>
       </div>
+
       <h1 id="tagline">
         نصمم فضاءات
         <span class="gradient-text">تُلهم الحياة</span>
       </h1>
+
       <p id="heroAbout">
         مكتب باداؤود للهندسة والمقاولات — حلول معمارية مبتكرة تجمع بين الأصالة والحداثة، من الفكرة الأولى حتى تسليم المفتاح.
       </p>
+
       <div class="hero-actions">
         <a href="#projects" class="btn btn-primary">استكشف مشاريعنا</a>
         <a href="#contact" class="btn btn-ghost">اطلب استشارة</a>
       </div>
+
       <div class="stats">
         <div><b>45+</b><span>مشروع منجز</span></div>
         <div><b>38+</b><span>عميل سعيد</span></div>
@@ -1289,10 +1919,14 @@ footer{
         </div>
       </div>
     </div>
+
   </div>
 </section>
 
-<!-- ===== Services ===== -->
+
+<!-- =============================================
+     SERVICES SECTION
+     ============================================= -->
 <section id="services">
   <div class="container">
     <div class="section-head reveal">
@@ -1300,15 +1934,31 @@ footer{
       <h2>حلول <span class="gradient-text">هندسية شاملة</span></h2>
       <p>من الفكرة الأولى حتى تسليم المفتاح، نرافقك في كل خطوة باحترافية.</p>
     </div>
+
     <div class="services-grid" id="servicesGrid">
-      <div class="service-card"><div class="icon-wrap">✎</div><h3>جارٍ التحميل...</h3><p></p></div>
-      <div class="service-card"><div class="icon-wrap">⌂</div><h3>جارٍ التحميل...</h3><p></p></div>
-      <div class="service-card"><div class="icon-wrap">◈</div><h3>جارٍ التحميل...</h3><p></p></div>
+      <div class="service-card">
+        <div class="icon-wrap">✎</div>
+        <h3>جارٍ التحميل...</h3>
+        <p></p>
+      </div>
+      <div class="service-card">
+        <div class="icon-wrap">⌂</div>
+        <h3>جارٍ التحميل...</h3>
+        <p></p>
+      </div>
+      <div class="service-card">
+        <div class="icon-wrap">◈</div>
+        <h3>جارٍ التحميل...</h3>
+        <p></p>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ===== Process ===== -->
+
+<!-- =============================================
+     PROCESS SECTION
+     ============================================= -->
 <section id="process">
   <div class="container">
     <div class="section-head reveal">
@@ -1316,16 +1966,39 @@ footer{
       <h2>من الفكرة إلى <span class="gradient-text">المبنى</span></h2>
       <p>نحوّل الرؤية إلى نتيجة قابلة للتنفيذ عبر مراحل واضحة وشفافة.</p>
     </div>
+
     <div class="process-grid">
-      <article class="process-card reveal"><span class="process-number">01</span><h3>الفهم والتحليل</h3><p>نبدأ بفهم احتياجاتك والموقع والميزانية قبل اتخاذ أي قرار تصميمي.</p></article>
-      <article class="process-card reveal"><span class="process-number">02</span><h3>التصميم والتطوير</h3><p>نطوّر حلولًا معمارية تجمع الوظيفة والهوية والجمال في تصور واضح.</p></article>
-      <article class="process-card reveal"><span class="process-number">03</span><h3>التنفيذ والإشراف</h3><p>نتابع التفاصيل والجودة والتنسيق بين التخصصات حتى يسير التنفيذ بثبات.</p></article>
-      <article class="process-card reveal"><span class="process-number">04</span><h3>التسليم والمتابعة</h3><p>نسلّم مشروعًا متكاملًا ونبقى قريبين لضمان رضا العميل واستمرارية القيمة.</p></article>
+      <article class="process-card reveal">
+        <span class="process-number">01</span>
+        <h3>الفهم والتحليل</h3>
+        <p>نبدأ بفهم احتياجاتك والموقع والميزانية قبل اتخاذ أي قرار تصميمي.</p>
+      </article>
+
+      <article class="process-card reveal">
+        <span class="process-number">02</span>
+        <h3>التصميم والتطوير</h3>
+        <p>نطوّر حلولًا معمارية تجمع الوظيفة والهوية والجمال في تصور واضح.</p>
+      </article>
+
+      <article class="process-card reveal">
+        <span class="process-number">03</span>
+        <h3>التنفيذ والإشراف</h3>
+        <p>نتابع التفاصيل والجودة والتنسيق بين التخصصات حتى يسير التنفيذ بثبات.</p>
+      </article>
+
+      <article class="process-card reveal">
+        <span class="process-number">04</span>
+        <h3>التسليم والمتابعة</h3>
+        <p>نسلّم مشروعًا متكاملًا ونبقى قريبين لضمان رضا العميل واستمرارية القيمة.</p>
+      </article>
     </div>
   </div>
 </section>
 
-<!-- ===== Projects ===== -->
+
+<!-- =============================================
+     PROJECTS SECTION
+     ============================================= -->
 <section id="projects">
   <div class="container">
     <div class="section-head reveal">
@@ -1335,41 +2008,81 @@ footer{
     </div>
 
     <div class="toolbar">
-      <div class="filters" id="filterBtns">
-        <button class="filter on" data-cat="all">الكل</button>
+      <div class="filters" id="filterBtns" role="tablist" aria-label="تصنيفات المشاريع">
+        <button class="filter on" data-cat="all" role="tab" aria-selected="true">الكل</button>
       </div>
+
       <div class="search-box">
-        <input type="text" id="projSearch" placeholder="ابحث عن مشروع...">
+        <input
+          type="text"
+          id="projSearch"
+          placeholder="ابحث عن مشروع..."
+          aria-label="البحث في المشاريع"
+          autocomplete="off"
+        >
       </div>
     </div>
 
     <div class="projects-grid" id="projectsGrid">
-      <p style="grid-column:1/-1;text-align:center;padding:3rem 0;color:var(--muted)">جارٍ التحميل...</p>
+      <p style="grid-column:1/-1;text-align:center;padding:3rem 0;color:var(--muted)">
+        جارٍ التحميل...
+      </p>
     </div>
   </div>
 </section>
 
-<!-- ===== About ===== -->
+
+<!-- =============================================
+     ABOUT SECTION
+     ============================================= -->
 <section id="about">
   <div class="container about-grid">
+
     <div class="about-text reveal">
-      <div class="kicker" style="display:inline-block;padding:.4rem 1rem;background:var(--brand-3);border:1px solid var(--brand-1);border-radius:100px;font-size:.75rem;color:#7a5c00;font-weight:700;letter-spacing:1.5px;margin-bottom:1rem;text-transform:uppercase">من نحن</div>
+      <div class="kicker" style="display:inline-block;padding:0.4rem 1rem;background:var(--brand-3);border:1px solid var(--brand-1);border-radius:9999px;font-size:0.75rem;color:var(--brand-dark);font-weight:700;letter-spacing:1.5px;margin-bottom:1rem;text-transform:uppercase">
+        من نحن
+      </div>
+
       <h2>نبني <span class="gradient-text">الثقة</span> قبل المباني</h2>
+
       <p id="aboutText">
         مكتب باداؤود للهندسة والمقاولات — خبرة تمتد لسنوات في التصميم المعماري والإشراف الهندسي وتنفيذ المشاريع، نجمع بين الإبداع والدقة لنقدم فضاءات تلبي تطلعات عملائنا.
       </p>
     </div>
 
     <div class="values-grid">
-      <div class="value-card reveal"><div class="v-icon">◈</div><h3>رؤيتنا</h3><p>أن نكون مرجعاً في التصميم المعماري المستدام بالمنطقة.</p></div>
-      <div class="value-card reveal"><div class="v-icon">◇</div><h3>رسالتنا</h3><p>تحويل طموح عملائنا إلى فضاءات عملية تفوق التوقعات.</p></div>
-      <div class="value-card reveal"><div class="v-icon">✦</div><h3>قيمنا</h3><p>الإبداع، الدقة، الشفافية، والالتزام بالمواعيد.</p></div>
-      <div class="value-card reveal"><div class="v-icon">☰</div><h3>منهجيتنا</h3><p>تحليل، تصميم مفاهيمي، تطوير، ثم إشراف كامل.</p></div>
+      <div class="value-card reveal">
+        <div class="v-icon">◈</div>
+        <h3>رؤيتنا</h3>
+        <p>أن نكون مرجعاً في التصميم المعماري المستدام بالمنطقة.</p>
+      </div>
+
+      <div class="value-card reveal">
+        <div class="v-icon">◇</div>
+        <h3>رسالتنا</h3>
+        <p>تحويل طموح عملائنا إلى فضاءات عملية تفوق التوقعات.</p>
+      </div>
+
+      <div class="value-card reveal">
+        <div class="v-icon">✦</div>
+        <h3>قيمنا</h3>
+        <p>الإبداع، الدقة، الشفافية، والالتزام بالمواعيد.</p>
+      </div>
+
+      <div class="value-card reveal">
+        <div class="v-icon">☰</div>
+        <h3>منهجيتنا</h3>
+        <p>تحليل، تصميم مفاهيمي، تطوير، ثم إشراف كامل.</p>
+      </div>
     </div>
+
   </div>
 </section>
 
-<!-- ===== Contact ===== -->
+
+<!-- =============================================
+     CONTACT SECTION
+     ============================================= -->
 <section id="contact">
   <div class="container">
     <div class="section-head reveal">
@@ -1379,6 +2092,7 @@ footer{
     </div>
 
     <div class="contact-grid">
+
       <div class="contact-info reveal">
         <div class="info-item">
           <div class="info-icon">📞</div>
@@ -1387,6 +2101,7 @@ footer{
             <div class="info-value" id="contactPhone">—</div>
           </div>
         </div>
+
         <div class="info-item">
           <div class="info-icon">✉</div>
           <div>
@@ -1394,6 +2109,7 @@ footer{
             <div class="info-value" id="contactEmail">—</div>
           </div>
         </div>
+
         <div class="info-item">
           <div class="info-icon">📍</div>
           <div>
@@ -1403,36 +2119,47 @@ footer{
         </div>
       </div>
 
-      <form class="contact-form reveal" id="contactForm">
+      <form class="contact-form reveal" id="contactForm" novalidate>
         <div class="form-group">
-          <label>الاسم الكامل</label>
-          <input name="name" placeholder="اكتب اسمك" required>
+          <label for="c_name">الاسم الكامل</label>
+          <input id="c_name" name="name" placeholder="اكتب اسمك" required autocomplete="name">
         </div>
+
         <div class="form-group">
-          <label>البريد الإلكتروني</label>
-          <input name="email" type="email" placeholder="you@example.com" required>
+          <label for="c_email">البريد الإلكتروني</label>
+          <input id="c_email" name="email" type="email" placeholder="you@example.com" required autocomplete="email">
         </div>
+
         <div class="form-group">
-          <label>رقم الهاتف (اختياري)</label>
-          <input name="phone" placeholder="+967...">
+          <label for="c_phone">رقم الهاتف (اختياري)</label>
+          <input id="c_phone" name="phone" placeholder="+967..." autocomplete="tel">
         </div>
+
         <div class="form-group">
-          <label>رسالتك</label>
-          <textarea name="msg" rows="5" placeholder="أخبرنا عن مشروعك..." required></textarea>
+          <label for="c_msg">رسالتك</label>
+          <textarea id="c_msg" name="msg" rows="5" placeholder="أخبرنا عن مشروعك..." required></textarea>
         </div>
+
         <button class="btn btn-primary btn-block" type="submit">إرسال الرسالة</button>
-        <p id="formMsg" style="margin-top:.5rem;font-size:.9rem;text-align:center"></p>
+        <p id="formMsg" style="margin-top:0.5rem;font-size:0.9rem;text-align:center"></p>
       </form>
+
     </div>
   </div>
 </section>
 
-<!-- ===== Project Detail ===== -->
-<section id="projectView">
+
+<!-- =============================================
+     PROJECT DETAIL VIEW (Hidden by default)
+     ============================================= -->
+<section id="projectView" aria-hidden="true">
   <div class="container project-detail" id="projectDetail"></div>
 </section>
 
-<!-- ===== Footer ===== -->
+
+<!-- =============================================
+     FOOTER
+     ============================================= -->
 <footer>
   <div class="container footer-content">
     <span>© <span id="year"></span> مكتب باداؤود للهندسة والمقاولات — جميع الحقوق محفوظة</span>
@@ -1440,13 +2167,681 @@ footer{
   </div>
 </footer>
 
-<!-- ===== Lightbox ===== -->
-<div class="lightbox" id="lightbox">
+
+<!-- =============================================
+     LIGHTBOX
+     ============================================= -->
+<div class="lightbox" id="lightbox" aria-hidden="true">
   <img id="lightboxImg" alt="">
 </div>
 
-<!-- ===== toTop ===== -->
-<div class="toTop" id="toTop" role="button" aria-label="أعلى">↑</div>
 
-<!-- ===== Toast ===== -->
-<div id="toast"></div>
+<!-- =============================================
+     BACK TO TOP
+     ============================================= -->
+<div class="toTop" id="toTop" role="button" tabindex="0" aria-label="العودة للأعلى">↑</div>
+
+
+<!-- =============================================
+     TOAST
+     ============================================= -->
+<div id="toast" role="status" aria-live="polite"></div>
+<!-- =============================================
+     SCRIPTS
+     ============================================= -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="assets/config.js"></script>
+<script src="assets/db.js"></script>
+
+<script>
+/* =============================================
+   BADAWOOD WEBSITE — MAIN JAVASCRIPT
+   Version : 3.0 (Extended Edition)
+   ============================================= */
+(function () {
+  "use strict";
+
+  /* =========================================
+     SECTION 1 — HELPERS
+     ========================================= */
+  const $ = (s, ctx = document) => ctx.querySelector(s);
+  const $$ = (s, ctx = document) => Array.from(ctx.querySelectorAll(s));
+
+  // ---- Toast Notification ----
+  function toast(msg, isError = false) {
+    const t = $("#toast");
+    if (!t) return;
+    t.textContent = msg;
+    t.classList.add("show");
+    if (isError) {
+      t.style.background = "linear-gradient(135deg, #dc2626, #ef4444)";
+      t.style.color = "#fff";
+    } else {
+      t.style.background = "linear-gradient(135deg, #f5c518, #e0b000)";
+      t.style.color = "#000";
+    }
+    clearTimeout(t._tid);
+    t._tid = setTimeout(() => t.classList.remove("show"), 2800);
+  }
+
+  // ---- Escape HTML ----
+  function escapeHtml(str) {
+    return String(str ?? "").replace(/[&<>"']/g, (m) => ({
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#39;"
+    }[m]));
+  }
+
+  // ---- Debounce ----
+  function debounce(fn, wait = 200) {
+    let t;
+    return function (...args) {
+      clearTimeout(t);
+      t = setTimeout(() => fn.apply(this, args), wait);
+    };
+  }
+
+  /* =========================================
+     SECTION 2 — DRAWER MENU
+     ========================================= */
+  const drawer = $("#drawer");
+  const overlay = $("#drawerOverlay");
+  const menuBtn = $("#menuBtn");
+
+  function openDrawer() {
+    if (!drawer || !overlay) return;
+    drawer.classList.add("open");
+    overlay.classList.add("open");
+    drawer.setAttribute("aria-hidden", "false");
+    menuBtn?.setAttribute("aria-expanded", "true");
+    document.body.style.overflow = "hidden";
+  }
+
+  function closeDrawer() {
+    if (!drawer || !overlay) return;
+    drawer.classList.remove("open");
+    overlay.classList.remove("open");
+    drawer.setAttribute("aria-hidden", "true");
+    menuBtn?.setAttribute("aria-expanded", "false");
+    document.body.style.overflow = "";
+  }
+
+  menuBtn?.addEventListener("click", openDrawer);
+  $("#drawerClose")?.addEventListener("click", closeDrawer);
+  overlay?.addEventListener("click", closeDrawer);
+
+  $$("#drawerNav a, .drawer-footer a").forEach((a) => {
+    a.addEventListener("click", closeDrawer);
+  });
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") closeDrawer();
+  });
+
+  /* =========================================
+     SECTION 3 — HEADER SCROLL & TO TOP
+     ========================================= */
+  const header = $("#siteHeader");
+  const toTop = $("#toTop");
+
+  const handleScroll = debounce(() => {
+    if (header) header.classList.toggle("scrolled", window.scrollY > 30);
+    if (toTop) toTop.classList.toggle("show", window.scrollY > 500);
+  }, 100);
+
+  window.addEventListener("scroll", handleScroll, { passive: true });
+
+  toTop?.addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+
+  toTop?.addEventListener("keydown", (e) => {
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  });
+
+  /* =========================================
+     SECTION 4 — REVEAL ANIMATIONS
+     ========================================= */
+  let io;
+
+  function observeReveal() {
+    if (!("IntersectionObserver" in window)) {
+      $$(".reveal").forEach((el) => el.classList.add("on"));
+      return;
+    }
+
+    if (!io) {
+      io = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("on");
+              io.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.12, rootMargin: "0px 0px -50px 0px" }
+      );
+    }
+
+    $$(".reveal:not(.on)").forEach((el) => io.observe(el));
+  }
+
+  /* =========================================
+     SECTION 5 — LOAD SETTINGS
+     ========================================= */
+  async function loadSettings() {
+    try {
+      const s = (await DB.getSettings()) || {};
+      const ui = DB.getUiSettings ? (await DB.getUiSettings()) || {} : {};
+
+      // ---- Office Name ----
+      const name = s.officeName || ui.site_name || "مكتب باداؤود للهندسة والمقاولات";
+      const nameEl = $("#officeName");
+      if (nameEl) nameEl.textContent = name;
+      document.title = name + " | باداؤود";
+
+      // ---- Tagline ----
+      if (s.tagline) {
+        const tagEl = $("#tagline");
+        if (tagEl) {
+          tagEl.innerHTML = s.tagline.replace(
+            /(\S+)$/,
+            '<span class="gradient-text">$1</span>'
+          );
+        }
+      }
+
+      // ---- About ----
+      if (s.about) {
+        const heroAbout = $("#heroAbout");
+        const aboutText = $("#aboutText");
+        if (heroAbout) heroAbout.textContent = s.about;
+        if (aboutText) aboutText.textContent = s.about;
+      }
+
+      // ---- Contact Info ----
+      if (s.phone)   { const el = $("#contactPhone");   if (el) el.textContent = s.phone; }
+      if (s.email)   { const el = $("#contactEmail");   if (el) el.textContent = s.email; }
+      if (s.address) { const el = $("#contactAddress"); if (el) el.textContent = s.address; }
+
+      // ---- Logo ----
+      if (ui.logo_url) {
+        const logoMark = $("#logoMark");
+        if (logoMark) {
+          logoMark.innerHTML = `<img src="${escapeHtml(ui.logo_url)}" alt="logo">`;
+        }
+      }
+
+      // ---- Primary Color ----
+      if (ui.primary_color) {
+        document.documentElement.style.setProperty("--brand-1", ui.primary_color);
+      }
+
+      // ---- Section Visibility ----
+      if (ui.show_services === false) {
+        const el = $("#services");
+        if (el) el.style.display = "none";
+      }
+      if (ui.show_projects === false) {
+        const el = $("#projects");
+        if (el) el.style.display = "none";
+      }
+    } catch (err) {
+      console.warn("Settings load error:", err);
+    }
+  }
+
+  /* =========================================
+     SECTION 6 — LOAD SERVICES
+     ========================================= */
+  async function loadServices() {
+    const box = $("#servicesGrid");
+    if (!box) return;
+
+    let list = [];
+    try {
+      list = (await DB.getServices()) || [];
+    } catch (err) {
+      console.warn("Services load error:", err);
+    }
+
+    // Fallback if empty
+    if (!list.length) {
+      list = [
+        { icon: "✎", title: "التصميم المعماري", description: "تصاميم عصرية مبتكرة تلبي احتياجاتك وتواكب أحدث الاتجاهات العالمية." },
+        { icon: "⌂", title: "الإشراف الهندسي", description: "متابعة دقيقة لتنفيذ المشاريع وفق أعلى المعايير الهندسية." },
+        { icon: "◈", title: "التصميم الداخلي", description: "حلول داخلية أنيقة وعملية تعكس هويتك وتناسب أسلوب حياتك." },
+        { icon: "▣", title: "المقاولات العامة", description: "تنفيذ كامل للمشاريع من الأساس حتى التسليم بأعلى جودة." },
+        { icon: "✦", title: "الاستشارات الهندسية", description: "دراسات فنية ومقترحات تطوير ذكية لمشروعك." },
+        { icon: "☰", title: "إدارة المشاريع", description: "تخطيط ومتابعة شاملة لضمان الجودة والالتزام بالوقت." }
+      ];
+    }
+
+    box.innerHTML = list.map((s) => `
+      <article class="service-card reveal">
+        <div class="icon-wrap">${escapeHtml(s.icon || "✦")}</div>
+        <h3>${escapeHtml(s.title)}</h3>
+        <p>${escapeHtml(s.description || s.desc || "")}</p>
+      </article>
+    `).join("");
+
+    observeReveal();
+  }
+
+  /* =========================================
+     SECTION 7 — LOAD PROJECTS
+     ========================================= */
+  let allProjects = [];
+  let currentFilter = "all";
+  let currentSearch = "";
+
+  async function loadProjects() {
+    try {
+      allProjects = (await DB.getProjects()) || [];
+    } catch (err) {
+      console.warn("Projects load error:", err);
+      allProjects = [];
+    }
+
+    // Featured project → Hero Visual
+    const featured = allProjects[0];
+    if (featured) {
+      const catEl = $("#heroProjectCat");
+      const titleEl = $("#heroProjectTitle");
+      const descEl = $("#heroProjectDesc");
+
+      if (catEl) catEl.textContent = featured.cat || "مشروع مميز";
+      if (titleEl) titleEl.textContent = featured.title || "مشروع مميز";
+      if (descEl) {
+        descEl.textContent =
+          featured.description ||
+          featured.desc ||
+          "تفاصيل المشروع متاحة ضمن صفحة المشروع.";
+      }
+
+      if (featured.cover_image) {
+        const mediaEl = $("#heroProjectMedia");
+        if (mediaEl) {
+          mediaEl.innerHTML = `<img src="${escapeHtml(featured.cover_image)}" alt="">`;
+        }
+      }
+    }
+
+    // Build category filters
+    const defaultCats = ["سكني", "تجاري", "إداري", "ثقافي", "ضيافة"];
+    const foundCats = allProjects.map((p) => p.cat).filter(Boolean);
+    const cats = ["all", ...new Set([...defaultCats, ...foundCats])];
+
+    const filterBox = $("#filterBtns");
+    if (filterBox) {
+      filterBox.innerHTML = cats.map((c) => `
+        <button class="filter ${c === "all" ? "on" : ""}"
+                data-cat="${escapeHtml(c)}"
+                role="tab"
+                aria-selected="${c === "all" ? "true" : "false"}">
+          ${c === "all" ? "الكل" : escapeHtml(c)}
+        </button>
+      `).join("");
+
+      filterBox.addEventListener("click", (e) => {
+        const btn = e.target.closest(".filter");
+        if (!btn) return;
+        $$("#filterBtns .filter").forEach((b) => {
+          b.classList.remove("on");
+          b.setAttribute("aria-selected", "false");
+        });
+        btn.classList.add("on");
+        btn.setAttribute("aria-selected", "true");
+        currentFilter = btn.dataset.cat;
+        renderProjects();
+      });
+    }
+
+    renderProjects();
+  }
+
+  function renderProjects() {
+    const box = $("#projectsGrid");
+    if (!box) return;
+
+    let list = [...allProjects];
+
+    if (currentFilter !== "all") {
+      list = list.filter((p) => p.cat === currentFilter);
+    }
+
+    if (currentSearch.trim()) {
+      const q = currentSearch.trim().toLowerCase();
+      list = list.filter((p) =>
+        (p.title || "").toLowerCase().includes(q) ||
+        (p.description || p.desc || "").toLowerCase().includes(q) ||
+        (p.location || "").toLowerCase().includes(q)
+      );
+    }
+
+    if (!list.length) {
+      box.innerHTML = `
+        <p style="grid-column:1/-1;text-align:center;padding:3rem 0;color:var(--muted)">
+          لا توجد مشاريع مطابقة حالياً.
+        </p>`;
+      return;
+    }
+
+    box.innerHTML = list.map((p) => `
+      <article class="project-card reveal" data-slug="${escapeHtml(p.slug || "")}">
+        <div class="thumb">
+          ${p.cover_image
+            ? `<img src="${escapeHtml(p.cover_image)}" alt="${escapeHtml(p.title)}" loading="lazy">`
+            : escapeHtml(p.icon || "⌂")}
+        </div>
+        <div class="body">
+          <span class="cat">${escapeHtml(p.cat || "مشروع")}</span>
+          <h3>${escapeHtml(p.title)}</h3>
+          <p>${escapeHtml(p.description || p.desc || "")}</p>
+        </div>
+      </article>
+    `).join("");
+
+    // Bind click events
+    $$("#projectsGrid .project-card").forEach((card) => {
+      card.addEventListener("click", () => {
+        const slug = card.dataset.slug;
+        if (slug) openProject(slug);
+      });
+    });
+
+    observeReveal();
+  }
+
+  // Search input (debounced)
+  const searchInput = $("#projSearch");
+  if (searchInput) {
+    searchInput.addEventListener(
+      "input",
+      debounce((e) => {
+        currentSearch = e.target.value;
+        renderProjects();
+      }, 200)
+    );
+  }
+
+  /* =========================================
+     SECTION 8 — PROJECT DETAIL VIEW
+     ========================================= */
+  async function openProject(slug) {
+    const proj =
+      DB.getProjectBySlug
+        ? await DB.getProjectBySlug(slug)
+        : allProjects.find((p) => p.slug === slug);
+
+    if (!proj) {
+      toast("لم يتم العثور على المشروع", true);
+      return;
+    }
+
+    const detail = $("#projectDetail");
+    if (!detail) return;
+
+    const gallery = Array.isArray(proj.gallery)
+      ? proj.gallery.filter(Boolean)
+      : [];
+
+    detail.innerHTML = `
+      <button class="back-btn" id="backBtn">← رجوع للمشاريع</button>
+
+      <div class="project-hero">
+        ${proj.cover_image
+          ? `<img src="${escapeHtml(proj.cover_image)}" alt="${escapeHtml(proj.title)}">`
+          : escapeHtml(proj.icon || "⌂")}
+
+        <div class="overlay">
+          <span class="cat" style="align-self:flex-start;padding:.35rem 1rem;background:rgba(245,197,24,.25);border:1px solid rgba(245,197,24,.5);border-radius:9999px;font-size:.78rem;font-weight:600;backdrop-filter:blur(10px);color:#fff">
+            ${escapeHtml(proj.cat || "مشروع")}
+          </span>
+          <h1>${escapeHtml(proj.title)}</h1>
+
+          <div class="project-meta">
+            ${proj.location ? `<span>📍 ${escapeHtml(proj.location)}</span>` : ""}
+            ${proj.year     ? `<span>📅 ${escapeHtml(proj.year)}</span>`     : ""}
+            ${proj.area     ? `<span>📐 ${escapeHtml(proj.area)}</span>`     : ""}
+            ${proj.client   ? `<span>👤 ${escapeHtml(proj.client)}</span>`   : ""}
+          </div>
+        </div>
+      </div>
+
+      <div class="project-content">
+        ${escapeHtml(proj.content || proj.description || proj.desc || "")}
+      </div>
+
+      ${gallery.length ? `
+        <h2 style="margin-top:2.5rem;font-size:1.6rem;font-weight:900;letter-spacing:-.5px;font-family:'Cairo',sans-serif">
+          معرض الصور
+        </h2>
+        <div class="gallery">
+          ${gallery.map((url) => `<img src="${escapeHtml(url)}" alt="" loading="lazy">`).join("")}
+        </div>
+      ` : ""}
+    `;
+
+    // Hide all sections except project view
+    $$("body > section").forEach((s) => {
+      if (s.id !== "projectView") s.style.display = "none";
+    });
+
+    const pv = $("#projectView");
+    if (pv) {
+      pv.style.display = "block";
+      pv.setAttribute("aria-hidden", "false");
+    }
+
+    window.scrollTo({ top: 0, behavior: "smooth" });
+
+    $("#backBtn")?.addEventListener("click", closeProject);
+    bindGallery();
+  }
+
+  function closeProject() {
+    const pv = $("#projectView");
+    if (pv) {
+      pv.style.display = "none";
+      pv.setAttribute("aria-hidden", "true");
+    }
+
+    $$("body > section").forEach((s) => (s.style.display = ""));
+    location.hash = "#projects";
+  }
+
+  function bindGallery() {
+    $$("#projectDetail .gallery img").forEach((img) => {
+      img.addEventListener("click", () => {
+        const lb = $("#lightbox");
+        const lbImg = $("#lightboxImg");
+        if (!lb || !lbImg) return;
+        lbImg.src = img.src;
+        lb.classList.add("on");
+        lb.setAttribute("aria-hidden", "false");
+      });
+    });
+  }
+
+  // Lightbox close
+  $("#lightbox")?.addEventListener("click", () => {
+    const lb = $("#lightbox");
+    const lbImg = $("#lightboxImg");
+    if (!lb) return;
+    lb.classList.remove("on");
+    lb.setAttribute("aria-hidden", "true");
+    if (lbImg) lbImg.src = "";
+  });
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") {
+      const lb = $("#lightbox");
+      if (lb?.classList.contains("on")) {
+        lb.classList.remove("on");
+        const lbImg = $("#lightboxImg");
+        if (lbImg) lbImg.src = "";
+        return;
+      }
+
+      const pv = $("#projectView");
+      if (pv?.style.display === "block") closeProject();
+    }
+  });
+
+  // Check hash for project on load
+  function checkHashForProject() {
+    const m = location.hash.match(/^#project\/(.+)$/);
+    if (m) openProject(decodeURIComponent(m[1]));
+  }
+  window.addEventListener("hashchange", checkHashForProject);
+
+  /* =========================================
+     SECTION 9 — CONTACT FORM
+     ========================================= */
+  const contactForm = $("#contactForm");
+  if (contactForm) {
+    contactForm.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const formMsg = $("#formMsg");
+      const submitBtn = contactForm.querySelector('button[type="submit"]');
+      const originalText = submitBtn?.textContent;
+
+      // ---- Validation ----
+      const fd = new FormData(contactForm);
+      const name = (fd.get("name") || "").toString().trim();
+      const email = (fd.get("email") || "").toString().trim();
+      const phone = (fd.get("phone") || "").toString().trim();
+      const message = (fd.get("msg") || "").toString().trim();
+
+      if (!name || name.length < 2) {
+        if (formMsg) {
+          formMsg.style.color = "var(--danger)";
+          formMsg.textContent = "❌ يرجى إدخال اسم صحيح.";
+        }
+        return;
+      }
+
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!email || !emailRegex.test(email)) {
+        if (formMsg) {
+          formMsg.style.color = "var(--danger)";
+          formMsg.textContent = "❌ يرجى إدخال بريد إلكتروني صحيح.";
+        }
+        return;
+      }
+
+      if (!message || message.length < 5) {
+        if (formMsg) {
+          formMsg.style.color = "var(--danger)";
+          formMsg.textContent = "❌ يرجى كتابة رسالة (5 أحرف على الأقل).";
+        }
+        return;
+      }
+
+      // ---- Submit ----
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.textContent = "⏳ جارٍ الإرسال...";
+      }
+
+      try {
+        const ok = await DB.addMessage({ name, email, phone, message });
+
+        if (ok) {
+          contactForm.reset();
+          if (formMsg) {
+            formMsg.style.color = "var(--success)";
+            formMsg.textContent = "✅ تم إرسال رسالتك، سنعاود التواصل قريباً.";
+          }
+          toast("✅ تم إرسال الرسالة بنجاح");
+        } else {
+          if (formMsg) {
+            formMsg.style.color = "var(--danger)";
+            formMsg.textContent = "❌ فشل الإرسال، حاول لاحقاً.";
+          }
+          toast("❌ فشل الإرسال", true);
+        }
+      } catch (err) {
+        console.error(err);
+        if (formMsg) {
+          formMsg.style.color = "var(--danger)";
+          formMsg.textContent = "❌ حدث خطأ غير متوقع.";
+        }
+        toast("❌ حدث خطأ", true);
+      } finally {
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.textContent = originalText || "إرسال الرسالة";
+        }
+      }
+    });
+  }
+
+  /* =========================================
+     SECTION 10 — SMOOTH SCROLL FOR NAV LINKS
+     ========================================= */
+  $$('a[href^="#"]').forEach((link) => {
+    link.addEventListener("click", (e) => {
+      const href = link.getAttribute("href");
+      if (!href || href === "#") return;
+
+      const target = document.querySelector(href);
+      if (!target) return;
+
+      e.preventDefault();
+      const top = target.getBoundingClientRect().top + window.scrollY - 72;
+      window.scrollTo({ top, behavior: "smooth" });
+    });
+  });
+
+  /* =========================================
+     SECTION 11 — INIT
+     ========================================= */
+  function initYear() {
+    const y = $("#year");
+    if (y) y.textContent = new Date().getFullYear();
+  }
+
+  async function init() {
+    initYear();
+
+    try {
+      await loadSettings();
+    } catch (e) { console.warn(e); }
+
+    try {
+      await loadServices();
+    } catch (e) { console.warn(e); }
+
+    try {
+      await loadProjects();
+    } catch (e) { console.warn(e); }
+
+    checkHashForProject();
+    observeReveal();
+
+    console.log(
+      "%c🏛️ Badawood Engineering Website — v3.0",
+      "color:#f5c518;font-weight:bold;font-size:14px"
+    );
+  }
+
+  // Run on DOM ready
+   if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", init);
+  } else {
+    init();
+  }
+
+})();
+</script>
+</body>
+</html>
